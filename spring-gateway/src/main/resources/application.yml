@@ -1,0 +1,7 @@
+server:
+  port: 8080
+agent:
+  base-url: ${AGENT_BASE_URL:http://localhost:8000}
+  timeout-seconds: 60
+cors:
+  allowed-origin: ${CORS_ORIGIN:http://localhost:5173}
