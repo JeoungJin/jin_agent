@@ -13,3 +13,7 @@ CORS_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:8000",
 ]
+
+# SpringBoot 내부 API (계좌조회 Tool 이 서버 간 호출). 하드코딩하지 않고 여기서만 읽는다.
+SPRING_API_BASE_URL = os.getenv("SPRING_API_BASE_URL", "http://localhost:8000")
+SPRING_API_TIMEOUT = float(os.getenv("SPRING_API_TIMEOUT", "5"))   # Spring 게이트웨이 타임아웃(10초)보다 짧게

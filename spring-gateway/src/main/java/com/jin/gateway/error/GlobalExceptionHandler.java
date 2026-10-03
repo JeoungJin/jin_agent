@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.web.server.ResponseStatusException;
 
 /** 에러 응답을 {"status": 코드, "message": 문구} 한 가지 형식으로 통일한다. */
 @RestControllerAdvice
@@ -33,6 +34,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleUpstream(WebClientResponseException e) {
         HttpStatusCode status = e.getStatusCode();
         String message = status.value() == 422 ? "요청 형식이 올바르지 않습니다" : "요청을 처리할 수 없습니다";
+        return ResponseEntity.status(status).body(Map.of("status", status.value(), "message", message));
+    }
+
+    /** 403 · 404 처럼 코드에서 직접 던진 상태 예외 */
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, Object>> handleStatus(ResponseStatusException e) {
+        HttpStatusCode status = e.getStatusCode();
+        String message = e.getReason() != null ? e.getReason() : "요청을 처리할 수 없습니다";
         return ResponseEntity.status(status).body(Map.of("status", status.value(), "message", message));
     }
 

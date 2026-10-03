@@ -36,7 +36,10 @@ public class AiRouteController {
     @PostMapping("/route")
     public Mono<AiRouteResponse> route(@AuthenticationPrincipal AuthUser user, @Valid @RequestBody AiRouteRequest request) {
         log.info("AI 질문: userId={}, question='{}'", user == null ? null : user.id(), request.question());
-        return gatewayService.route(request);
+        // Mono 는 다른 스레드에서 실행되므로 SecurityContext 를 쓸 수 없다. 지금(요청 스레드)에서 토큰 원문을 꺼내 넘긴다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String accessToken = authentication == null ? null : (String) authentication.getCredentials();
+        return gatewayService.route(request, user, accessToken);
     }
 
     /** 프론트가 로그인 여부 확인에 사용: 200이면 로그인 상태, 401이면 로그아웃 상태 */

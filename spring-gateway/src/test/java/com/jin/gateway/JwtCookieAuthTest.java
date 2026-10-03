@@ -67,7 +67,7 @@ class JwtCookieAuthTest {
         mvc.perform(get("/api/ai/me").cookie(cookie)).andExpect(status().isOk())
                 .andExpect(jsonPath("$.email").value("me@b.com"));
 
-        when(gateway.route(any())).thenReturn(Mono.just(new AiRouteResponse("질문", "답변", "GENERAL")));
+        when(gateway.route(any(), any(), any())).thenReturn(Mono.just(new AiRouteResponse("질문", "답변", "GENERAL")));
         MvcResult started = mvc.perform(post("/api/ai/route").cookie(cookie).contentType(MediaType.APPLICATION_JSON)
                 .content("{\"question\":\"질문\"}")).andExpect(request().asyncStarted()).andReturn();
         mvc.perform(asyncDispatch(started)).andExpect(status().isOk()).andExpect(jsonPath("$.answer").value("답변"));

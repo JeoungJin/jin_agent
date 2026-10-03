@@ -1,12 +1,15 @@
 package com.jin.gateway.service;
 
 import com.jin.gateway.dto.AiRouteRequest;
+import com.jin.gateway.dto.FastApiRouteRequest;
+import com.jin.gateway.security.AuthUser;
 import com.jin.gateway.dto.AiRouteResponse;
 import java.time.Duration;
 import java.util.concurrent.TimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientRequestException;
@@ -33,10 +36,19 @@ public class AiGatewayService {
         this.timeout = timeout;
     }
 
-    public Mono<AiRouteResponse> route(AiRouteRequest request) {
+    /**
+     * @param user        로그인 사용자 (user_id 로 전달)
+     * @param accessToken 필터가 SecurityContext 에 보관한 토큰 원문. 서버 간 호출이므로 쿠키가 아니라 Bearer 헤더로 전달한다.
+     */
+    public Mono<AiRouteResponse> route(AiRouteRequest request, AuthUser user, String accessToken) {
         return webClient.post()
                 .uri(ROUTE_PATH)
-                .bodyValue(request)
+                .headers(h -> {
+                    if (accessToken != null) {
+                        h.set(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken);
+                    }
+                })
+                .bodyValue(new FastApiRouteRequest(request.question(), user == null ? null : user.id()))
                 .retrieve()
                 .bodyToMono(AiRouteResponse.class)
                 .timeout(timeout)

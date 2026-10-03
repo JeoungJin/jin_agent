@@ -66,7 +66,7 @@ def test_no_api_key_is_503_not_500():
 def test_swagger_and_examples_and_cors():
     spec = client.get("/openapi.json").json()
     req_schema = spec["components"]["schemas"]["QuestionRequest"]
-    assert req_schema["examples"][0]["question"] == "삼성전자 주가 알려줘"
+    assert req_schema["examples"][0]["question"] == "내 잔액 알려줘"
     assert client.get("/docs").status_code == 200
     r = client.options("/api/v1/route", headers={"Origin": "http://localhost:5173", "Access-Control-Request-Method": "POST"})
     assert r.headers["access-control-allow-origin"] == "http://localhost:5173"

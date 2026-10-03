@@ -18,6 +18,9 @@ import reactor.test.StepVerifier;
 /** MockWebServer를 가짜 FastAPI로 세워서 Service만 단독 검증한다. */
 class AiGatewayServiceTest {
 
+    static final com.jin.gateway.security.AuthUser USER = new com.jin.gateway.security.AuthUser(7L, "u@b.com");
+    static final String TOKEN = "tok.en.value";
+
     MockWebServer fastApi;
     AiGatewayService service;
 
@@ -38,7 +41,7 @@ class AiGatewayServiceTest {
         fastApi.enqueue(new MockResponse().setHeader("Content-Type", "application/json")
                 .setBody("{\"question\":\"삼성전자 주가\",\"answer\":\"71,000원\",\"category\":\"stock\",\"extra\":1}"));
 
-        StepVerifier.create(service.route(new AiRouteRequest("삼성전자 주가")))
+        StepVerifier.create(service.route(new AiRouteRequest("삼성전자 주가"), USER, TOKEN))
                 .assertNext(r -> {
                     assertThat(r.answer()).isEqualTo("71,000원");
                     assertThat(r.category()).isEqualTo("stock");
@@ -48,14 +51,15 @@ class AiGatewayServiceTest {
         RecordedRequest sent = fastApi.takeRequest();
         assertThat(sent.getMethod()).isEqualTo("POST");
         assertThat(sent.getPath()).isEqualTo("/api/v1/route");
-        assertThat(sent.getBody().readUtf8()).isEqualTo("{\"question\":\"삼성전자 주가\"}");
+        assertThat(sent.getBody().readUtf8()).isEqualTo("{\"question\":\"삼성전자 주가\",\"user_id\":7}");
+        assertThat(sent.getHeader("Authorization")).isEqualTo("Bearer tok.en.value");
     }
 
     @Test
     void 서버오류_500이면_fallback() {
         fastApi.enqueue(new MockResponse().setResponseCode(500));
 
-        StepVerifier.create(service.route(new AiRouteRequest("잔액")))
+        StepVerifier.create(service.route(new AiRouteRequest("잔액"), USER, TOKEN))
                 .assertNext(r -> {
                     assertThat(r.category()).isEqualTo("FALLBACK");
                     assertThat(r.question()).isEqualTo("잔액");
@@ -67,7 +71,7 @@ class AiGatewayServiceTest {
     void 연결_실패면_fallback() throws Exception {
         fastApi.shutdown();
 
-        StepVerifier.create(service.route(new AiRouteRequest("잔액")))
+        StepVerifier.create(service.route(new AiRouteRequest("잔액"), USER, TOKEN))
                 .assertNext(r -> assertThat(r.category()).isEqualTo("FALLBACK"))
                 .verifyComplete();
     }
@@ -78,7 +82,7 @@ class AiGatewayServiceTest {
                 .setBody("{\"question\":\"q\",\"answer\":\"late\",\"category\":\"general\"}")
                 .setBodyDelay(3, TimeUnit.SECONDS));
 
-        StepVerifier.create(service.route(new AiRouteRequest("q")))
+        StepVerifier.create(service.route(new AiRouteRequest("q"), USER, TOKEN))
                 .assertNext(r -> assertThat(r.category()).isEqualTo("FALLBACK"))
                 .verifyComplete();
     }
@@ -87,7 +91,7 @@ class AiGatewayServiceTest {
     void FastAPI_4xx는_fallback하지_않고_에러로_전파된다() {
         fastApi.enqueue(new MockResponse().setResponseCode(422).setHeader("Content-Type", "application/json").setBody("{\"detail\":[]}"));
 
-        StepVerifier.create(service.route(new AiRouteRequest("q")))
+        StepVerifier.create(service.route(new AiRouteRequest("q"), USER, TOKEN))
                 .expectErrorSatisfies(e -> assertThat(e).isInstanceOf(
                         org.springframework.web.reactive.function.client.WebClientResponseException.UnprocessableEntity.class))
                 .verify();
