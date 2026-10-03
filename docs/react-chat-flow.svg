@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="800" viewBox="0 0 1120 800" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="800" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">React AI 채팅 앱 : 구성과 요청 흐름</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">같은 질문을 두 가지 방식으로 보낸다 : JSON 한 번에(axios) vs 스트리밍(fetch + SSE)</text>
+<rect x="20" y="92" width="690" height="610" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="20" y="92" width="690" height="38" rx="10" fill="#0284c7"/><rect x="20" y="118" width="690" height="12" fill="#0284c7"/><text x="365.0" y="119" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">React (Vite · TypeScript) — http://localhost:5173</text>
+<rect x="40" y="144" width="650" height="70" rx="10" fill="#fff" stroke="#0369a1" stroke-width="2"/>
+<text x="60" y="168" text-anchor="start" font-size="15" fill="#0369a1" font-weight="bold">App.tsx</text>
+<text x="150" y="168" text-anchor="start" font-size="13" fill="#334155">앱 시작 시  GET /api/ai/me</text>
+<rect x="60" y="178" width="140" height="26" rx="13" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+<text x="130" y="196" text-anchor="middle" font-size="12" fill="#991b1b">401 → LoginForm</text>
+<rect x="215" y="178" width="150" height="26" rx="13" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text x="290" y="196" text-anchor="middle" font-size="12" fill="#166534">200 → AiChatPanel</text>
+<text x="385" y="196" text-anchor="start" font-size="12" fill="#475569">· 로그아웃: POST /api/auth/logout</text>
+<rect x="40" y="228" width="650" height="56" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+<text x="60" y="252" text-anchor="start" font-size="15" fill="#6d28d9" font-weight="bold">AiChatPanel.tsx</text>
+<rect x="60" y="258" width="130" height="20" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="125" y="273" text-anchor="middle" font-size="11" fill="#5b21b6">☑ 스트리밍 (기본 ON)</text>
+<text x="205" y="273" text-anchor="start" font-size="12" fill="#475569">입력창 · 전송 · Enter(isComposing 방지) · 응답 중 모두 비활성화</text>
+<line x1="250" y1="284" x2="250" y2="306" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="262" y="300" text-anchor="start" font-size="12" fill="#7c3aed" font-weight="bold">OFF</text>
+<rect x="40" y="308" width="650" height="112" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="56" y="330" text-anchor="start" font-size="14" fill="#c2410c" font-weight="bold">① JSON 요청</text>
+<rect x="56" y="342" width="170" height="64" rx="10" fill="#fff" stroke="#ea580c" stroke-width="1.5"/>
+<text x="141" y="362" text-anchor="middle" font-size="12" fill="#9a3412" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">aiApi.routeQuestion</text>
+<text x="141" y="380" text-anchor="middle" font-size="11" fill="#475569">axios · withCredentials</text>
+<text x="141" y="396" text-anchor="middle" font-size="11" fill="#475569">body { question }</text>
+<line x1="226" y1="374" x2="262" y2="374" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="266" y="342" width="200" height="64" rx="10" fill="#fff" stroke="#ea580c" stroke-width="1.5"/>
+<text x="366" y="362" text-anchor="middle" font-size="12" fill="#9a3412" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">AiRouteResponse</text>
+<text x="366" y="380" text-anchor="middle" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">{ question, category, answer }</text>
+<text x="366" y="396" text-anchor="middle" font-size="11" fill="#475569">한 번에 도착</text>
+<line x1="466" y1="374" x2="502" y2="374" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="506" y="342" width="170" height="64" rx="10" fill="#fff" stroke="#ea580c" stroke-width="1.5"/>
+<text x="591" y="364" text-anchor="middle" font-size="12" fill="#9a3412">category 배지 +</text>
+<text x="591" y="382" text-anchor="middle" font-size="12" fill="#9a3412">answer 한 번에 추가</text>
+<polyline points="690,262 702,262 702,452 692,452" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="560" y="300" text-anchor="start" font-size="12" fill="#7c3aed" font-weight="bold">ON ↘ 아래 ②로</text>
+<rect x="40" y="438" width="650" height="152" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="56" y="460" text-anchor="start" font-size="14" fill="#166534" font-weight="bold">② 스트리밍 요청 (SSE)</text>
+<rect x="56" y="472" width="140" height="64" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="126" y="492" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">fetch (직접 호출)</text>
+<text x="126" y="510" text-anchor="middle" font-size="10" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">credentials:"include"</text>
+<text x="126" y="526" text-anchor="middle" font-size="10" fill="#475569">Accept: text/event-stream</text>
+<line x1="196" y1="504" x2="222" y2="504" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="226" y="472" width="140" height="64" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="296" y="492" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">getReader()</text>
+<text x="296" y="510" text-anchor="middle" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">TextDecoder</text>
+<text x="296" y="526" text-anchor="middle" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">{ stream: true }</text>
+<line x1="366" y1="504" x2="392" y2="504" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="396" y="472" width="120" height="64" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="456" y="492" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">parseSse()</text>
+<text x="456" y="510" text-anchor="middle" font-size="11" fill="#475569">순수 함수</text>
+<text x="456" y="526" text-anchor="middle" font-size="10" fill="#475569">잘린 청크 → 버퍼</text>
+<line x1="516" y1="504" x2="540" y2="504" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="544" y="472" width="136" height="106" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="612" y="490" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">이벤트 처리</text>
+<text x="554" y="508" text-anchor="start" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">category</text>
+<text x="612" y="508" text-anchor="start" font-size="10" fill="#475569">배지</text>
+<text x="554" y="525" text-anchor="start" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">token</text>
+<text x="612" y="525" text-anchor="start" font-size="10" fill="#475569">글자 이어붙임</text>
+<text x="554" y="542" text-anchor="start" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">done</text>
+<text x="612" y="542" text-anchor="start" font-size="10" fill="#475569">로딩 종료</text>
+<text x="554" y="559" text-anchor="start" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">error</text>
+<text x="612" y="559" text-anchor="start" font-size="10" fill="#475569">오류 표시</text>
+<rect x="56" y="544" width="420" height="36" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1"/>
+<text x="266" y="560" text-anchor="middle" font-size="12" fill="#166534">fetch는 401을 인터셉터가 못 잡는다 → res.status 직접 확인</text>
+<text x="266" y="574" text-anchor="middle" font-size="11" fill="#475569">res.ok 먼저 확인 : 401 → 로그인 화면, 400 → message 표시</text>
+<rect x="40" y="602" width="650" height="86" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<text x="56" y="624" text-anchor="start" font-size="14" fill="#854d0e" font-weight="bold">공통 규칙</text>
+<text x="56" y="644" text-anchor="start" font-size="12" fill="#422006">• httpClient 401 인터셉터 → setUnauthorizedHandler(fn) → App이 로그인 화면으로 전환 (새로고침 금지)</text>
+<text x="56" y="662" text-anchor="start" font-size="12" fill="#422006">• 토큰은 HttpOnly 쿠키 : JS가 읽지 못함, localStorage 금지, Authorization 헤더 직접 설정 금지</text>
+<text x="56" y="680" text-anchor="start" font-size="12" fill="#422006">• user_id는 보내지 않는다 (서버가 쿠키의 JWT로 결정) · 언마운트 시 요청 취소 (signal / AbortController)</text>
+<rect x="820" y="92" width="280" height="610" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="820" y="92" width="280" height="38" rx="10" fill="#16a34a"/><rect x="820" y="118" width="280" height="12" fill="#16a34a"/><text x="960.0" y="119" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">Spring Boot — :8000</text>
+<rect x="840" y="150" width="240" height="62" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="960" y="172" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">POST /api/auth/login</text>
+<text x="960" y="190" text-anchor="middle" font-size="12" fill="#475569">→ Set-Cookie (HttpOnly)</text>
+<text x="960" y="205" text-anchor="middle" font-size="10" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">POST /api/auth/logout · GET /api/ai/me</text>
+<rect x="840" y="330" width="240" height="62" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+<text x="960" y="352" text-anchor="middle" font-size="13" fill="#9a3412" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">POST /api/ai/route</text>
+<text x="960" y="370" text-anchor="middle" font-size="12" fill="#475569">JSON · Mono (기존)</text>
+<text x="960" y="385" text-anchor="middle" font-size="10" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">→ FastAPI /api/v1/route</text>
+<rect x="840" y="486" width="240" height="62" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<text x="960" y="508" text-anchor="middle" font-size="13" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">POST /api/ai/route-stream</text>
+<text x="960" y="526" text-anchor="middle" font-size="12" fill="#475569">SSE · Flux (추가)</text>
+<text x="960" y="541" text-anchor="middle" font-size="10" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">→ FastAPI /api/v1/route-stream</text>
+<rect x="840" y="600" width="240" height="70" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+<text x="960" y="622" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">CORS 설정 (다음 단계)</text>
+<text x="960" y="640" text-anchor="middle" font-size="11" fill="#7f1d1d">첫 실행 시 CORS 오류가 나는 것이</text>
+<text x="960" y="655" text-anchor="middle" font-size="11" fill="#7f1d1d">정상 → Spring에서 수정</text>
+<line x1="710" y1="180" x2="838" y2="180" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="774" y="172" text-anchor="middle" font-size="11" fill="#475569">쿠키 발급</text>
+<line x1="690" y1="374" x2="838" y2="364" stroke="#ea580c" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="764" y="350" text-anchor="middle" font-size="11" fill="#c2410c">쿠키 자동</text>
+<text x="764" y="364" text-anchor="middle" font-size="11" fill="#c2410c">첨부</text>
+<line x1="690" y1="516" x2="838" y2="516" stroke="#16a34a" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="764" y="500" text-anchor="middle" font-size="11" fill="#166534">쿠키 +</text>
+<text x="764" y="514" text-anchor="middle" font-size="11" fill="#166534">credentials</text>
+<line x1="838" y1="420" x2="692" y2="420" stroke="#ea580c" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+<text x="764" y="436" text-anchor="middle" font-size="11" fill="#c2410c">JSON 응답</text>
+<line x1="838" y1="566" x2="692" y2="566" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+<text x="764" y="582" text-anchor="middle" font-size="11" fill="#166534">event: token ...</text>
+<text x="560" y="740" text-anchor="middle" font-size="13" fill="#475569">※ 프록시를 쓰지 않으므로 브라우저는 5173 → 8000 으로 직접(교차 출처) 호출한다. localhost 로 통일해야 쿠키가 전송된다.</text>
+<text x="560" y="762" text-anchor="middle" font-size="13" fill="#475569">※ axios 는 withCredentials: true , fetch 는 credentials: "include" — 둘 중 하나라도 빠지면 모든 요청이 401</text>
+</svg>
