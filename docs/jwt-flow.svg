@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="790" viewBox="0 0 1000 790" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+  </defs>
+  <rect width="1000" height="790" fill="#f8fafc"/>
+  <text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">JWT 기본 개념 ② 인증 처리 흐름</text>
+  <text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">로그인으로 토큰을 한 번 받고, 이후 모든 요청에 토큰을 붙여 보낸다</text>
+
+  <!-- lifelines -->
+  <g stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 5">
+    <line x1="150" y1="134" x2="150" y2="700"/><line x1="500" y1="134" x2="500" y2="700"/><line x1="850" y1="134" x2="850" y2="700"/>
+  </g>
+  <rect x="60" y="90" width="180" height="44" rx="10" fill="#0284c7"/>
+  <text x="150" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">클라이언트</text>
+  <text x="150" y="127" text-anchor="middle" font-size="11" fill="#e0f2fe">React / curl</text>
+  <rect x="390" y="90" width="220" height="44" rx="10" fill="#7c3aed"/>
+  <text x="500" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">Spring Security 필터</text>
+  <text x="500" y="127" text-anchor="middle" font-size="11" fill="#ede9fe" font-family="Consolas,monospace">JwtAuthenticationFilter</text>
+  <rect x="760" y="90" width="180" height="44" rx="10" fill="#16a34a"/>
+  <text x="850" y="110" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">Controller</text>
+  <text x="850" y="127" text-anchor="middle" font-size="11" fill="#dcfce7">Service</text>
+
+  <!-- Phase A -->
+  <rect x="20" y="150" width="960" height="150" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="36" y="174" font-size="15" font-weight="bold" fill="#1e40af">A. 로그인 — 토큰 발급 (처음 1번)</text>
+  <text x="500" y="204" text-anchor="middle" font-size="13" font-family="Consolas,monospace" fill="#0f172a">① POST /api/auth/login  { "email": "a@b.com" }</text>
+  <line x1="150" y1="212" x2="850" y2="212" stroke="#475569" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="500" y="230" text-anchor="middle" font-size="12" fill="#64748b">공개 URL(permitAll)이라 필터가 토큰 없이 통과시킴</text>
+  <rect x="740" y="238" width="220" height="30" rx="8" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="850" y="258" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">JWT 생성 + 서명 (secret, 만료시간)</text>
+  <text x="500" y="284" text-anchor="middle" font-size="13" font-family="Consolas,monospace" fill="#0f172a">② 200 OK  { "accessToken": "eyJhbGci..." }</text>
+  <line x1="850" y1="292" x2="150" y2="292" stroke="#16a34a" stroke-width="2.5" marker-end="url(#g)"/>
+
+  <!-- Phase B -->
+  <rect x="20" y="316" width="960" height="372" rx="12" fill="#fefce8" stroke="#fde68a"/>
+  <text x="36" y="340" font-size="15" font-weight="bold" fill="#92400e">B. API 호출 — 토큰 검증 (매 요청마다)</text>
+  <text x="325" y="372" text-anchor="middle" font-size="13" font-family="Consolas,monospace" fill="#0f172a">③ POST /api/ai/route</text>
+  <line x1="150" y1="382" x2="500" y2="382" stroke="#475569" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="325" y="400" text-anchor="middle" font-size="12" font-family="Consolas,monospace" fill="#7c3aed">Authorization: Bearer eyJhbGci...</text>
+
+  <rect x="360" y="414" width="280" height="76" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="500" y="438" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">④ 토큰 검증</text>
+  <text x="500" y="458" text-anchor="middle" font-size="12.5" fill="#1e293b">Bearer 토큰 추출 → 서명·만료 확인</text>
+  <text x="500" y="477" text-anchor="middle" font-size="12.5" fill="#1e293b">성공 시 AuthUser를 SecurityContext에 저장</text>
+
+  <text x="675" y="522" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">⑤ 검증 성공 → 요청 전달</text>
+  <line x1="500" y1="532" x2="850" y2="532" stroke="#16a34a" stroke-width="2.5" marker-end="url(#g)"/>
+  <rect x="730" y="544" width="240" height="44" rx="8" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="850" y="563" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#166534">Controller 실행</text>
+  <text x="850" y="580" text-anchor="middle" font-size="11.5" fill="#475569" font-family="Consolas,monospace">@AuthenticationPrincipal</text>
+  <text x="500" y="614" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">⑥ 200 OK  응답</text>
+  <line x1="850" y1="624" x2="150" y2="624" stroke="#16a34a" stroke-width="2.5" marker-end="url(#g)"/>
+
+  <text x="325" y="652" text-anchor="middle" font-size="13" font-weight="bold" fill="#991b1b">⑤' 검증 실패 → 401 Unauthorized</text>
+  <line x1="500" y1="662" x2="150" y2="662" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="7 4" marker-end="url(#r)"/>
+  <text x="325" y="680" text-anchor="middle" font-size="12" fill="#b91c1c">토큰 없음 · 위조 · 만료 (Controller까지 가지 않음)</text>
+
+  <rect x="20" y="708" width="960" height="60" rx="12" fill="#0f172a"/>
+  <text x="500" y="735" text-anchor="middle" font-size="16" font-weight="bold" fill="#f8fafc">서버는 로그인 상태를 저장하지 않는다 (STATELESS)</text>
+  <text x="500" y="755" text-anchor="middle" font-size="13" fill="#cbd5e1">요청마다 토큰의 서명과 만료만 검증하므로 서버를 여러 대로 늘려도 동작한다</text>
+</svg>

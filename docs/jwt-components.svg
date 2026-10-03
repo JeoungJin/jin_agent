@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="830" viewBox="0 0 1000 830" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<rect width="1000" height="830" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">JWT 인증 기본 개념 ① 구조와 구성요소</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">JWT(JSON Web Token) = 서버가 서명해서 발급하는, 사용자 신원 증명용 문자열</text>
+<text x="30" y="104" font-size="16" font-weight="bold" fill="#0f172a">JWT 토큰의 구조 — 점(.)으로 구분된 3부분</text>
+<rect x="30" y="116" width="300" height="118" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="46" y="144" font-size="17" font-weight="bold" fill="#1e3a8a">① Header</text>
+<text x="46" y="164" font-size="13" fill="#475569">알고리즘 · 타입</text>
+<rect x="42" y="176" width="276" height="48" rx="6" fill="#fff" stroke="#2563eb" stroke-opacity=".4"/>
+<text x="52" y="196" font-size="12" font-family="Consolas,monospace" fill="#0f172a">{"alg":"HS256",</text>
+<text x="52" y="214" font-size="12" font-family="Consolas,monospace" fill="#0f172a">"typ":"JWT"}</text>
+<rect x="350" y="116" width="300" height="118" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="366" y="144" font-size="17" font-weight="bold" fill="#14532d">② Payload (Claims)</text>
+<text x="366" y="164" font-size="13" fill="#475569">사용자 정보 · 만료시각</text>
+<rect x="362" y="176" width="276" height="48" rx="6" fill="#fff" stroke="#16a34a" stroke-opacity=".4"/>
+<text x="372" y="196" font-size="12" font-family="Consolas,monospace" fill="#0f172a">{"sub":"1","email":"a@b.com",</text>
+<text x="372" y="214" font-size="12" font-family="Consolas,monospace" fill="#0f172a">"iat":…,"exp":…}</text>
+<rect x="670" y="116" width="300" height="118" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="686" y="144" font-size="17" font-weight="bold" fill="#78350f">③ Signature</text>
+<text x="686" y="164" font-size="13" fill="#475569">위조 · 변조 방지</text>
+<rect x="682" y="176" width="276" height="48" rx="6" fill="#fff" stroke="#d97706" stroke-opacity=".4"/>
+<text x="692" y="196" font-size="12" font-family="Consolas,monospace" fill="#0f172a">HMACSHA256(</text>
+<text x="692" y="214" font-size="12" font-family="Consolas,monospace" fill="#0f172a">header.payload, secret)</text>
+<text x="340" y="190" text-anchor="middle" font-size="38" font-weight="bold" fill="#475569">.</text>
+<text x="660" y="190" text-anchor="middle" font-size="38" font-weight="bold" fill="#475569">.</text>
+<rect x="30" y="248" width="940" height="36" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+<text x="500" y="271" text-anchor="middle" font-size="14" fill="#991b1b" font-weight="bold">주의: Payload는 암호화가 아니라 Base64URL 인코딩 → 누구나 읽을 수 있음. 비밀번호 등 민감정보를 넣지 말 것</text>
+<text x="30" y="316" font-size="16" font-weight="bold" fill="#0f172a">JWT 인증에 필요한 구성요소 (이번 Spring 프로젝트 기준)</text>
+<rect x="30" y="330" width="940" height="36" rx="8" fill="#0f172a"/>
+<text x="46" y="354" font-size="14" font-weight="bold" fill="#f8fafc">구성요소</text>
+<text x="250" y="354" font-size="14" font-weight="bold" fill="#f8fafc">역할</text>
+<text x="700" y="354" font-size="14" font-weight="bold" fill="#f8fafc">이번 프로젝트</text>
+<rect x="30" y="366" width="940" height="54" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="46" y="398" font-size="14" font-weight="bold" fill="#1e3a8a">비밀키 (Secret)</text>
+<text x="250" y="388" font-size="13" fill="#1e293b">서명을 만들고 검증하는 서버 전용 열쇠.</text>
+<text x="250" y="406" font-size="13" fill="#1e293b">노출되면 누구나 토큰을 위조할 수 있음</text>
+<text x="700" y="388" font-size="12" font-family="Consolas,monospace" fill="#92400e">jwt.secret</text>
+<text x="700" y="406" font-size="12" font-family="Consolas,monospace" fill="#92400e">(환경변수 JWT_SECRET)</text>
+<rect x="30" y="420" width="940" height="54" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="452" font-size="14" font-weight="bold" fill="#1e3a8a">만료시간 (exp)</text>
+<text x="250" y="442" font-size="13" fill="#1e293b">토큰의 유효기간.</text>
+<text x="250" y="460" font-size="13" fill="#1e293b">짧을수록 탈취됐을 때 피해가 작음</text>
+<text x="700" y="442" font-size="12" font-family="Consolas,monospace" fill="#92400e">jwt.expiration-ms</text>
+<text x="700" y="460" font-size="12" font-family="Consolas,monospace" fill="#92400e">(1시간)</text>
+<rect x="30" y="474" width="940" height="54" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="46" y="506" font-size="14" font-weight="bold" fill="#1e3a8a">토큰 발급</text>
+<text x="250" y="506" font-size="13" fill="#1e293b">로그인 성공 시 서명한 토큰을 생성</text>
+<text x="700" y="496" font-size="12" font-family="Consolas,monospace" fill="#92400e">JwtTokenProvider</text>
+<text x="700" y="514" font-size="12" font-family="Consolas,monospace" fill="#92400e">.createToken</text>
+<rect x="30" y="528" width="940" height="54" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="560" font-size="14" font-weight="bold" fill="#1e3a8a">토큰 검증</text>
+<text x="250" y="560" font-size="13" fill="#1e293b">서명·만료를 확인하고 사용자 정보를 추출</text>
+<text x="700" y="550" font-size="12" font-family="Consolas,monospace" fill="#92400e">JwtTokenProvider</text>
+<text x="700" y="568" font-size="12" font-family="Consolas,monospace" fill="#92400e">.validateToken / .getAuthUser</text>
+<rect x="30" y="582" width="940" height="54" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="46" y="614" font-size="14" font-weight="bold" fill="#1e3a8a">인증 필터</text>
+<text x="250" y="604" font-size="13" fill="#1e293b">매 요청의 Authorization: Bearer 토큰을</text>
+<text x="250" y="622" font-size="13" fill="#1e293b">꺼내 검증하고 인증 정보를 설정</text>
+<text x="700" y="614" font-size="12" font-family="Consolas,monospace" fill="#92400e">JwtAuthenticationFilter</text>
+<rect x="30" y="636" width="940" height="54" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="668" font-size="14" font-weight="bold" fill="#1e3a8a">보안 설정</text>
+<text x="250" y="658" font-size="13" fill="#1e293b">공개/인증 URL 구분, 세션 미사용(STATELESS),</text>
+<text x="250" y="676" font-size="13" fill="#1e293b">인증 실패 시 401 응답</text>
+<text x="700" y="668" font-size="12" font-family="Consolas,monospace" fill="#92400e">SecurityConfig</text>
+<rect x="30" y="690" width="940" height="54" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="46" y="722" font-size="14" font-weight="bold" fill="#1e3a8a">SecurityContext</text>
+<text x="250" y="712" font-size="13" fill="#1e293b">인증된 사용자를 요청 처리 동안 보관</text>
+<text x="250" y="730" font-size="13" fill="#1e293b">(컨트롤러에서 꺼내 사용)</text>
+<text x="700" y="712" font-size="12" font-family="Consolas,monospace" fill="#92400e">SecurityContextHolder</text>
+<text x="700" y="730" font-size="12" font-family="Consolas,monospace" fill="#92400e">@AuthenticationPrincipal</text>
+<rect x="30" y="744" width="940" height="54" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="776" font-size="14" font-weight="bold" fill="#1e3a8a">사용자 정보</text>
+<text x="250" y="776" font-size="13" fill="#1e293b">토큰에 담는 최소 정보 (비밀번호는 제외)</text>
+<text x="700" y="776" font-size="12" font-family="Consolas,monospace" fill="#92400e">record AuthUser(id, email)</text>
+<line x1="240" y1="366" x2="240" y2="798" stroke="#e2e8f0"/>
+<line x1="690" y1="366" x2="690" y2="798" stroke="#e2e8f0"/>
+</svg>
