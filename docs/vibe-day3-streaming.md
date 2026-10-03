@@ -1,14 +1,30 @@
 # 3일차 스트리밍(SSE) — Vibe Coding 문구 (HttpOnly 쿠키 인증 전제)
 
-관련 그림: `streaming-compare.png` · `streaming-flow.png` · `streaming-events-errors.png`
+관련 그림: `streaming-compare.png` · `streaming-flow.png` · `streaming-events-errors.png` · `streaming-consistency.png`
 선행 문구: `vibe-day2-jwt-cookie.md` (JWT 쿠키 인증), `vibe-day2-account-tool.md` (계좌조회 Tool)
 
 구현 순서: ① FastAPI → ② Spring → ③ React
 
 ## 세 문구가 공유하는 약속 (일관성 점검표)
 
-| 항목 | 값 |
-|---|---|
+그림: `streaming-consistency.png`
+**이벤트 이름과 시점은 `streaming-events-errors.png`의 ④ 이벤트 종류(프론트엔드와의 약속) 표가 기준이며, 그대로 사용한다.**
+
+| 항목 | 약속 내용 | 적용되는 곳 |
+|---|---|---|
+| FastAPI 스트리밍 엔드포인트 | `POST /api/v1/route` (SSE). `/api/v1/chat`은 JSON 응답 그대로 유지 | FastAPI · Spring |
+| Spring 엔드포인트 | `POST /api/ai/route` (`text/event-stream`) | Spring · React |
+| 이벤트 이름 · 시점 | ④ 표 그대로: `category` · `token` · `done` · `error` (`tool_call` · `tool_result`는 이번에 미사용) | FastAPI · Spring · React |
+| 이벤트 data 형식 | category `{question, category}` / token `{text}` / done `{}` / error `{message}` | FastAPI · React |
+| 종료 규칙 | 정상: `done` / 오류: `error` 후 종료 (`done`은 보내지 않음). `done`/`error` 없이 끝나도 로딩 해제 | FastAPI · Spring · React |
+| 브라우저 ↔ Spring 인증 | HttpOnly 쿠키 자동 전송 (`fetch`는 `credentials: "include"`, Authorization 헤더 불필요) | Spring · React |
+| Spring → FastAPI 인증 | `Authorization: Bearer <토큰 원문>` + body에 `user_id` | Spring · FastAPI |
+| `user_id` 출처 | 서버가 로그인 사용자로 결정. React는 `user_id`를 보내지 않음 (body는 `question`만) | Spring · React |
+| 응답 헤더 | `Cache-Control: no-cache`, `X-Accel-Buffering: no` (프록시 버퍼링 방지) | FastAPI · Spring |
+| Spring Security | `ASYNC` · `ERROR` 디스패치 `permitAll` (SSE 비동기 재디스패치 오류 방지) | Spring |
+| 스트림 시작 전 오류 | 일반 HTTP 에러 응답 (400 · 401 · 422). 4xx는 fallback 없이 상태코드 그대로 전파 | Spring · React |
+
+---|---|
 | FastAPI 스트리밍 엔드포인트 | `POST /api/v1/route` (SSE). `/api/v1/chat`은 JSON 그대로 유지 |
 | Spring 엔드포인트 | `POST /api/ai/route` (`text/event-stream`) |
 | 이벤트 이름 | `category` · `token` · `done` · `error` (`tool_call`/`tool_result`는 이번에 미사용) |

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="837" viewBox="0 0 1000 837" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<rect width="1000" height="837" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">3일차 일관성 점검표</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">FastAPI · Spring · React 세 문구가 같은 약속을 쓰는지 확인하는 표</text>
+<text x="30" y="104" font-size="16" font-weight="bold" fill="#0f172a">세 문구 공통 약속</text>
+<rect x="30" y="116" width="940" height="36" rx="8" fill="#0f172a"/>
+<text x="46" y="140" font-size="14" font-weight="bold" fill="#f8fafc">항목</text>
+<text x="276" y="140" font-size="14" font-weight="bold" fill="#f8fafc">약속 내용</text>
+<text x="766" y="140" font-size="14" font-weight="bold" fill="#f8fafc">적용되는 곳</text>
+<rect x="30" y="152" width="940" height="46" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="179.5" font-size="14" fill="#1e3a8a" font-weight="bold">FastAPI 스트리밍 엔드포인트</text>
+<text x="276" y="179.5" font-size="13" fill="#1e293b" >POST /api/v1/route (SSE). /api/v1/chat은 JSON 응답 그대로 유지</text>
+<text x="766" y="179.5" font-size="12.5" fill="#166534" font-weight="bold">FastAPI · Spring</text>
+<rect x="30" y="198" width="940" height="46" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="225.5" font-size="14" fill="#1e3a8a" font-weight="bold">Spring 엔드포인트</text>
+<text x="276" y="225.5" font-size="13" fill="#1e293b" >POST /api/ai/route (text/event-stream)</text>
+<text x="766" y="225.5" font-size="12.5" fill="#166534" font-weight="bold">Spring · React</text>
+<rect x="30" y="244" width="940" height="73" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="285.0" font-size="14" fill="#1e3a8a" font-weight="bold">이벤트 이름 · 시점</text>
+<text x="276" y="268.0" font-size="13" fill="#1e293b" >④ 이벤트 종류(프론트엔드와의 약속) 표 그대로</text>
+<text x="276" y="285.0" font-size="13" fill="#1e293b" >(streaming-events-errors.png): category · token · done ·</text>
+<text x="276" y="302.0" font-size="13" fill="#1e293b" >error. tool_call · tool_result는 이번에 미사용</text>
+<text x="766" y="285.0" font-size="12.5" fill="#166534" font-weight="bold">FastAPI · Spring · React</text>
+<rect x="30" y="317" width="940" height="56" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="349.5" font-size="14" fill="#1e3a8a" font-weight="bold">이벤트 data 형식</text>
+<text x="276" y="341.0" font-size="13" fill="#1e293b" >category {question, category} / token {text} / done {} / error</text>
+<text x="276" y="358.0" font-size="13" fill="#1e293b" >{message}</text>
+<text x="766" y="349.5" font-size="12.5" fill="#166534" font-weight="bold">FastAPI · React</text>
+<rect x="30" y="373" width="940" height="56" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="405.5" font-size="14" fill="#1e3a8a" font-weight="bold">종료 규칙</text>
+<text x="276" y="397.0" font-size="13" fill="#1e293b" >정상: done / 오류: error 후 종료 (done은 보내지 않음). done/error</text>
+<text x="276" y="414.0" font-size="13" fill="#1e293b" >없이 끝나도 로딩 해제</text>
+<text x="766" y="405.5" font-size="12.5" fill="#166534" font-weight="bold">FastAPI · Spring · React</text>
+<rect x="30" y="429" width="940" height="56" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="461.5" font-size="14" fill="#1e3a8a" font-weight="bold">브라우저 ↔ Spring 인증</text>
+<text x="276" y="453.0" font-size="13" fill="#1e293b" >HttpOnly 쿠키 자동 전송 (fetch는 credentials: "include",</text>
+<text x="276" y="470.0" font-size="13" fill="#1e293b" >Authorization 헤더 불필요)</text>
+<text x="766" y="461.5" font-size="12.5" fill="#166534" font-weight="bold">Spring · React</text>
+<rect x="30" y="485" width="940" height="46" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="512.5" font-size="14" fill="#1e3a8a" font-weight="bold">Spring → FastAPI 인증</text>
+<text x="276" y="512.5" font-size="13" fill="#1e293b" >Authorization: Bearer &lt;토큰 원문&gt; + body에 user_id</text>
+<text x="766" y="512.5" font-size="12.5" fill="#166534" font-weight="bold">Spring · FastAPI</text>
+<rect x="30" y="531" width="940" height="56" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="563.5" font-size="14" fill="#1e3a8a" font-weight="bold">user_id 출처</text>
+<text x="276" y="555.0" font-size="13" fill="#1e293b" >서버가 로그인 사용자로 결정. React는 user_id를 보내지 않음 (body는</text>
+<text x="276" y="572.0" font-size="13" fill="#1e293b" >question만)</text>
+<text x="766" y="563.5" font-size="12.5" fill="#166534" font-weight="bold">Spring · React</text>
+<rect x="30" y="587" width="940" height="56" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="619.5" font-size="14" fill="#1e3a8a" font-weight="bold">응답 헤더</text>
+<text x="276" y="611.0" font-size="13" fill="#1e293b" >Cache-Control: no-cache, X-Accel-Buffering: no (프록시 버퍼링</text>
+<text x="276" y="628.0" font-size="13" fill="#1e293b" >방지)</text>
+<text x="766" y="619.5" font-size="12.5" fill="#166534" font-weight="bold">FastAPI · Spring</text>
+<rect x="30" y="643" width="940" height="46" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="670.5" font-size="14" fill="#1e3a8a" font-weight="bold">Spring Security</text>
+<text x="276" y="670.5" font-size="13" fill="#1e293b" >ASYNC · ERROR 디스패치 permitAll (SSE 비동기 재디스패치 오류 방지)</text>
+<text x="766" y="670.5" font-size="12.5" fill="#166534" font-weight="bold">Spring</text>
+<rect x="30" y="689" width="940" height="56" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="721.5" font-size="14" fill="#1e3a8a" font-weight="bold">스트림 시작 전 오류</text>
+<text x="276" y="713.0" font-size="13" fill="#1e293b" >일반 HTTP 에러 응답 (400 · 401 · 422). 4xx는 fallback 없이</text>
+<text x="276" y="730.0" font-size="13" fill="#1e293b" >상태코드 그대로 전파</text>
+<text x="766" y="721.5" font-size="12.5" fill="#166534" font-weight="bold">Spring · React</text>
+<line x1="260" y1="152" x2="260" y2="745" stroke="#e2e8f0"/>
+<line x1="750" y1="152" x2="750" y2="745" stroke="#e2e8f0"/>
+<rect x="30" y="761" width="940" height="52" rx="12" fill="#0f172a"/>
+<text x="500" y="793" text-anchor="middle" font-size="15" font-weight="bold" fill="#f8fafc">이벤트 이름과 시점은 ④ 이벤트 약속 표가 기준 — 세 문구는 이를 그대로 따른다</text>
+</svg>
