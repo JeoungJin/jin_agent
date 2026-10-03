@@ -2,8 +2,10 @@ package com.jin.gateway.service;
 
 import com.jin.gateway.dto.AiRouteRequest;
 import com.jin.gateway.dto.FastApiRouteRequest;
+import com.jin.gateway.dto.StockQuote;
 import com.jin.gateway.security.AuthUser;
 import java.time.Duration;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +16,10 @@ import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * 역할: FastAPI(POST /api/v1/route)의 SSE 스트림을 받아 React 로 그대로 중계한다.
@@ -53,6 +58,20 @@ public class AiGatewayService {
                     log.warn("FastAPI 스트림 실패 → error 이벤트: type={}, message={}, question='{}'",
                             e.getClass().getSimpleName(), e.getMessage(), request.question());
                     return Flux.just(ServerSentEvent.<String>builder().event("error").data(ERROR_DATA).build());
+                });
+    }
+
+    /** FastAPI GET /api/v1/portfolio 중계. 5xx · 연결 거부 · 타임아웃은 503, 4xx 는 그대로 전파한다. */
+    public Mono<List<StockQuote>> portfolio() {
+        return webClient.get()
+                .uri("/api/v1/portfolio")
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<StockQuote>>() {})
+                .timeout(timeout)
+                .onErrorMap(AiGatewayService::isFallbackTarget, e -> {
+                    log.warn("포트폴리오 조회 실패: type={}, message={}", e.getClass().getSimpleName(), e.getMessage());
+                    return new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,
+                            "시세를 가져올 수 없습니다. 잠시 후 다시 시도해주세요.");
                 });
     }
 

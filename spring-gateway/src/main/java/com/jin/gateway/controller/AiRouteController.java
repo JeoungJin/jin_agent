@@ -1,6 +1,9 @@
 package com.jin.gateway.controller;
 
 import com.jin.gateway.dto.AiRouteRequest;
+import com.jin.gateway.dto.StockQuote;
+import java.util.List;
+import reactor.core.publisher.Mono;
 import com.jin.gateway.security.AuthUser;
 import com.jin.gateway.service.AiGatewayService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -46,6 +49,11 @@ public class AiRouteController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String accessToken = authentication == null ? null : (String) authentication.getCredentials();
         return gatewayService.route(request, user, accessToken);
+    }
+
+    @GetMapping("/portfolio")
+    public Mono<List<StockQuote>> portfolio() {
+        return gatewayService.portfolio();
     }
 
     /** 프론트가 로그인 여부 확인에 사용: 200이면 로그인 상태, 401이면 로그아웃 상태 */
