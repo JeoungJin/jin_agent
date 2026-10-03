@@ -3,30 +3,30 @@ package com.jin.gateway.service;
 import com.jin.gateway.dto.AiRouteRequest;
 import com.jin.gateway.dto.FastApiRouteRequest;
 import com.jin.gateway.security.AuthUser;
-import com.jin.gateway.dto.AiRouteResponse;
 import java.time.Duration;
-import java.util.concurrent.TimeoutException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 /**
- * 역할: FastAPI(POST /api/v1/route)를 WebClient로 호출하는 서비스.
- * 응답은 JSON 한 건이므로 Mono로 받는다.
- * 타임아웃 · 연결 거부 · FastAPI 5xx 일 때만 fallback(HTTP 200 + category FALLBACK)으로 바꾸고,
- * 4xx(요청 자체가 잘못됨)는 fallback 하지 않고 그대로 에러로 전파한다.
+ * 역할: FastAPI(POST /api/v1/route)의 SSE 스트림을 받아 React 로 그대로 중계한다.
+ * 이벤트를 모으지 않고(collectList · block 없음) 받는 즉시 흘려보낸다. event 이름과 data 는 수정하지 않는다.
+ * FastAPI 4xx 는 fallback 없이 상태코드 그대로 전파하고, 그 밖의 실패는 error 이벤트 1개로 알리고 종료한다. (done 은 보내지 않는다)
  */
 @Service
 public class AiGatewayService {
 
     private static final Logger log = LoggerFactory.getLogger(AiGatewayService.class);
     private static final String ROUTE_PATH = "/api/v1/route";
+    static final String ERROR_DATA = "{\"message\":\"현재 AI 서비스가 원활하지 않습니다. 잠시 후 다시 시도해주세요\"}";
 
     private final WebClient webClient;
     private final Duration timeout;
@@ -36,13 +36,10 @@ public class AiGatewayService {
         this.timeout = timeout;
     }
 
-    /**
-     * @param user        로그인 사용자 (user_id 로 전달)
-     * @param accessToken 필터가 SecurityContext 에 보관한 토큰 원문. 서버 간 호출이므로 쿠키가 아니라 Bearer 헤더로 전달한다.
-     */
-    public Mono<AiRouteResponse> route(AiRouteRequest request, AuthUser user, String accessToken) {
+    public Flux<ServerSentEvent<String>> route(AiRouteRequest request, AuthUser user, String accessToken) {
         return webClient.post()
                 .uri(ROUTE_PATH)
+                .accept(MediaType.TEXT_EVENT_STREAM)
                 .headers(h -> {
                     if (accessToken != null) {
                         h.set(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken);
@@ -50,20 +47,17 @@ public class AiGatewayService {
                 })
                 .bodyValue(new FastApiRouteRequest(request.question(), user == null ? null : user.id()))
                 .retrieve()
-                .bodyToMono(AiRouteResponse.class)
-                .timeout(timeout)
+                .bodyToFlux(new ParameterizedTypeReference<ServerSentEvent<String>>() {})
+                .timeout(timeout)      // 스트리밍에서는 전체 시간이 아니라 "이벤트와 이벤트 사이의 최대 대기시간"
                 .onErrorResume(AiGatewayService::isFallbackTarget, e -> {
-                    log.warn("FastAPI 호출 실패 → fallback: type={}, message={}, question='{}'",
+                    log.warn("FastAPI 스트림 실패 → error 이벤트: type={}, message={}, question='{}'",
                             e.getClass().getSimpleName(), e.getMessage(), request.question());
-                    return Mono.just(AiRouteResponse.fallback(request.question()));
+                    return Flux.just(ServerSentEvent.<String>builder().event("error").data(ERROR_DATA).build());
                 });
     }
 
-    /** fallback 대상: 타임아웃, 연결 거부(요청 자체가 못 나감), FastAPI 5xx. 4xx 는 대상이 아니다. */
+    /** 4xx(요청 자체가 잘못됨)만 fallback 대상이 아니다. 연결 거부 · 타임아웃 · 5xx · 스트림 도중 오류는 error 이벤트로 알린다. */
     static boolean isFallbackTarget(Throwable e) {
-        if (e instanceof TimeoutException || e instanceof WebClientRequestException) {
-            return true;
-        }
-        return e instanceof WebClientResponseException r && r.getStatusCode().is5xxServerError();
+        return !(e instanceof WebClientResponseException r && r.getStatusCode().is4xxClientError());
     }
 }

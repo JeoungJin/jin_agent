@@ -1,12 +1,14 @@
 package com.jin.gateway.controller;
 
 import com.jin.gateway.dto.AiRouteRequest;
-import com.jin.gateway.dto.AiRouteResponse;
 import com.jin.gateway.security.AuthUser;
 import com.jin.gateway.service.AiGatewayService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,11 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 /**
- * 역할: React가 호출하는 진입점(POST /api/ai/route).
- * 입력 검증만 하고 Service의 Mono를 그대로 반환한다. 일반 JSON이라 produces 설정은 필요 없다.
+ * 역할: React가 호출하는 진입점(POST /api/ai/route). SSE(text/event-stream)로 응답한다.
+ * 입력 검증만 하고 Service의 Flux 를 그대로 반환한다.
  */
 @RestController
 @RequestMapping("/api/ai")
@@ -33,10 +35,14 @@ public class AiRouteController {
         this.gatewayService = gatewayService;
     }
 
-    @PostMapping("/route")
-    public Mono<AiRouteResponse> route(@AuthenticationPrincipal AuthUser user, @Valid @RequestBody AiRouteRequest request) {
+    @PostMapping(value = "/route", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ServerSentEvent<String>> route(@AuthenticationPrincipal AuthUser user,
+                                               @Valid @RequestBody AiRouteRequest request,
+                                               HttpServletResponse response) {
+        response.setHeader("Cache-Control", "no-cache");        // 중간 캐시가 응답을 모아두지 않게
+        response.setHeader("X-Accel-Buffering", "no");          // Nginx 등 프록시가 버퍼링하지 않게
         log.info("AI 질문: userId={}, question='{}'", user == null ? null : user.id(), request.question());
-        // Mono 는 다른 스레드에서 실행되므로 SecurityContext 를 쓸 수 없다. 지금(요청 스레드)에서 토큰 원문을 꺼내 넘긴다.
+        // Flux 는 다른 스레드에서 실행되므로 SecurityContext 를 쓸 수 없다. 지금(요청 스레드)에서 토큰 원문을 꺼내 넘긴다.
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String accessToken = authentication == null ? null : (String) authentication.getCredentials();
         return gatewayService.route(request, user, accessToken);

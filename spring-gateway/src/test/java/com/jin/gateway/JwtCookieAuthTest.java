@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.jin.gateway.dto.AiRouteResponse;
 import com.jin.gateway.security.AuthUser;
 import com.jin.gateway.security.JwtTokenProvider;
 import com.jin.gateway.service.AiGatewayService;
@@ -24,7 +23,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import reactor.core.publisher.Mono;
+import org.springframework.http.codec.ServerSentEvent;
+import reactor.core.publisher.Flux;
 
 /** 2일차 4-2: JWT(HttpOnly 쿠키) 인증 — 문서의 [7. 확인] ①~④ + 위조·만료·Bearer 대체 경로 */
 @SpringBootTest
@@ -56,7 +56,7 @@ class JwtCookieAuthTest {
         String setCookie = result.getResponse().getHeader(HttpHeaders.SET_COOKIE);
         assertThat(setCookie).contains("access_token=").contains("HttpOnly").contains("SameSite=Lax")
                 .contains("Path=/").contains("Max-Age=3600");
-        String body = result.getResponse().getContentAsString();
+        String body = result.getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
         assertThat(body).contains("\"email\":\"a@b.com\"").contains("\"id\":");
         assertThat(body).doesNotContain("eyJ").doesNotContain("token");
     }
@@ -67,10 +67,13 @@ class JwtCookieAuthTest {
         mvc.perform(get("/api/ai/me").cookie(cookie)).andExpect(status().isOk())
                 .andExpect(jsonPath("$.email").value("me@b.com"));
 
-        when(gateway.route(any(), any(), any())).thenReturn(Mono.just(new AiRouteResponse("질문", "답변", "GENERAL")));
+        when(gateway.route(any(), any(), any())).thenReturn(Flux.just(
+                ServerSentEvent.<String>builder().event("token").data("{\"text\":\"답변\"}").build()));
         MvcResult started = mvc.perform(post("/api/ai/route").cookie(cookie).contentType(MediaType.APPLICATION_JSON)
                 .content("{\"question\":\"질문\"}")).andExpect(request().asyncStarted()).andReturn();
-        mvc.perform(asyncDispatch(started)).andExpect(status().isOk()).andExpect(jsonPath("$.answer").value("답변"));
+        started.getAsyncResult(5000);
+        MvcResult done = mvc.perform(asyncDispatch(started)).andExpect(status().isOk()).andReturn();
+        assertThat(done.getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8)).contains("event:token").contains("{\"text\":\"답변\"}");
     }
 
     @Test
@@ -110,9 +113,9 @@ class JwtCookieAuthTest {
 
     @Test
     void 같은_이메일은_같은_ID_다른_이메일은_다른_ID() throws Exception {
-        String a1 = login("same@b.com").getResponse().getContentAsString();
-        String a2 = login("same@b.com").getResponse().getContentAsString();
-        String b = login("other@b.com").getResponse().getContentAsString();
+        String a1 = login("same@b.com").getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        String a2 = login("same@b.com").getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        String b = login("other@b.com").getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
         assertThat(a1).isEqualTo(a2).isNotEqualTo(b);
     }
 

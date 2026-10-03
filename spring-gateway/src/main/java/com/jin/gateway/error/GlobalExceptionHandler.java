@@ -3,6 +3,7 @@ package com.jin.gateway.error;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,7 +12,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.server.ResponseStatusException;
 
-/** 에러 응답을 {"status": 코드, "message": 문구} 한 가지 형식으로 통일한다. */
+/**
+ * 에러 응답을 {"status": 코드, "message": 문구} 한 가지 형식으로 통일한다.
+ * ※ /api/ai/route 는 produces = text/event-stream 이라서, Content-Type 을 JSON 으로 명시하지 않으면
+ *   에러 본문을 JSON 으로 쓰지 못해(406) 400 의 본문이 비거나 처리되지 않은 예외가 된다.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -34,7 +39,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleUpstream(WebClientResponseException e) {
         HttpStatusCode status = e.getStatusCode();
         String message = status.value() == 422 ? "요청 형식이 올바르지 않습니다" : "요청을 처리할 수 없습니다";
-        return ResponseEntity.status(status).body(Map.of("status", status.value(), "message", message));
+        return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(Map.of("status", status.value(), "message", message));
     }
 
     /** 403 · 404 처럼 코드에서 직접 던진 상태 예외 */
@@ -42,10 +47,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleStatus(ResponseStatusException e) {
         HttpStatusCode status = e.getStatusCode();
         String message = e.getReason() != null ? e.getReason() : "요청을 처리할 수 없습니다";
-        return ResponseEntity.status(status).body(Map.of("status", status.value(), "message", message));
+        return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(Map.of("status", status.value(), "message", message));
     }
 
     private ResponseEntity<Map<String, Object>> body(HttpStatus status, String message) {
-        return ResponseEntity.status(status).body(Map.of("status", status.value(), "message", message));
+        return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(Map.of("status", status.value(), "message", message));
     }
 }
