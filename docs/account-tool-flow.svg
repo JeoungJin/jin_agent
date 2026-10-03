@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="810" viewBox="0 0 1000 810" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker>
+  </defs>
+  <rect width="1000" height="810" fill="#f8fafc"/>
+  <text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">계좌조회 Tool 연결 흐름</text>
+  <text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">FastAPI가 Spring 내부 API를 다시 호출하는 구조 (Spring → FastAPI → Spring)</text>
+
+  <!-- lifelines -->
+  <g stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 5">
+    <line x1="140" y1="132" x2="140" y2="700"/><line x1="500" y1="132" x2="500" y2="700"/><line x1="860" y1="132" x2="860" y2="700"/>
+  </g>
+  <rect x="50" y="88" width="180" height="44" rx="10" fill="#0284c7"/>
+  <text x="140" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">클라이언트</text>
+  <text x="140" y="125" text-anchor="middle" font-size="11" fill="#e0f2fe">React / Swagger</text>
+  <rect x="400" y="88" width="200" height="44" rx="10" fill="#16a34a"/>
+  <text x="500" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">Spring Boot</text>
+  <text x="500" y="125" text-anchor="middle" font-size="11" fill="#dcfce7">:8000</text>
+  <rect x="760" y="88" width="200" height="44" rx="10" fill="#7c3aed"/>
+  <text x="860" y="108" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">FastAPI</text>
+  <text x="860" y="125" text-anchor="middle" font-size="11" fill="#ede9fe">:9000</text>
+
+  <!-- internal band -->
+  <rect x="320" y="322" width="670" height="204" rx="12" fill="#fef3c7" stroke="#fde68a"/>
+  <text x="336" y="344" font-size="13" font-weight="bold" fill="#92400e">서버 간 내부 호출 (/internal)</text>
+
+  <!-- 1 -->
+  <text x="320" y="160" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">① POST /api/ai/route  { question }</text>
+  <line x1="140" y1="170" x2="500" y2="170" stroke="#475569" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="320" y="188" text-anchor="middle" font-size="12" font-family="Consolas,monospace" fill="#7c3aed">Authorization: Bearer &lt;JWT&gt;</text>
+
+  <!-- 2 -->
+  <text x="680" y="222" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">② POST /api/v1/chat  { question, user_id }</text>
+  <line x1="500" y1="232" x2="860" y2="232" stroke="#475569" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="680" y="250" text-anchor="middle" font-size="12" fill="#7c3aed">JWT는 그대로 전달, user_id는 로그인 사용자 ID</text>
+
+  <!-- 3 -->
+  <rect x="700" y="262" width="280" height="50" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="840" y="282" text-anchor="middle" font-size="13" font-weight="bold" fill="#5b21b6">③ 질문 분류 → ACCOUNT</text>
+  <text x="840" y="301" text-anchor="middle" font-size="11.5" fill="#1e293b" font-family="Consolas,monospace">account_tool.get_account_balance()</text>
+
+  <!-- 4 -->
+  <text x="680" y="368" text-anchor="middle" font-size="12" font-family="Consolas,monospace" fill="#0f172a">④ GET /internal/api/accounts/{userId}/balance</text>
+  <line x1="860" y1="378" x2="500" y2="378" stroke="#d97706" stroke-width="2.5" marker-end="url(#o)"/>
+  <text x="680" y="396" text-anchor="middle" font-size="12" font-family="Consolas,monospace" fill="#7c3aed">Authorization: Bearer &lt;JWT&gt;</text>
+
+  <!-- 5 -->
+  <rect x="350" y="404" width="300" height="66" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="500" y="424" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">⑤ 내부 API 처리</text>
+  <text x="500" y="443" text-anchor="middle" font-size="12" fill="#1e293b">JWT 검증 · 토큰 사용자 == userId 확인</text>
+  <text x="500" y="460" text-anchor="middle" font-size="12" fill="#1e293b">인메모리 잔액 조회</text>
+
+  <!-- 6 -->
+  <text x="680" y="490" text-anchor="middle" font-size="12" font-family="Consolas,monospace" fill="#0f172a">⑥ 200 { userId, balance }</text>
+  <line x1="500" y1="498" x2="860" y2="498" stroke="#16a34a" stroke-width="2.5" marker-end="url(#g)"/>
+  <text x="680" y="516" text-anchor="middle" font-size="11.5" fill="#b45309">실패 시 401 · 403 · 404 · 5xx</text>
+
+  <!-- 7 -->
+  <rect x="700" y="540" width="280" height="56" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="840" y="562" text-anchor="middle" font-size="13" font-weight="bold" fill="#5b21b6">⑦ 한국어 문장으로 변환</text>
+  <text x="840" y="581" text-anchor="middle" font-size="11.5" fill="#1e293b">실패해도 예외 없이 안내 문구 반환</text>
+
+  <!-- 8 -->
+  <text x="680" y="624" text-anchor="middle" font-size="12" font-family="Consolas,monospace" fill="#0f172a">⑧ 200 { question, answer, category: "ACCOUNT" }</text>
+  <line x1="860" y1="634" x2="500" y2="634" stroke="#16a34a" stroke-width="2.5" marker-end="url(#g)"/>
+
+  <!-- 9 -->
+  <text x="320" y="668" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">⑨ 200 응답 → 화면에 잔액 표시</text>
+  <line x1="500" y1="678" x2="140" y2="678" stroke="#16a34a" stroke-width="2.5" marker-end="url(#g)"/>
+
+  <!-- banner -->
+  <rect x="30" y="712" width="940" height="82" rx="12" fill="#0f172a"/>
+  <text x="500" y="738" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" font-family="Consolas,monospace">router → route_service.answer_by_route(question, user_id, access_token)</text>
+  <text x="500" y="758" text-anchor="middle" font-size="14" font-weight="bold" fill="#f8fafc" font-family="Consolas,monospace">→ account_tool.get_account_balance(user_id, access_token)</text>
+  <text x="500" y="782" text-anchor="middle" font-size="12.5" fill="#fbbf24">주의: FastAPI의 SPRING_API_TIMEOUT은 Spring 게이트웨이 타임아웃(10초)보다 짧게 (예: 5초)</text>
+</svg>

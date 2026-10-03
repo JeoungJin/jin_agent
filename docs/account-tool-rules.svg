@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1074" viewBox="0 0 1000 1074" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<rect width="1000" height="1074" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">계좌조회 Tool 규칙 정리</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">① 질문 분류 규칙  ·  ② Tool 실패 케이스별 반환 메시지(예시)</text>
+<text x="30" y="100" font-size="16" font-weight="bold" fill="#0f172a">① 질문 분류 — question_classifier (ACCOUNT를 가장 먼저 검사)</text>
+<rect x="30" y="112" width="300" height="96" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="46" y="138" font-size="14" font-weight="bold" fill="#166534">규칙 ①</text>
+<text x="46" y="164" font-size="13" fill="#1e293b">"잔액" / "잔고" 포함</text>
+<text x="46" y="192" font-size="15" font-weight="bold" fill="#166534" font-family="Consolas,monospace">→ ACCOUNT</text>
+<rect x="350" y="112" width="300" height="96" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="366" y="138" font-size="14" font-weight="bold" fill="#166534">규칙 ②</text>
+<text x="366" y="164" font-size="13" fill="#1e293b">"계좌" / "통장" + (얼마·조회·확인·남았·있어)</text>
+<text x="366" y="192" font-size="15" font-weight="bold" fill="#166534" font-family="Consolas,monospace">→ ACCOUNT</text>
+<rect x="670" y="112" width="300" height="96" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="686" y="138" font-size="14" font-weight="bold" fill="#92400e">제외</text>
+<text x="686" y="164" font-size="13" fill="#1e293b">"개설" 등 지식 질문이면 규칙 ②에서 제외</text>
+<text x="686" y="192" font-size="15" font-weight="bold" fill="#92400e" font-family="Consolas,monospace">→ GENERAL</text>
+<text x="330" y="164" text-anchor="middle" font-size="18" fill="#94a3b8">›</text>
+<text x="650" y="164" text-anchor="middle" font-size="18" fill="#94a3b8">›</text>
+<rect x="30" y="232" width="940" height="36" rx="8" fill="#0f172a"/>
+<text x="46" y="256" font-size="14" font-weight="bold" fill="#f8fafc">질문 예시</text>
+<text x="430" y="256" font-size="14" font-weight="bold" fill="#f8fafc">분류</text>
+<text x="560" y="256" font-size="14" font-weight="bold" fill="#f8fafc">이유</text>
+<rect x="30" y="268" width="940" height="42" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="295" font-size="14" fill="#1e293b">"내 잔액 알려줘"</text>
+<rect x="426" y="277" width="92" height="24" rx="12" fill="#16a34a"/>
+<text x="472" y="294" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="Consolas,monospace">ACCOUNT</text>
+<text x="560" y="295" font-size="13" fill="#475569">규칙 ① "잔액" 포함</text>
+<rect x="30" y="310" width="940" height="42" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="337" font-size="14" fill="#1e293b">"통장에 얼마 남았어?"</text>
+<rect x="426" y="319" width="92" height="24" rx="12" fill="#16a34a"/>
+<text x="472" y="336" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="Consolas,monospace">ACCOUNT</text>
+<text x="560" y="337" font-size="13" fill="#475569">규칙 ② "통장" + "남았"</text>
+<rect x="30" y="352" width="940" height="42" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="379" font-size="14" fill="#1e293b">"계좌 조회해줘"</text>
+<rect x="426" y="361" width="92" height="24" rx="12" fill="#16a34a"/>
+<text x="472" y="378" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="Consolas,monospace">ACCOUNT</text>
+<text x="560" y="379" font-size="13" fill="#475569">규칙 ② "계좌" + "조회"</text>
+<rect x="30" y="394" width="940" height="42" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="421" font-size="14" fill="#1e293b">"계좌 개설하는 방법 알려줘"</text>
+<rect x="426" y="403" width="92" height="24" rx="12" fill="#d97706"/>
+<text x="472" y="420" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="Consolas,monospace">GENERAL</text>
+<text x="560" y="421" font-size="13" fill="#475569">"개설" 포함 → 지식 질문</text>
+<rect x="30" y="436" width="940" height="42" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="463" font-size="14" fill="#1e293b">"계좌 개설 가능한 은행 있어?"</text>
+<rect x="426" y="445" width="92" height="24" rx="12" fill="#d97706"/>
+<text x="472" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="Consolas,monospace">GENERAL</text>
+<text x="560" y="463" font-size="13" fill="#475569">"있어"가 있어도 "개설" 때문에 제외</text>
+<text x="30" y="530" font-size="16" font-weight="bold" fill="#0f172a">② Tool 실패 케이스별 반환 — account_tool (예외 없이 항상 한국어 문자열)</text>
+<rect x="30" y="544" width="940" height="36" rx="8" fill="#0f172a"/>
+<text x="46" y="568" font-size="14" font-weight="bold" fill="#f8fafc">상황</text>
+<text x="210" y="568" font-size="14" font-weight="bold" fill="#f8fafc">감지 기준</text>
+<text x="470" y="568" font-size="14" font-weight="bold" fill="#f8fafc">반환 메시지 (예시)</text>
+<rect x="30" y="580" width="940" height="50" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="610" font-size="14" font-weight="bold" fill="#166534">정상</text>
+<text x="210" y="610" font-size="13" fill="#475569">200 OK</text>
+<text x="470" y="610" font-size="13" fill="#1e293b">현재 계좌 잔액은 3,250,000원입니다.</text>
+<rect x="30" y="630" width="940" height="50" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="660" font-size="14" font-weight="bold" fill="#92400e">잘못된 user_id</text>
+<text x="210" y="660" font-size="13" fill="#475569">호출 전 검증 (빈 값 · 숫자 아님)</text>
+<text x="470" y="660" font-size="13" fill="#1e293b">올바른 사용자 ID가 아닙니다.</text>
+<rect x="30" y="680" width="940" height="50" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="710" font-size="14" font-weight="bold" fill="#991b1b">연결 실패</text>
+<text x="210" y="710" font-size="13" fill="#475569">Spring 중지 (ConnectError)</text>
+<text x="470" y="701" font-size="13" fill="#1e293b">계좌 서비스에 연결할 수 없습니다.</text>
+<text x="470" y="718" font-size="13" fill="#1e293b">잠시 후 다시 시도해주세요.</text>
+<rect x="30" y="730" width="940" height="50" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="760" font-size="14" font-weight="bold" fill="#991b1b">타임아웃</text>
+<text x="210" y="760" font-size="13" fill="#475569">SPRING_API_TIMEOUT 초과</text>
+<text x="470" y="751" font-size="13" fill="#1e293b">계좌 서비스 응답이 지연되고 있습니다.</text>
+<text x="470" y="768" font-size="13" fill="#1e293b">잠시 후 다시 시도해주세요.</text>
+<rect x="30" y="780" width="940" height="50" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="810" font-size="14" font-weight="bold" fill="#92400e">404</text>
+<text x="210" y="810" font-size="13" fill="#475569">해당 사용자 계좌 없음</text>
+<text x="470" y="810" font-size="13" fill="#1e293b">해당 사용자의 계좌를 찾을 수 없습니다.</text>
+<rect x="30" y="830" width="940" height="50" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="860" font-size="14" font-weight="bold" fill="#92400e">401</text>
+<text x="210" y="860" font-size="13" fill="#475569">토큰 없음 · 만료</text>
+<text x="470" y="860" font-size="13" fill="#1e293b">로그인이 필요합니다. 다시 로그인해주세요.</text>
+<rect x="30" y="880" width="940" height="50" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="910" font-size="14" font-weight="bold" fill="#92400e">403</text>
+<text x="210" y="910" font-size="13" fill="#475569">다른 사람 계좌 접근</text>
+<text x="470" y="910" font-size="13" fill="#1e293b">해당 계좌를 조회할 권한이 없습니다.</text>
+<rect x="30" y="930" width="940" height="50" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="960" font-size="14" font-weight="bold" fill="#991b1b">5xx</text>
+<text x="210" y="960" font-size="13" fill="#475569">Spring 서버 오류</text>
+<text x="470" y="951" font-size="13" fill="#1e293b">계좌 서비스에 문제가 발생했습니다.</text>
+<text x="470" y="968" font-size="13" fill="#1e293b">잠시 후 다시 시도해주세요.</text>
+<rect x="30" y="980" width="940" height="50" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="1010" font-size="14" font-weight="bold" fill="#991b1b">그 외 예외</text>
+<text x="210" y="1010" font-size="13" fill="#475569">예상 못한 오류</text>
+<text x="470" y="1010" font-size="13" fill="#1e293b">계좌 조회 중 오류가 발생했습니다.</text>
+<line x1="200" y1="580" x2="200" y2="1030" stroke="#e2e8f0"/>
+<line x1="460" y1="580" x2="460" y2="1030" stroke="#e2e8f0"/>
+<text x="500" y="1058" text-anchor="middle" font-size="12.5" fill="#64748b">※ 메시지 문구는 예시입니다. 핵심은 "어떤 경우에도 예외를 던지지 않고 사용자에게 보여줄 문장을 반환"하는 것</text>
+</svg>
