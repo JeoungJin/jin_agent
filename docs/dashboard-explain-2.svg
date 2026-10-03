@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="780" viewBox="0 0 1120 780" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="780" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">Recharts 대시보드 : 구현 중 설명할 개념</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">컴포넌트 구조 · 흔한 첫 실수 · 선택 상태 · 4가지 화면 상태</text>
+<rect x="20" y="92" width="540" height="340" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="20" y="92" width="540" height="36" rx="10" fill="#7c3aed"/><rect x="20" y="116" width="540" height="12" fill="#7c3aed"/><text x="290.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">① Recharts 는 컴포넌트를 조립한다 (선언적)</text>
+<rect x="44" y="152" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="52" y="170" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">ResponsiveContainer</text>
+<text x="306" y="170" text-anchor="start" font-size="11" fill="#475569">부모 크기에 맞춰 늘어남</text>
+<rect x="72" y="186" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="80" y="204" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">BarChart  data={data}</text>
+<text x="334" y="204" text-anchor="start" font-size="11" fill="#475569">차트 본체</text>
+<rect x="100" y="220" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="108" y="238" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">XAxis dataKey="name"</text>
+<text x="362" y="238" text-anchor="start" font-size="11" fill="#475569">interval={0}, 라벨 각도</text>
+<rect x="100" y="254" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="108" y="272" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">YAxis</text>
+<text x="362" y="272" text-anchor="start" font-size="11" fill="#475569">changePercent (%)</text>
+<rect x="100" y="288" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="108" y="306" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">Tooltip</text>
+<text x="362" y="306" text-anchor="start" font-size="11" fill="#475569">name · price · 등락률</text>
+<rect x="100" y="322" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="108" y="340" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">ReferenceLine y={0}</text>
+<text x="362" y="340" text-anchor="start" font-size="11" fill="#475569">0 기준선</text>
+<rect x="100" y="356" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="108" y="374" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">Bar dataKey="changePercent"</text>
+<text x="362" y="374" text-anchor="start" font-size="11" fill="#475569">막대 · onClick</text>
+<rect x="128" y="390" width="250" height="26" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="136" y="408" text-anchor="start" font-size="11" fill="#4c1d95" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">Cell × N</text>
+<text x="390" y="408" text-anchor="start" font-size="11" fill="#475569">막대마다 색 지정</text>
+<rect x="580" y="92" width="520" height="340" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="580" y="92" width="520" height="36" rx="10" fill="#dc2626"/><rect x="580" y="116" width="520" height="12" fill="#dc2626"/><text x="840.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">② 첫 실수 : 차트가 안 보인다 (높이 0)</text>
+<rect x="604" y="148" width="220" height="120" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="714" y="170" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">❌ 부모에 높이 없음</text>
+<rect x="624" y="184" width="180" height="6" rx="10" fill="#fecaca" stroke="#dc2626" stroke-width="1"/>
+<text x="714" y="214" text-anchor="middle" font-size="11" fill="#7f1d1d">ResponsiveContainer 는</text>
+<text x="714" y="230" text-anchor="middle" font-size="11" fill="#7f1d1d">부모 높이를 따라가므로</text>
+<text x="714" y="246" text-anchor="middle" font-size="11" fill="#7f1d1d">높이 0 → 빈 화면</text>
+<rect x="850" y="148" width="220" height="120" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="960" y="170" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">✔ 부모에 높이 지정</text>
+<rect x="872" y="210" width="26" height="40" fill="#dc2626"/><rect x="912" y="224" width="26" height="26" fill="#2563eb"/><rect x="952" y="198" width="26" height="52" fill="#dc2626"/><rect x="992" y="232" width="26" height="18" fill="#2563eb"/><text x="960" y="264" text-anchor="middle" font-size="10" fill="#475569">h-80 등</text>
+<rect x="604" y="284" width="466" height="130" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="620" y="306" text-anchor="start" font-size="12" fill="#991b1b" font-weight="bold">그 밖에 자주 나오는 AI 실수</text>
+<text x="620" y="330" text-anchor="start" font-size="11" fill="#7f1d1d">• Recharts 2 방식으로 작성 → v3 타입 오류 (onClick 데이터는 d.payload)</text>
+<text x="620" y="350" text-anchor="start" font-size="11" fill="#7f1d1d">• 색을 Bar fill 하나로 지정 → Cell 로 막대별 지정 필요</text>
+<text x="620" y="370" text-anchor="start" font-size="11" fill="#7f1d1d">• 9개로 가정하고 하드코딩 → 일부 종목이 빠지면 깨짐</text>
+<text x="620" y="390" text-anchor="start" font-size="11" fill="#7f1d1d">• 가격(price)을 Y축에 사용 → 문구는 등락률</text>
+<rect x="20" y="452" width="540" height="306" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<rect x="20" y="452" width="540" height="36" rx="10" fill="#16a34a"/><rect x="20" y="476" width="540" height="12" fill="#16a34a"/><text x="290.0" y="477" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">③ 막대 클릭 → 선택 상태 (토글)</text>
+<rect x="44" y="512" width="150" height="60" rx="10" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+<text x="119" y="536" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">selected = null</text>
+<text x="119" y="556" text-anchor="middle" font-size="11" fill="#475569">전부 선명 · 안내 문구</text>
+<rect x="370" y="512" width="170" height="60" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="455" y="536" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">selected = ticker</text>
+<text x="455" y="556" text-anchor="middle" font-size="10" fill="#475569">선택 막대만 강조(나머지 흐림)</text>
+<line x1="194" y1="530" x2="368" y2="530" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="281" y="522" text-anchor="middle" font-size="11" fill="#166534">막대 클릭</text>
+<line x1="368" y1="556" x2="196" y2="556" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<text x="281" y="574" text-anchor="middle" font-size="11" fill="#166534">같은 막대 다시 클릭</text>
+<rect x="44" y="596" width="496" height="148" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="60" y="618" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">구현 한 줄 (설명용)</text>
+<text x="60" y="642" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">onClick → setSelected(cur => cur === t ? null : t)</text>
+<text x="60" y="668" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">Cell fillOpacity = selected && selected !== ticker ? 0.3 : 1</text>
+<text x="60" y="696" text-anchor="start" font-size="12" fill="#475569">상세 카드는 selected 로 data 에서 찾아서 렌더링 (상태는 ticker 하나만)</text>
+<text x="60" y="720" text-anchor="start" font-size="12" fill="#475569">→ "파생 가능한 값은 상태로 중복 저장하지 않는다" 를 한 줄로 설명</text>
+<rect x="580" y="452" width="520" height="306" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="580" y="452" width="520" height="36" rx="10" fill="#0284c7"/><rect x="580" y="476" width="520" height="12" fill="#0284c7"/><text x="840.0" y="477" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">④ 화면 상태 4가지 : 모두 처리해야 한다</text>
+<rect x="604" y="512" width="90" height="40" rx="8" fill="#6b7280" stroke="#6b7280" stroke-width="1"/>
+<text x="649" y="537" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">로딩</text>
+<rect x="700" y="512" width="370" height="40" rx="8" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+<text x="716" y="537" text-anchor="start" font-size="12" fill="#0f172a">스피너 · 차트 영역 높이 유지</text>
+<rect x="604" y="564" width="90" height="40" rx="8" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="649" y="589" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">에러</text>
+<rect x="700" y="564" width="370" height="40" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="716" y="589" text-anchor="start" font-size="12" fill="#0f172a">"시세를 가져올 수 없습니다" + 다시 시도</text>
+<rect x="604" y="616" width="90" height="40" rx="8" fill="#ca8a04" stroke="#ca8a04" stroke-width="1"/>
+<text x="649" y="641" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">빈 배열</text>
+<rect x="700" y="616" width="370" height="40" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+<text x="716" y="641" text-anchor="start" font-size="12" fill="#0f172a">"표시할 종목이 없습니다."</text>
+<rect x="604" y="668" width="90" height="40" rx="8" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="649" y="693" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">정상</text>
+<rect x="700" y="668" width="370" height="40" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="716" y="693" text-anchor="start" font-size="12" fill="#0f172a">막대 + 툴팁 + 상세 카드</text>
+<text x="604" y="730" text-anchor="start" font-size="11" fill="#075985">401 은 기존 axios 인터셉터가 로그인 화면으로 보냄 · 언마운트 시 AbortController 로 취소</text>
+</svg>

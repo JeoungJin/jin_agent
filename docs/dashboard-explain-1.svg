@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="740" viewBox="0 0 1120 740" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="740" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">포트폴리오 대시보드 : 강사가 먼저 설명할 것</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">데이터가 어디서 오는지 · 왜 등락률인지 · 색과 부호를 왜 같이 쓰는지</text>
+<rect x="20" y="92" width="1080" height="150" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="20" y="92" width="1080" height="36" rx="10" fill="#0284c7"/><rect x="20" y="116" width="1080" height="12" fill="#0284c7"/><text x="560.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">① 데이터 흐름 : 이 화면의 데이터는 어디서 오나</text>
+<rect x="40" y="142" width="240" height="80" rx="10" fill="#fff" stroke="#0284c7" stroke-width="2"/>
+<text x="160" y="164" text-anchor="middle" font-size="14" fill="#0284c7" font-weight="bold">React</text>
+<text x="160" y="184" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">PortfolioDashboard</text>
+<text x="160" y="204" text-anchor="middle" font-size="12" fill="#475569">usePortfolio → httpClient</text>
+<rect x="300" y="142" width="240" height="80" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="420" y="164" text-anchor="middle" font-size="14" fill="#16a34a" font-weight="bold">Spring :8000</text>
+<text x="420" y="184" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">GET /api/ai/portfolio</text>
+<text x="420" y="204" text-anchor="middle" font-size="12" fill="#475569">쿠키 확인(JWT) 후 중계</text>
+<rect x="560" y="142" width="240" height="80" rx="10" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+<text x="680" y="164" text-anchor="middle" font-size="14" fill="#7c3aed" font-weight="bold">FastAPI :9000</text>
+<text x="680" y="184" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">GET /api/v1/portfolio</text>
+<text x="680" y="204" text-anchor="middle" font-size="12" fill="#475569">9종목 병렬 조회 + 60초 캐시</text>
+<rect x="820" y="142" width="240" height="80" rx="10" fill="#fff" stroke="#ea580c" stroke-width="2"/>
+<text x="940" y="164" text-anchor="middle" font-size="14" fill="#ea580c" font-weight="bold">yfinance</text>
+<text x="940" y="184" text-anchor="middle" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">Yahoo 지연 시세</text>
+<text x="940" y="204" text-anchor="middle" font-size="12" fill="#475569">현재가 · 전일 종가</text>
+<line x1="280" y1="182" x2="300" y2="182" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="540" y1="182" x2="560" y2="182" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="800" y1="182" x2="820" y2="182" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="560" y="237" text-anchor="middle" font-size="12" fill="#075985">React는 yfinance 를 직접 모른다 → 계층마다 역할이 다르다 (인증은 Spring, 데이터는 FastAPI)</text>
+<rect x="20" y="262" width="520" height="200" rx="12" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="40" y="288" text-anchor="start" font-size="13" fill="#93c5fd" font-weight="bold">응답 JSON (화면에는 이 4개 필드만 사용)</text>
+<text x="44" y="314" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">[ { "ticker": "005930.KS",</text>
+<text x="44" y="336" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">    "name": "삼성전자",</text>
+<text x="44" y="358" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">    "price": 71000,</text>
+<text x="44" y="380" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">    "changePercent": 1.43 },</text>
+<text x="44" y="402" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">  { "ticker": "000660.KS", … } ]</text>
+<text x="40" y="440" text-anchor="start" font-size="12" fill="#fde68a">※ API에 없는 값(거래량 등)은 화면에 만들어 쓰지 않는다 · 9개가 아닐 수도 있다</text>
+<rect x="560" y="262" width="540" height="200" rx="12" fill="#fff" stroke="#ca8a04" stroke-width="2"/>
+<text x="830" y="288" text-anchor="middle" font-size="14" fill="#854d0e" font-weight="bold">② 왜 가격이 아니라 등락률(%)인가</text>
+<text x="580" y="312" text-anchor="start" font-size="12" fill="#475569" font-weight="bold">가격 막대</text>
+<rect x="580" y="322" width="200" height="14" fill="#94a3b8"/><rect x="580" y="342" width="52" height="14" fill="#94a3b8"/><text x="790" y="334" text-anchor="start" font-size="11" fill="#475569">SK하이닉스 195,000</text>
+<text x="640" y="354" text-anchor="start" font-size="11" fill="#475569">카카오 45,000</text>
+<text x="580" y="374" text-anchor="start" font-size="11" fill="#991b1b">→ 가격 차이가 커서 작은 종목은 보이지 않는다</text>
+<text x="580" y="388" text-anchor="start" font-size="12" fill="#475569" font-weight="bold">등락률 막대</text>
+<rect x="700" y="398" width="60" height="14" fill="#dc2626"/><rect x="640" y="398" width="60" height="14" fill="#2563eb"/><line x1="700" y1="392" x2="700" y2="418" stroke="#334155" stroke-width="2"/><text x="770" y="410" text-anchor="start" font-size="11" fill="#475569">+1.4%   −1.0%</text>
+<text x="580" y="436" text-anchor="start" font-size="11" fill="#166534">→ 서로 다른 가격대를 같은 눈금에서 비교 (정규화)</text>
+<text x="580" y="454" text-anchor="start" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">changePercent = (현재가 − 전일 종가) ÷ 전일 종가 × 100</text>
+<rect x="20" y="482" width="1080" height="236" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<rect x="20" y="482" width="1080" height="36" rx="10" fill="#ca8a04"/><rect x="20" y="506" width="1080" height="12" fill="#ca8a04"/><text x="560.0" y="507" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">③ 색 규칙과 접근성 : 색에만 의존하지 않는다</text>
+<rect x="50" y="536" width="200" height="100" rx="10" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+<rect x="66" y="552" width="36" height="58" fill="#dc2626"/><text x="180" y="566" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="bold">상승 (>0)</text>
+<text x="180" y="590" text-anchor="middle" font-size="16" fill="#dc2626" font-weight="bold">▲ +3.00%</text>
+<text x="180" y="612" text-anchor="middle" font-size="12" fill="#475569">빨강</text>
+<rect x="270" y="536" width="200" height="100" rx="10" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+<rect x="286" y="552" width="36" height="58" fill="#2563eb"/><text x="400" y="566" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="bold">하락 (<0)</text>
+<text x="400" y="590" text-anchor="middle" font-size="16" fill="#2563eb" font-weight="bold">▼ −3.00%</text>
+<text x="400" y="612" text-anchor="middle" font-size="12" fill="#475569">파랑</text>
+<rect x="490" y="536" width="200" height="100" rx="10" fill="#fff" stroke="#6b7280" stroke-width="2"/>
+<rect x="506" y="552" width="36" height="58" fill="#6b7280"/><text x="620" y="566" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="bold">보합 (0)</text>
+<text x="620" y="590" text-anchor="middle" font-size="16" fill="#6b7280" font-weight="bold">– 0.00%</text>
+<text x="620" y="612" text-anchor="middle" font-size="12" fill="#475569">회색</text>
+<rect x="720" y="536" width="360" height="150" rx="10" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+<text x="740" y="558" text-anchor="start" font-size="13" fill="#854d0e" font-weight="bold">강사가 짚을 포인트</text>
+<text x="740" y="582" text-anchor="start" font-size="12" fill="#422006">• 한국 시장: 상승 = 빨강, 하락 = 파랑 (미국과 반대)</text>
+<text x="740" y="606" text-anchor="start" font-size="12" fill="#422006">• 색각 이상자도 읽도록 ▲▼ 와 +/− 부호 병기</text>
+<text x="740" y="630" text-anchor="start" font-size="12" fill="#422006">• 툴팁 · 상세 카드에도 같은 규칙 적용</text>
+<text x="740" y="654" text-anchor="start" font-size="12" fill="#422006">• 0 기준선(ReferenceLine y=0)으로 방향 구분</text>
+<text x="50" y="664" text-anchor="start" font-size="12" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">price  71,000원  (천 단위 구분 + "원")</text>
+<text x="50" y="684" text-anchor="start" font-size="12" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">changePercent  +1.43%  (부호 + 소수 둘째 자리)</text>
+</svg>
