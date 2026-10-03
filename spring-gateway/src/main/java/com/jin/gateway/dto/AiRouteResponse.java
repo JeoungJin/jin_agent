@@ -1,0 +1,20 @@
+package com.jin.gateway.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * 역할: FastAPI의 AnswerResponse(question, answer, category)를 받아 React로 돌려주는 응답.
+ * FastAPI가 필드를 더 추가해도 깨지지 않도록 모르는 필드는 무시한다.
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record AiRouteResponse(String question, String answer, String category) {
+
+    public static final String FALLBACK_CATEGORY = "fallback";
+
+    /** FastAPI 호출 실패 시 사용자에게 돌려줄 대체 응답. */
+    public static AiRouteResponse fallback(String question) {
+        return new AiRouteResponse(question,
+                "AI 서비스가 일시적으로 응답하지 않습니다. 잠시 후 다시 시도해 주세요.",
+                FALLBACK_CATEGORY);
+    }
+}

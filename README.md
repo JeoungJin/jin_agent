@@ -1,15 +1,19 @@
 # 금융 AI 에이전트 (React → Spring Boot → FastAPI)
 
 ```
-[React :5173] --POST /api/chat/stream--> [Spring Boot :8080] --WebClient--> [FastAPI :8000] --> LLM + Tools
-   (SSE 렌더링)                          (게이트웨이, CORS, 검증, fallback)   (에이전트 루프, 세션 메모리)
+[React :5173] --POST /api/ai/route--> [Spring Boot :8000] --WebClient--> [FastAPI :9000] --> Tool 또는 LLM
+   (axios, 한 번에 응답)               POST /api/v1/chat 호출               (분류 후 처리, AnswerResponse)
+                                       (검증, 3초 타임아웃, fallback)
 ```
+
+현재 단계(2일차)는 일반 JSON(Mono) 응답입니다. SSE 스트리밍(Flux)은 3일차에 추가합니다.
+
 
 | 디렉터리 | 역할 | 핵심 파일 |
 |---|---|---|
-| `fastapi-agent/` | 에이전트 본체. LLM이 Tool을 고르고 결과를 받아 답변하는 루프 | `services/agent.py`, `tools.py`, `services/llm.py` |
-| `spring-gateway/` | 브라우저와 AI 사이의 관문. 입력 검증, FastAPI 호출, 장애 시 fallback | `AiGatewayService.java` |
-| `react-ui/` | 스트리밍 채팅 UI (tool 호출 흔적 표시) | `ChatPanel.tsx`, `sse.ts` |
+| `fastapi-agent/` | 질문 분류 후 Tool/LLM 처리(`/api/v1/chat`). 에이전트 루프는 `/api/v1/agent/*` | `routers/chat.py`, `services/route_service.py`, `tools.py` |
+| `spring-gateway/` | 브라우저와 AI 사이의 관문. 입력 검증, FastAPI 호출(Mono), 장애 시 fallback | `AiGatewayService.java`, `AiRouteController.java` |
+| `react-ui/` | axios로 한 번에 응답을 받아 표시하는 채팅 UI | `ChatPanel.tsx`, `api.ts` |
 
 ## 실행 (터미널 3개)
 
@@ -17,7 +21,7 @@
 # 1) FastAPI  (Python 3.11+)
 cd fastapi-agent && python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --port 8000          # Swagger: http://localhost:8000/docs
+uvicorn app.main:app --port 9000          # Swagger: http://localhost:9000/docs
 
 # 2) Spring Boot  (JDK 17+)
 cd spring-gateway && gradle bootRun
@@ -31,9 +35,9 @@ cd react-ui && npm install && npm run dev  # http://localhost:5173
 ## 테스트
 
 ```bash
-cd fastapi-agent && pytest          # 에이전트 루프, tool, SSE 이벤트 순서
+cd fastapi-agent && pytest          # /api/v1/chat 분류·검증, 에이전트 루프
 cd spring-gateway && gradle test    # MockWebServer로 FastAPI를 흉내내 프록시/fallback 검증
-cd react-ui && npm test             # SSE 파서
+cd react-ui && npm test             # axios 호출 모듈
 ```
 
 ## 에이전트 동작 원리 (수업 포인트)

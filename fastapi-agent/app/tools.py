@@ -14,6 +14,17 @@ def get_transaction_history(customer_id: str, limit: int = 5) -> dict:
     return {"customer_id": customer_id, "transactions": rows[-limit:]}
 
 
+# 수업용 모의 시세. 실제 서비스에서는 증권사/거래소 API를 호출한다.
+STOCK_PRICES = {"삼성전자": 71_000, "SK하이닉스": 195_000, "NAVER": 210_000}
+
+
+def get_stock_price(name: str) -> dict:
+    price = STOCK_PRICES.get(name)
+    if price is None:
+        return {"error": f"지원하지 않는 종목입니다: {name}"}
+    return {"name": name, "price": price}
+
+
 def calculate_loan_payment(principal: int, annual_rate_pct: float, months: int) -> dict:
     """원리금균등상환 월 납입액."""
     if principal <= 0 or months <= 0 or annual_rate_pct < 0:
@@ -35,6 +46,7 @@ def calculate_loan_payment(principal: int, annual_rate_pct: float, months: int) 
 REGISTRY = {
     "get_account_balance": get_account_balance,
     "get_transaction_history": get_transaction_history,
+    "get_stock_price": get_stock_price,
     "calculate_loan_payment": calculate_loan_payment,
 }
 
@@ -64,6 +76,18 @@ TOOL_SCHEMAS = [
                     "limit": {"type": "integer", "default": 5},
                 },
                 "required": ["customer_id"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_stock_price",
+            "description": "종목명으로 현재 주가를 조회한다.",
+            "parameters": {
+                "type": "object",
+                "properties": {"name": {"type": "string", "description": "예: 삼성전자"}},
+                "required": ["name"],
             },
         },
     },

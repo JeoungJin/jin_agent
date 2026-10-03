@@ -1,7 +1,9 @@
 server:
-  port: 8080
-agent:
-  base-url: ${AGENT_BASE_URL:http://localhost:8000}
-  timeout-seconds: 60
+  port: 8000          # Spring 서버 포트
+
+fastapi:
+  base-url: ${FASTAPI_BASE_URL:http://localhost:9000}   # FastAPI 서버 주소
+  timeout-seconds: 3                                    # 응답 대기 제한
+
 cors:
   allowed-origin: ${CORS_ORIGIN:http://localhost:5173}

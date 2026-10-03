@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    WebClient agentWebClient(@Value("${agent.base-url}") String baseUrl) {
+    WebClient fastApiWebClient(@Value("${fastapi.base-url}") String baseUrl) {
         return WebClient.builder().baseUrl(baseUrl).build();
     }
 }

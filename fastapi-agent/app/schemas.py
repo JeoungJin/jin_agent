@@ -18,3 +18,15 @@ class ChatResponse(BaseModel):
     session_id: str
     answer: str
     steps: list[ToolStep] = []
+
+
+class QuestionRequest(BaseModel):
+    """POST /api/v1/route 요청."""
+    question: str = Field(min_length=1, max_length=2000, description="사용자 질문")
+
+
+class AnswerResponse(BaseModel):
+    """POST /api/v1/route 응답. category로 어떤 경로(Tool/LLM)로 처리했는지 알 수 있다."""
+    question: str
+    answer: str
+    category: str = Field(description="stock | account | general")

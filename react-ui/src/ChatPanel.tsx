@@ -1,50 +1,38 @@
-import { useRef, useState } from 'react'
-import { streamChat } from './sse'
+import { useState } from 'react'
+import { routeQuestion } from './api'
 
 interface Msg {
   role: 'user' | 'assistant'
   text: string
-  tools?: string[] // 에이전트가 호출한 tool 흔적
+  category?: string
 }
 
-const SESSION_ID = crypto.randomUUID()
-const SUGGESTIONS = ['내 계좌 잔액 알려줘', '최근 거래내역 보여줘', '1000만원 연 5%로 24개월 대출하면 월 얼마야?']
+const SUGGESTIONS = ['삼성전자 주가 알려줘', '내 계좌 잔액 알려줘', '예금과 적금의 차이가 뭐야?']
 
 export function ChatPanel() {
   const [messages, setMessages] = useState<Msg[]>([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const bottomRef = useRef<HTMLDivElement>(null)
 
-  // 마지막(assistant) 메시지만 갱신하는 헬퍼 — 불변성을 지키며 복사
-  const patchLast = (fn: (m: Msg) => Msg) =>
-    setMessages((prev) => [...prev.slice(0, -1), fn(prev[prev.length - 1])])
-
-  async function send(text: string) {
-    if (!text.trim() || loading) return
+  async function send(question: string) {
+    if (!question.trim() || loading) return
     setInput('')
     setLoading(true)
-    setMessages((prev) => [...prev, { role: 'user', text }, { role: 'assistant', text: '', tools: [] }])
+    setMessages((prev) => [...prev, { role: 'user', text: question }])
     try {
-      await streamChat({ sessionId: SESSION_ID, message: text }, ({ event, data }) => {
-        const payload = JSON.parse(data)
-        if (event === 'token') patchLast((m) => ({ ...m, text: m.text + payload.text }))
-        else if (event === 'tool_call')
-          patchLast((m) => ({ ...m, tools: [...(m.tools ?? []), `${payload.tool}(${JSON.stringify(payload.arguments)})`] }))
-        else if (event === 'error') patchLast((m) => ({ ...m, text: payload.message }))
-      })
-    } catch (e) {
-      patchLast((m) => ({ ...m, text: `오류: ${(e as Error).message}` }))
+      const res = await routeQuestion(question) // 응답이 완성되면 한 번에 도착
+      setMessages((prev) => [...prev, { role: 'assistant', text: res.answer, category: res.category }])
+    } catch {
+      setMessages((prev) => [...prev, { role: 'assistant', text: '서버와 통신하지 못했습니다.', category: 'error' }])
     } finally {
       setLoading(false)
-      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 0)
     }
   }
 
   return (
     <main className="chat">
       <h1>금융 AI 상담원</h1>
-      <p className="flow">React → Spring Boot → FastAPI → LLM + Tools</p>
+      <p className="flow">React → Spring Boot(8000) → FastAPI(9000)</p>
 
       <div className="messages">
         {messages.length === 0 && (
@@ -56,15 +44,15 @@ export function ChatPanel() {
         )}
         {messages.map((m, i) => (
           <div key={i} className={`msg ${m.role}`}>
-            {m.tools?.map((t, j) => <div key={j} className="tool">🔧 {t}</div>)}
-            <div className="text">{m.text || (loading && i === messages.length - 1 ? '…' : '')}</div>
+            {m.category && <div className="tool">{m.category}</div>}
+            <div className="text">{m.text}</div>
           </div>
         ))}
-        <div ref={bottomRef} />
+        {loading && <div className="msg assistant">…</div>}
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); send(input) }}>
-        <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="메시지를 입력하세요" disabled={loading} />
+        <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="질문을 입력하세요" disabled={loading} />
         <button type="submit" disabled={loading || !input.trim()}>전송</button>
       </form>
     </main>
