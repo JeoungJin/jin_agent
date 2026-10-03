@@ -87,6 +87,8 @@ def test_invalid_user_id_never_calls_server(bad):
 
 
 def test_route_endpoint_passes_user_id_and_token(monkeypatch):
+    from tests.sse_helpers import parse_sse
+
     captured = {}
     monkeypatch.setattr("app.services.route_service.get_account_balance",
                         lambda user_id, token: captured.update(user_id=user_id, token=token) or "잔액 문장")
@@ -94,7 +96,11 @@ def test_route_endpoint_passes_user_id_and_token(monkeypatch):
     try:
         c = TestClient(app)
         r = c.post("/api/v1/route", json={"question": "내 잔액 알려줘", "user_id": 1}, headers={"Authorization": "Bearer ABC"})
-        assert r.json() == {"question": "내 잔액 알려줘", "answer": "잔액 문장", "category": "ACCOUNT"}
+        assert parse_sse(r.text) == [
+            ("category", {"question": "내 잔액 알려줘", "category": "ACCOUNT"}),
+            ("token", {"text": "잔액 문장"}),
+            ("done", {}),
+        ]
         assert captured == {"user_id": 1, "token": "ABC"}
         # 토큰 없이도 요청은 받는다 (선택 입력)
         r2 = c.post("/api/v1/route", json={"question": "내 잔액 알려줘"})

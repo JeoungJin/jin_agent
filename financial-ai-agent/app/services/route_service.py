@@ -1,5 +1,5 @@
 """질문 분류 + Tool 실행 (Day1 app.py 의 answer_question 을 서비스 계층으로 이전)."""
-from app.services.llm_service import ask_llm
+from app.services.llm_service import ask_llm, stream_llm
 from app.services.question_classifier import route_question
 from app.tools.account_tool import get_account_balance
 from app.tools.exchange_tool import DUMMY_EXCHANGE_RATES, get_exchange_rate
@@ -35,3 +35,20 @@ def answer_by_route(question: str, user_id, access_token, client) -> tuple:
     else:  # FINANCE_KNOWLEDGE / GENERAL
         answer = ask_llm(question, client)
     return category, answer
+
+
+TOOL_CATEGORIES = {"ACCOUNT", "STOCK", "EXCHANGE"}
+
+
+def stream_by_route(question: str, user_id, access_token, client):
+    """(event, data) 를 순서대로 내보내는 제너레이터. category → token(여러 번)  (done/error 는 라우터가 붙인다)"""
+    category = route_question(question)
+    yield "category", {"question": question, "category": category}
+
+    if category in TOOL_CATEGORIES:
+        # Tool 은 기존 동기 방식을 유지하고, 결과 문자열 전체를 token 이벤트 1개로 보낸다.
+        _, answer = answer_by_route(question, user_id, access_token, client)
+        yield "token", {"text": answer}
+    else:  # FINANCE_KNOWLEDGE / GENERAL → OpenAI 스트리밍 조각을 그대로 흘려보낸다
+        for text in stream_llm(question, client):
+            yield "token", {"text": text}

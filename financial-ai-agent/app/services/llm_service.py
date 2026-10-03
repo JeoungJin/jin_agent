@@ -50,3 +50,26 @@ def ask_llm(question: str, client) -> str:
     except Exception as e:  # 네트워크/인증/서버 오류
         raise LLMUnavailableError(f"OpenAI 호출 실패: {type(e).__name__}") from e
     return response.choices[0].message.content or ""
+
+
+def ensure_llm_ready(client) -> None:
+    """스트림을 시작하기 '전에' 키 없음 같은 문제를 알아내기 위해 호출한다. (시작 전 오류 → 일반 503 JSON)"""
+    client.chat  # LazyOpenAI 는 키가 없으면 여기서 LLMUnavailableError
+
+
+def stream_llm(question: str, client):
+    """OpenAI stream=True 로 생성되는 텍스트 조각을 만들어지는 즉시 하나씩 내보낸다. (모아서 한 번에 주지 않는다)"""
+    stream = client.chat.completions.create(
+        model=config.OPENAI_MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": question},
+        ],
+        stream=True,
+    )
+    for chunk in stream:
+        if not chunk.choices:                 # choices 가 비어 있는 chunk 는 건너뜀
+            continue
+        text = chunk.choices[0].delta.content
+        if text:                              # None(첫·마지막 chunk) 이나 빈 문자열은 건너뜀
+            yield text
