@@ -24,16 +24,6 @@
 | Spring Security | `ASYNC` · `ERROR` 디스패치 `permitAll` (SSE 비동기 재디스패치 오류 방지) | Spring |
 | 스트림 시작 전 오류 | 일반 HTTP 에러 응답 (400 · 401 · 422). 4xx는 fallback 없이 상태코드 그대로 전파 | Spring · React |
 
----|---|
-| FastAPI 스트리밍 엔드포인트 | `POST /api/v1/route` (SSE). `/api/v1/chat`은 JSON 그대로 유지 |
-| Spring 엔드포인트 | `POST /api/ai/route` (`text/event-stream`) |
-| 이벤트 이름 | `category` · `token` · `done` · `error` (`tool_call`/`tool_result`는 이번에 미사용) |
-| 이벤트 data | category `{"question","category"}` / token `{"text"}` / done `{}` / error `{"message"}` |
-| 종료 규칙 | 정상: `done` / 오류: `error` 후 종료 (`done` 없음) |
-| 브라우저 ↔ Spring 인증 | HttpOnly 쿠키 (`fetch`는 `credentials: "include"`) |
-| Spring → FastAPI 인증 | `Authorization: Bearer` 헤더 + body `user_id` |
-| `user_id` 출처 | **서버**(로그인 사용자). React가 보내지 않는다 |
-
 ---
 
 ## ① FastAPI
