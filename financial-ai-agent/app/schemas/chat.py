@@ -21,7 +21,7 @@ class AnswerResponse(BaseModel):
             "examples": [
                 {
                     "question": "삼성전자 주가 알려줘",
-                    "answer": "삼성전자 현재가는 71,000원입니다. (더미 데이터)",
+                    "answer": "삼성전자 현재가 71,000원, 전일 대비 +1.43% (지연 시세일 수 있음 · 14:32 기준)",
                     "category": "STOCK",
                 }
             ]

@@ -3,12 +3,12 @@ from app.services.llm_service import ask_llm, stream_llm
 from app.services.question_classifier import route_question
 from app.tools.account_tool import get_account_balance
 from app.tools.exchange_tool import DUMMY_EXCHANGE_RATES, get_exchange_rate
-from app.tools.stock_tool import DUMMY_STOCK_PRICES, get_stock_price
+from app.tools.stock_tool import STOCKS, get_stock_price
 
 
 def extract_stock_name(question: str):
     lowered = question.lower()
-    for name in DUMMY_STOCK_PRICES:
+    for name in STOCKS:
         if name.lower() in lowered:
             return name
     return None

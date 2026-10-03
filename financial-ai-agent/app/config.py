@@ -17,3 +17,7 @@ CORS_ORIGINS = [
 # SpringBoot 내부 API (계좌조회 Tool 이 서버 간 호출). 하드코딩하지 않고 여기서만 읽는다.
 SPRING_API_BASE_URL = os.getenv("SPRING_API_BASE_URL", "http://localhost:8000")
 SPRING_API_TIMEOUT = float(os.getenv("SPRING_API_TIMEOUT", "5"))   # Spring 게이트웨이 타임아웃(10초)보다 짧게
+
+# yfinance 시세 조회
+STOCK_CACHE_TTL = float(os.getenv("STOCK_CACHE_TTL", "60"))         # 초
+STOCK_FETCH_TIMEOUT = float(os.getenv("STOCK_FETCH_TIMEOUT", "5"))  # 초 (9종목 병렬 조회 전체 대기)

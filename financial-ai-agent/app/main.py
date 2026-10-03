@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app import config
-from app.routers import chat, route
+from app.routers import chat, portfolio, route
 from app.services.llm_service import LLMUnavailableError
 
 app = FastAPI(title="금융 AI Agent API", version="0.2.0")
@@ -18,6 +18,7 @@ app.add_middleware(
 
 app.include_router(chat.router)
 app.include_router(route.router)
+app.include_router(portfolio.router)
 
 
 @app.exception_handler(LLMUnavailableError)
