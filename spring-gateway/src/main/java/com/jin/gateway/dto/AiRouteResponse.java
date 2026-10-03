@@ -9,12 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record AiRouteResponse(String question, String answer, String category) {
 
-    public static final String FALLBACK_CATEGORY = "fallback";
+    public static final String FALLBACK_CATEGORY = "FALLBACK";
+    public static final String FALLBACK_MESSAGE = "현재 AI 서비스가 원활하지 않습니다. 잠시 후 다시 시도해주세요";
 
-    /** FastAPI 호출 실패 시 사용자에게 돌려줄 대체 응답. */
+    /** FastAPI 호출 실패 시 사용자에게 돌려줄 대체 응답. 정상 응답과 구분되도록 category 는 FALLBACK. */
     public static AiRouteResponse fallback(String question) {
-        return new AiRouteResponse(question,
-                "AI 서비스가 일시적으로 응답하지 않습니다. 잠시 후 다시 시도해 주세요.",
-                FALLBACK_CATEGORY);
+        return new AiRouteResponse(question, FALLBACK_MESSAGE, FALLBACK_CATEGORY);
     }
 }

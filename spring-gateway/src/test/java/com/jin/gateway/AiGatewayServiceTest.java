@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.jin.gateway.dto.AiRouteRequest;
 import com.jin.gateway.service.AiGatewayService;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -24,7 +25,7 @@ class AiGatewayServiceTest {
     void setUp() throws Exception {
         fastApi = new MockWebServer();
         fastApi.start();
-        service = new AiGatewayService(WebClient.create(fastApi.url("/").toString()), 3);
+        service = new AiGatewayService(WebClient.create(fastApi.url("/").toString()), Duration.ofSeconds(1));
     }
 
     @AfterEach
@@ -56,7 +57,7 @@ class AiGatewayServiceTest {
 
         StepVerifier.create(service.route(new AiRouteRequest("잔액")))
                 .assertNext(r -> {
-                    assertThat(r.category()).isEqualTo("fallback");
+                    assertThat(r.category()).isEqualTo("FALLBACK");
                     assertThat(r.question()).isEqualTo("잔액");
                 })
                 .verifyComplete();
@@ -67,18 +68,28 @@ class AiGatewayServiceTest {
         fastApi.shutdown();
 
         StepVerifier.create(service.route(new AiRouteRequest("잔액")))
-                .assertNext(r -> assertThat(r.category()).isEqualTo("fallback"))
+                .assertNext(r -> assertThat(r.category()).isEqualTo("FALLBACK"))
                 .verifyComplete();
     }
 
     @Test
-    void 응답이_3초를_넘기면_fallback() {
+    void 응답이_타임아웃을_넘기면_fallback() {
         fastApi.enqueue(new MockResponse().setHeader("Content-Type", "application/json")
                 .setBody("{\"question\":\"q\",\"answer\":\"late\",\"category\":\"general\"}")
-                .setBodyDelay(5, TimeUnit.SECONDS));
+                .setBodyDelay(3, TimeUnit.SECONDS));
 
         StepVerifier.create(service.route(new AiRouteRequest("q")))
-                .assertNext(r -> assertThat(r.category()).isEqualTo("fallback"))
+                .assertNext(r -> assertThat(r.category()).isEqualTo("FALLBACK"))
                 .verifyComplete();
+    }
+
+    @Test
+    void FastAPI_4xx는_fallback하지_않고_에러로_전파된다() {
+        fastApi.enqueue(new MockResponse().setResponseCode(422).setHeader("Content-Type", "application/json").setBody("{\"detail\":[]}"));
+
+        StepVerifier.create(service.route(new AiRouteRequest("q")))
+                .expectErrorSatisfies(e -> assertThat(e).isInstanceOf(
+                        org.springframework.web.reactive.function.client.WebClientResponseException.UnprocessableEntity.class))
+                .verify();
     }
 }

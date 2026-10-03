@@ -3,7 +3,10 @@ server:
 
 fastapi:
   base-url: ${FASTAPI_BASE_URL:http://localhost:9000}   # FastAPI 서버 주소
-  timeout-seconds: 3                                    # 응답 대기 제한
+
+ai:
+  fastapi:
+    timeout: 10s                                        # FastAPI 응답 타임아웃 (기존 fastapi.timeout-seconds 대체)
 
 cors:
   allowed-origin: ${CORS_ORIGIN:http://localhost:5173}
