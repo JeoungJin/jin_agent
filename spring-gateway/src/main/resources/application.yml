@@ -7,3 +7,9 @@ fastapi:
 
 cors:
   allowed-origin: ${CORS_ORIGIN:http://localhost:5173}
+
+jwt:
+  secret: ${JWT_SECRET:VxIzLRPx9UzsYP1CrMOsfEdZmc/Pty6EKfkoVY9yZqKuGyc7d3iC6ntmX7Vnj2PY}   # Base64, 디코딩 후 32바이트 이상 (수업용 기본값. 운영에서는 반드시 환경변수로)
+  expiration-ms: 3600000                # 1시간
+  cookie-name: access_token
+  cookie-secure: ${JWT_COOKIE_SECURE:false}   # 로컬(http)은 false, 운영(https)은 true

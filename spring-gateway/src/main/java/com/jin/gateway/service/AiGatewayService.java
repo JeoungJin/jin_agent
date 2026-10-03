@@ -11,14 +11,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 /**
- * 역할: FastAPI(POST /api/v1/chat)를 WebClient로 호출하는 서비스.
+ * 역할: FastAPI(POST /api/v1/route)를 WebClient로 호출하는 서비스.
  * 응답은 JSON 한 건이므로 Mono로 받고, 실패하면 fallback 응답으로 바꿔 돌려준다.
  */
 @Service
 public class AiGatewayService {
 
     private static final Logger log = LoggerFactory.getLogger(AiGatewayService.class);
-    private static final String CHAT_PATH = "/api/v1/chat";
+    private static final String ROUTE_PATH = "/api/v1/route";
 
     private final WebClient webClient;
     private final Duration timeout;
@@ -31,7 +31,7 @@ public class AiGatewayService {
 
     public Mono<AiRouteResponse> route(AiRouteRequest request) {
         return webClient.post()
-                .uri(CHAT_PATH)
+                .uri(ROUTE_PATH)
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(AiRouteResponse.class)   // 단일 응답이므로 Mono

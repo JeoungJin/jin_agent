@@ -46,7 +46,7 @@ class AiGatewayServiceTest {
 
         RecordedRequest sent = fastApi.takeRequest();
         assertThat(sent.getMethod()).isEqualTo("POST");
-        assertThat(sent.getPath()).isEqualTo("/api/v1/chat");
+        assertThat(sent.getPath()).isEqualTo("/api/v1/route");
         assertThat(sent.getBody().readUtf8()).isEqualTo("{\"question\":\"삼성전자 주가\"}");
     }
 

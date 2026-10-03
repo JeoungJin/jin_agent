@@ -2,8 +2,15 @@ package com.jin.gateway.controller;
 
 import com.jin.gateway.dto.AiRouteRequest;
 import com.jin.gateway.dto.AiRouteResponse;
+import com.jin.gateway.security.AuthUser;
 import com.jin.gateway.service.AiGatewayService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +25,8 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/ai")
 public class AiRouteController {
 
+    private static final Logger log = LoggerFactory.getLogger(AiRouteController.class);
+
     private final AiGatewayService gatewayService;
 
     public AiRouteController(AiGatewayService gatewayService) {
@@ -25,7 +34,15 @@ public class AiRouteController {
     }
 
     @PostMapping("/route")
-    public Mono<AiRouteResponse> route(@Valid @RequestBody AiRouteRequest request) {
+    public Mono<AiRouteResponse> route(@AuthenticationPrincipal AuthUser user, @Valid @RequestBody AiRouteRequest request) {
+        log.info("AI 질문: userId={}, question='{}'", user == null ? null : user.id(), request.question());
         return gatewayService.route(request);
+    }
+
+    /** 프론트가 로그인 여부 확인에 사용: 200이면 로그인 상태, 401이면 로그아웃 상태 */
+    @GetMapping("/me")
+    public AuthUser me() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (AuthUser) authentication.getPrincipal();
     }
 }
