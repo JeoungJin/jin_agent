@@ -60,7 +60,7 @@
 <text x="620" y="590" text-anchor="middle" font-size="16" fill="#6b7280" font-weight="bold">– 0.00%</text>
 <text x="620" y="612" text-anchor="middle" font-size="12" fill="#475569">회색</text>
 <rect x="720" y="536" width="360" height="150" rx="10" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
-<text x="740" y="558" text-anchor="start" font-size="13" fill="#854d0e" font-weight="bold">강사가 짚을 포인트</text>
+<text x="740" y="558" text-anchor="start" font-size="13" fill="#854d0e" font-weight="bold">핵심 포인트</text>
 <text x="740" y="582" text-anchor="start" font-size="12" fill="#422006">• 한국 시장: 상승 = 빨강, 하락 = 파랑 (미국과 반대)</text>
 <text x="740" y="606" text-anchor="start" font-size="12" fill="#422006">• 색각 이상자도 읽도록 ▲▼ 와 +/− 부호 병기</text>
 <text x="740" y="630" text-anchor="start" font-size="12" fill="#422006">• 툴팁 · 상세 카드에도 같은 규칙 적용</text>
