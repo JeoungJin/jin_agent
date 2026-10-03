@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="860" viewBox="0 0 1000 860" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="860" fill="#f8fafc"/>
+  <text x="500" y="46" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">FastAPI 질문 라우팅 요청 흐름</text>
+  <text x="500" y="72" text-anchor="middle" font-size="14" fill="#64748b" xml:space="preserve">POST /api/v1/route  ·  router → service → schema</text>
+
+  <!-- 1 client request -->
+  <rect x="150" y="100" width="700" height="96" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="172" y="130" font-size="17" font-weight="bold" fill="#075985">① 클라이언트  요청</text>
+  <rect x="172" y="142" width="656" height="38" rx="6" fill="#fff" stroke="#bae6fd"/>
+  <text x="188" y="167" font-size="15" font-family="Consolas,monospace" fill="#0f172a">POST /api/v1/route   {"question": "삼성전자 주가 알려줘"}</text>
+  <line x1="500" y1="196" x2="500" y2="236" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- 2 router -->
+  <rect x="150" y="236" width="700" height="120" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="172" y="266" font-size="17" font-weight="bold" fill="#5b21b6">② router  (연결 + 검증)</text>
+  <text x="172" y="296" font-size="15" fill="#1e293b">• URL(/api/v1/route)과 HTTP 메서드(POST)를 보고 알맞은 함수로 연결</text>
+  <text x="172" y="322" font-size="15" fill="#1e293b">• schema <tspan font-family="Consolas,monospace" font-weight="bold">QuestionRequest</tspan> 형태인지 자동 검증</text>
+  <text x="172" y="344" font-size="13" fill="#7c3aed">형식이 틀리면 여기서 422 응답으로 종료</text>
+  <line x1="500" y1="356" x2="500" y2="396" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- 3 service -->
+  <rect x="150" y="396" width="700" height="226" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="172" y="426" font-size="17" font-weight="bold" fill="#166534">③ service  <tspan font-family="Consolas,monospace">route_question(question)</tspan></text>
+  <rect x="330" y="444" width="340" height="40" rx="20" fill="#fff" stroke="#16a34a"/>
+  <text x="500" y="470" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">분류 (category 결정)</text>
+  <path d="M440,484 L250,540" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#arr)"/>
+  <path d="M560,484 L750,540" stroke="#475569" stroke-width="2.2" fill="none" marker-end="url(#arr)"/>
+  <text x="176" y="518" font-size="13" fill="#475569">정확한 값·조회</text>
+  <text x="824" y="518" text-anchor="end" font-size="13" fill="#475569">설명·일반 질문</text>
+  <rect x="172" y="540" width="300" height="64" rx="10" fill="#fff" stroke="#16a34a"/>
+  <text x="322" y="567" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">Tool 실행</text>
+  <text x="322" y="589" text-anchor="middle" font-size="13" fill="#475569">예) 주가 조회 API, 계산기</text>
+  <rect x="528" y="540" width="300" height="64" rx="10" fill="#fff" stroke="#16a34a"/>
+  <text x="678" y="567" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">LLM 호출</text>
+  <text x="678" y="589" text-anchor="middle" font-size="13" fill="#475569">예) 용어 설명, 일반 상담</text>
+  <line x1="500" y1="622" x2="500" y2="662" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- 4 schema -->
+  <rect x="150" y="662" width="700" height="90" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="172" y="692" font-size="17" font-weight="bold" fill="#92400e">④ schema  (응답 포장)</text>
+  <text x="172" y="722" font-size="15" fill="#1e293b">결과를 <tspan font-family="Consolas,monospace" font-weight="bold">AnswerResponse(question, answer, category)</tspan> 형태로 포장</text>
+  <line x1="500" y1="752" x2="500" y2="780" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- 5 client response -->
+  <rect x="150" y="780" width="700" height="56" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="500" y="814" text-anchor="middle" font-size="17" font-weight="bold" fill="#075985">⑤ 클라이언트  JSON 응답 수신</text>
+</svg>
