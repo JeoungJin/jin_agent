@@ -7,12 +7,56 @@
 
 ## 계약 (세 문구 공통, 변경 금지)
 
-| 구간 | 변경 내용 |
+### 한눈에 보기
+
+| 구간 | 바뀌는 것 | 바뀌지 않는 것 |
+|---|---|---|
+| FastAPI `/api/v1/route` (JSON) | 응답에 **`sources`** 필드 추가 | 요청 형식, `question`·`category`·`answer` |
+| FastAPI `/api/v1/route-stream` (SSE) | 새 이벤트 **`sources`** 추가 | 기존 이벤트 `category`·`tool`·`token`·`done`·`error` |
+| Spring | `sources`를 그대로 전달 | 인증·대화 기록·중계 방식 |
+| React | 답변 아래에 출처 표시 | 기존 채팅 동작 |
+
+### 1. `/api/v1/route` (JSON) — 응답에 `sources` 추가
+
+```json
+{
+  "question": "JIN 스마트 신용대출 중도상환수수료율은?",
+  "category": "AGENT",
+  "answer": "중도상환수수료율은 0.7%입니다 [1].",
+  "sources": [
+    { "source": "jin_smart_loan.txt", "page": 1, "chunk_index": 3, "score": 0.62, "text": "청크 원문" }
+  ]
+}
+```
+
+- 문서 검색을 쓰지 않았으면 `"sources": []`
+
+### 2. `/api/v1/route-stream` (SSE) — `sources` 이벤트 추가
+
+| 상황 | 이벤트 순서 |
 |---|---|
-| FastAPI `/api/v1/route` (JSON) | 응답에 `sources` 추가: `{ question, category, answer, sources: [ { source, page, chunk_index, score, text } ] }` · 문서 검색을 안 썼으면 `[]` |
-| FastAPI `/api/v1/route-stream` (SSE) | 새 이벤트 `sources` `{ sources: [...] }` 를 `done` 직전에 1번 전송 (문서 검색을 썼을 때만). 순서: `category → tool* → token* → sources? → done`. 오류 시 `error` 후 종료(done·sources 없음) |
-| Spring ↔ React | `/api/ai/route` 응답에 `sources` 필드가 그대로 전달되고, `/api/ai/route-stream` 은 `sources` 이벤트를 그대로 중계 |
-| 번호 규칙 | 답변 속 `[1]`, `[2]` 는 같은 응답의 `sources` 배열 순서와 같다 |
+| 정상 | `category` → `tool`* → `token`* → **`sources`**? → `done` |
+| 오류 | `category` → … → `error` (여기서 끝, `sources`·`done` 없음) |
+
+- `sources` 이벤트는 **문서 검색을 썼을 때만**, `done` 직전에 **1번** 전송
+- 형식은 기존 이벤트와 같다
+
+```
+event: sources
+data: {"sources": [{"source": "jin_smart_loan.txt", "page": 1, "chunk_index": 3, "score": 0.62, "text": "청크 원문"}]}
+```
+
+### 3. Spring ↔ React — `sources`를 그대로 전달
+
+| 경로 | 동작 |
+|---|---|
+| `/api/ai/route` | 응답의 `sources` 필드를 **그대로** 전달 (키 이름 변경 금지) |
+| `/api/ai/route-stream` | `sources` 이벤트를 **그대로 즉시 중계** (모으지 않음) |
+
+### 4. 번호 규칙
+
+- 답변 속 `[1]`, `[2]`는 **같은 응답의 `sources` 배열 순서**와 같다
+- 예: 답변의 `[1]` = `sources[0]`, `[2]` = `sources[1]`
 
 ---
 
