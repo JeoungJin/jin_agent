@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="780" viewBox="0 0 1120 780" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="780" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">복합 질문의 스트리밍 : 단계별 이벤트</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">최종 답변만 글자 단위로 흐르고, Tool 단계는 tool 이벤트로 진행 상황을 알린다</text>
+<rect x="20" y="92" width="1080" height="230" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="20" y="92" width="1080" height="36" rx="10" fill="#0284c7"/><rect x="20" y="116" width="1080" height="12" fill="#0284c7"/><text x="560.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">"삼성전자 주가와 PER을 함께 알려줘" 가 처리되는 시간 순서</text>
+<rect x="40" y="146" width="330" height="70" rx="10" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<text x="205.0" y="172" text-anchor="middle" font-size="14" fill="#ca8a04" font-weight="bold">① LLM이 Tool 선택</text>
+<text x="205.0" y="196" text-anchor="middle" font-size="12" fill="#475569">(tool_calls 생성)</text>
+<rect x="380" y="146" width="300" height="70" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="530.0" y="172" text-anchor="middle" font-size="14" fill="#16a34a" font-weight="bold">② Tool 실행</text>
+<text x="530.0" y="196" text-anchor="middle" font-size="12" fill="#475569">get_stock_price · get_per (병렬)</text>
+<rect x="700" y="146" width="380" height="70" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="890.0" y="172" text-anchor="middle" font-size="14" fill="#7c3aed" font-weight="bold">③ LLM이 최종 답변 작성</text>
+<text x="890.0" y="196" text-anchor="middle" font-size="12" fill="#475569">글자가 흐름 (stream)</text>
+<line x1="370" y1="181" x2="380" y2="181" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="680" y1="181" x2="700" y2="181" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="190" y="244" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="bold">화면: 아무 것도 안 보임</text>
+<text x="530" y="244" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="bold">화면: 아무 것도 안 보임</text>
+<text x="890" y="244" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="bold">화면: 글자가 조금씩 표시</text>
+<rect x="40" y="262" width="640" height="44" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.5"/>
+<text x="360" y="282" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">✗ tool 이벤트가 없으면 : 이 침묵이 수 초 이어짐 → 사용자는 멈춘 줄 안다</text>
+<text x="360" y="298" text-anchor="middle" font-size="11" fill="#7f1d1d">Spring .timeout(10s) 은 "이벤트 사이 간격" → 침묵이 길면 error 로 끊길 수 있다</text>
+<rect x="700" y="262" width="380" height="44" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text x="890" y="282" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">✔ tool 이벤트가 있으면</text>
+<text x="890" y="298" text-anchor="middle" font-size="11" fill="#14532d">진행 표시 + 타임아웃 간격이 계속 초기화됨</text>
+<rect x="20" y="342" width="1080" height="248" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<rect x="20" y="342" width="1080" height="36" rx="10" fill="#475569"/><rect x="20" y="366" width="1080" height="12" fill="#475569"/><text x="560.0" y="367" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">서버가 실제로 내보내는 SSE 이벤트 (순서대로)</text>
+<rect x="40" y="386" width="92" height="22" rx="6" fill="#0284c7" stroke="#0284c7" stroke-width="1"/>
+<text x="86" y="402" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">category</text>
+<text x="146" y="402" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{"question":"…","category":"AGENT"}</text>
+<text x="700" y="402" text-anchor="start" font-size="11" fill="#475569">시작 : 처리 방식 알림 (배지)</text>
+<rect x="40" y="414" width="92" height="22" rx="6" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="86" y="430" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">tool</text>
+<text x="146" y="430" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{"name":"get_stock_price","status":"start"}</text>
+<text x="700" y="430" text-anchor="start" font-size="11" fill="#475569">Tool 실행 시작 → "주가 조회 중…"</text>
+<rect x="40" y="442" width="92" height="22" rx="6" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="86" y="458" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">tool</text>
+<text x="146" y="458" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{"name":"get_per","status":"start"}</text>
+<text x="700" y="458" text-anchor="start" font-size="11" fill="#475569">(병렬이라 연달아 도착)</text>
+<rect x="40" y="470" width="92" height="22" rx="6" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="86" y="486" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">tool</text>
+<text x="146" y="486" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{"name":"get_stock_price","status":"done"}</text>
+<text x="700" y="486" text-anchor="start" font-size="11" fill="#475569">완료 → 칩을 완료 표시로</text>
+<rect x="40" y="498" width="92" height="22" rx="6" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="86" y="514" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">tool</text>
+<text x="146" y="514" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{"name":"get_per","status":"done"}</text>
+<text x="700" y="514" text-anchor="start" font-size="11" fill="#475569"></text>
+<rect x="40" y="526" width="92" height="22" rx="6" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<text x="86" y="542" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">token</text>
+<text x="146" y="542" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{"text":"삼성전자 현재가는 …"}  × N</text>
+<text x="700" y="542" text-anchor="start" font-size="11" fill="#475569">최종 답변이 글자 단위로</text>
+<rect x="40" y="554" width="92" height="22" rx="6" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="86" y="570" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">done</text>
+<text x="146" y="570" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">{}</text>
+<text x="700" y="570" text-anchor="start" font-size="11" fill="#475569">정상 종료 (오류면 error 1개 후 종료, done 없음)</text>
+<rect x="20" y="610" width="540" height="150" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<rect x="20" y="610" width="540" height="34" rx="10" fill="#ca8a04"/><rect x="20" y="632" width="540" height="12" fill="#ca8a04"/><text x="290.0" y="633" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">스트리밍 중 tool_calls 는 조각으로 온다</text>
+<text x="36" y="664" text-anchor="start" font-size="11" fill="#422006" font-family="Consolas,'DejaVu Sans Mono',monospace">chunk1  tool_calls[0].function.name = "get_per"</text>
+<text x="36" y="686" text-anchor="start" font-size="11" fill="#422006" font-family="Consolas,'DejaVu Sans Mono',monospace">chunk2  tool_calls[0].function.arguments = '{"na'</text>
+<text x="36" y="708" text-anchor="start" font-size="11" fill="#422006" font-family="Consolas,'DejaVu Sans Mono',monospace">chunk3  tool_calls[0].function.arguments = 'me":"삼성전자"}'</text>
+<text x="36" y="736" text-anchor="start" font-size="12" fill="#854d0e" font-weight="bold">→ index 별로 이어 붙인 뒤, 스트림이 끝나면 한 번에 json.loads</text>
+<rect x="580" y="610" width="520" height="150" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="580" y="610" width="520" height="34" rx="10" fill="#16a34a"/><rect x="580" y="632" width="520" height="12" fill="#16a34a"/><text x="840.0" y="633" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">루프 구조 (최대 반복 횟수 제한)</text>
+<text x="596" y="662" text-anchor="start" font-size="11" fill="#14532d" font-family="Consolas,'DejaVu Sans Mono',monospace">for round in range(MAX_TOOL_ROUNDS):</text>
+<text x="596" y="682" text-anchor="start" font-size="11" fill="#14532d" font-family="Consolas,'DejaVu Sans Mono',monospace">  LLM(stream)  → content 는 token 으로 즉시 전송</text>
+<text x="596" y="702" text-anchor="start" font-size="11" fill="#14532d" font-family="Consolas,'DejaVu Sans Mono',monospace">  tool_calls 없음 → done, 종료</text>
+<text x="596" y="722" text-anchor="start" font-size="11" fill="#14532d" font-family="Consolas,'DejaVu Sans Mono',monospace">  tool_calls 있음 → tool(start) → 실행 → tool(done)</text>
+<text x="596" y="742" text-anchor="start" font-size="11" fill="#14532d" font-family="Consolas,'DejaVu Sans Mono',monospace">  messages 에 결과 추가하고 다음 반복</text>
+</svg>
