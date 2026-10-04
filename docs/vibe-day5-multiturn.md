@@ -35,7 +35,7 @@
    - history 최대 개수는 config 의 MAX_HISTORY_MESSAGES(기본 20). 초과·잘못된 role("system" 등)은 422
    - 기존 요청(history 없음)은 그대로 동작해야 한다
 
-2. 메시지 구성 (agent_service 의 messages 만드는 곳 한 군데)
+2. 메시지 구성 (LLM 에 보낼 messages 를 만드는 곳 — 현재 코드에서 찾아 한 군데만 수정)
    - messages = [system] + history + [{role:"user", content: 현재 질문}]
    - /route, /route-stream 둘 다 같은 함수를 사용 (복붙 금지)
    - Tool 호출 중간 과정(tool_calls, role:"tool")은 이번 요청 안에서만 쓰고 history 로 되돌려 주지 않는다
@@ -55,6 +55,10 @@
 - history [{"role":"user","content":"삼성전자 주가 알려줘"},{"role":"assistant","content":"삼성전자 현재가 71,000원입니다."}]
   + "그럼 PER은?" → 삼성전자의 PER 로 답변 (get_per("삼성전자") 호출)
 ```
+
+> 사전 조건: 위 확인은 **Day4 Function Calling 이 적용된 상태**여야 동작한다. Function Calling 이전(키워드 Router)이면
+> "그럼 PER은?" 이 도구로 분류되지 않으므로 LLM 질문으로 확인한다.
+> 예) history [{"role":"user","content":"예금이 뭐야?"},{"role":"assistant","content":"예금은 …"}] + "그럼 적금은?" → 예금과 비교해 적금 설명
 
 ---
 
@@ -81,6 +85,8 @@
    - 설정은 application.yml (하드코딩 금지):
      conversation.max-messages: 10 (최근 N개만 유지, 오래된 것부터 삭제),
      conversation.ttl: 30m (유휴 시간이 지나면 만료), conversation.max-per-user: 20, conversation.max-chars: 4000
+   - 저장할 때 content 가 max-chars 를 넘으면 잘라서 저장한다 (FastAPI 가 4000자 초과를 422 로 거절하므로)
+   - max-messages 는 FastAPI 의 MAX_HISTORY_MESSAGES(20) 이하로 유지한다
    - 스레드 안전 (ConcurrentHashMap + 대화별 동기화), 만료 정리는 주기 작업 또는 접근 시 정리
 
 3. AiGatewayService
@@ -92,6 +98,7 @@
 
 4. 삭제 API
    - DELETE /api/ai/conversations/{conversationId} → 본인 대화만 삭제, 204 (없어도 204)
+   - CORS 허용 메서드에 DELETE 를 추가한다 (React 가 5173 에서 직접 호출하므로, 빠지면 preflight 에서 차단됨)
 
 5. 테스트 (MockWebServer 사용)
    - 같은 conversationId 로 두 번째 요청을 보내면 FastAPI 요청 본문의 history 에 첫 번째 질문·답변이 들어 있다
@@ -122,6 +129,7 @@
 
 1. conversationId
    - AiChatPanel 이 conversationId 상태를 가진다. 초기값 crypto.randomUUID()
+     (localhost 가 아닌 http 주소에서는 crypto.randomUUID 가 없을 수 있으니, 없으면 Math.random 기반 UUID v4 생성 함수로 대체)
    - JSON 요청(aiApi.routeQuestion)과 스트리밍 요청(fetch) 모두 본문에 conversationId 를 포함한다
    - localStorage/sessionStorage 에 저장하지 않는다 (새로고침하면 새 대화)
 
