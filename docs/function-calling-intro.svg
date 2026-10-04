@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="760" viewBox="0 0 1120 760" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="760" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">규칙 기반 Router의 한계 → Function Calling</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">"어떤 도구가 필요한지, 네(AI)가 골라" : 선택을 코드(if문)에서 AI로 넘긴다</text>
+<rect x="250" y="90" width="620" height="44" rx="22" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<text x="560" y="119" text-anchor="middle" font-size="15" fill="#854d0e" font-weight="bold">질문: "삼성전자 주가와 PER을 함께 알려줘"  (복합 질문)</text>
+<rect x="20" y="156" width="520" height="500" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="20" y="156" width="520" height="36" rx="10" fill="#dc2626"/><rect x="20" y="180" width="520" height="12" fill="#dc2626"/><text x="280.0" y="181" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">Day1~3 : 규칙 기반 Router (코드가 고른다)</text>
+<line x1="280" y1="134" x2="280" y2="150" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="50" y="212" width="460" height="120" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="70" y="234" text-anchor="start" font-size="13" fill="#991b1b" font-weight="bold">question_classifier (키워드 if / elif)</text>
+<text x="70" y="258" text-anchor="start" font-size="12" fill="#7f1d1d" font-family="Consolas,'DejaVu Sans Mono',monospace">if "잔액" in q      → ACCOUNT</text>
+<text x="70" y="278" text-anchor="start" font-size="12" fill="#7f1d1d" font-family="Consolas,'DejaVu Sans Mono',monospace">elif "환율" in q    → EXCHANGE</text>
+<text x="70" y="298" text-anchor="start" font-size="12" fill="#7f1d1d" font-family="Consolas,'DejaVu Sans Mono',monospace">elif "주가" in q    → STOCK   ← 첫 번째 일치에서 끝</text>
+<text x="70" y="318" text-anchor="start" font-size="12" fill="#7f1d1d" font-family="Consolas,'DejaVu Sans Mono',monospace">else               → GENERAL</text>
+<line x1="280" y1="332" x2="280" y2="358" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="50" y="360" width="460" height="64" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="280" y="384" text-anchor="middle" font-size="13" fill="#991b1b" font-weight="bold">category = STOCK  (질문 1개 → 카테고리 1개)</text>
+<text x="280" y="406" text-anchor="middle" font-size="12" fill="#475569">get_stock_price("삼성전자") 만 실행</text>
+<line x1="280" y1="424" x2="280" y2="450" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="50" y="452" width="460" height="70" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="280" y="476" text-anchor="middle" font-size="12" fill="#0f172a">"삼성전자 현재가 71,000원, 전일 대비 +1.43%"</text>
+<text x="280" y="500" text-anchor="middle" font-size="13" fill="#dc2626" font-weight="bold">✗ PER 은 빠졌다 (질문의 절반만 처리)</text>
+<text x="40" y="552" text-anchor="start" font-size="13" fill="#991b1b" font-weight="bold">한계</text>
+<text x="40" y="574" text-anchor="start" font-size="12" fill="#7f1d1d">• 복합 질문 : 카테고리 1개만 고를 수 있다</text>
+<text x="40" y="595" text-anchor="start" font-size="12" fill="#7f1d1d">• 표현이 다르면 놓친다 ("시세 좀", "얼마야?")</text>
+<text x="40" y="616" text-anchor="start" font-size="12" fill="#7f1d1d">• Tool 이 늘 때마다 if/elif 를 직접 추가·수정</text>
+<text x="40" y="637" text-anchor="start" font-size="12" fill="#7f1d1d">• 키워드 순서에 따라 결과가 달라진다</text>
+<rect x="580" y="156" width="520" height="500" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="580" y="156" width="520" height="36" rx="10" fill="#16a34a"/><rect x="580" y="180" width="520" height="12" fill="#16a34a"/><text x="840.0" y="181" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">Day4 : Function Calling (AI가 고른다)</text>
+<line x1="840" y1="134" x2="840" y2="150" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="610" y="212" width="460" height="86" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="630" y="234" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">LLM 에게 질문 + 사용 가능한 Tool 목록(스키마)을 준다</text>
+<text x="630" y="258" text-anchor="start" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">get_stock_price · get_per · get_exchange_rate · get_balance …</text>
+<text x="630" y="280" text-anchor="start" font-size="12" fill="#475569">각 Tool 은 이름 · 설명 · 인자(JSON Schema) 로 정의</text>
+<line x1="840" y1="298" x2="840" y2="324" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="610" y="326" width="460" height="86" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="630" y="348" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">LLM 이 질문의 의미를 읽고 필요한 Tool 을 선택 (여러 개 가능)</text>
+<text x="630" y="372" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">① get_stock_price({ "name": "삼성전자" })</text>
+<text x="630" y="392" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">② get_per({ "name": "삼성전자" })</text>
+<line x1="840" y1="412" x2="840" y2="438" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="610" y="440" width="460" height="86" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="630" y="462" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">우리 서버(FastAPI)가 Tool 을 실제로 실행하고 결과를 LLM 에게 돌려준다</text>
+<text x="630" y="486" text-anchor="start" font-size="12" fill="#0f172a">가격 71,000원 · 등락 +1.43%  /  PER 12.3배</text>
+<text x="630" y="506" text-anchor="start" font-size="12" fill="#475569">→ LLM 이 두 결과를 합쳐 하나의 답변으로 작성</text>
+<text x="600" y="552" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">장점</text>
+<text x="600" y="574" text-anchor="start" font-size="12" fill="#14532d">• 복합 질문을 Tool 여러 개로 나눠 처리</text>
+<text x="600" y="595" text-anchor="start" font-size="12" fill="#14532d">• 표현이 달라도 의미로 판단 (키워드 의존 감소)</text>
+<text x="600" y="616" text-anchor="start" font-size="12" fill="#14532d">• Tool 추가 = 스키마 한 개 추가 (분기 코드 수정 최소)</text>
+<text x="600" y="637" text-anchor="start" font-size="12" fill="#14532d">• 인자(종목명, 통화)도 LLM 이 질문에서 추출</text>
+<rect x="20" y="676" width="1080" height="64" rx="12" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="560" y="702" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">Router : 코드가 고른다   →   Function Calling : AI가 고른다</text>
+<text x="560" y="726" text-anchor="middle" font-size="13" fill="#fde68a">단, Tool 의 실행은 언제나 우리 서버가 한다. LLM 은 "무엇을 어떤 인자로 호출할지"만 말한다.</text>
+</svg>
