@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="900" viewBox="0 0 1120 900" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="900" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">왜 계좌 접근은 Spring 이 맡나</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">FastAPI 가 못 해서가 아니라, 데이터를 가진 쪽이 통제해야 안전하기 때문이다</text>
+<rect x="20" y="92" width="530" height="260" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="20" y="92" width="530" height="36" rx="10" fill="#dc2626"/><rect x="20" y="116" width="530" height="12" fill="#dc2626"/><text x="285.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">✗ FastAPI 가 계좌 DB 에 직접 접근</text>
+<rect x="50" y="150" width="150" height="44" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="125.0" y="176.0" text-anchor="middle" font-size="12" fill="#7c3aed" font-weight="bold">FastAPI (AI 서버)</text>
+<line x1="200" y1="172" x2="330" y2="172" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<ellipse cx="385.0" cy="154" rx="45.0" ry="8" fill="#fff" stroke="#dc2626" stroke-width="1.8"/><rect x="340" y="154" width="90" height="36" fill="#fff" stroke="#dc2626" stroke-width="1.8"/><ellipse cx="385.0" cy="190" rx="45.0" ry="8" fill="#fff" stroke="#dc2626" stroke-width="1.8"/><text x="385.0" y="176.0" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="bold">금융 DB</text>
+<text x="265" y="164" text-anchor="middle" font-size="10" fill="#991b1b">DB 접속 정보 보유</text>
+<text x="40" y="236" text-anchor="start" font-size="12" fill="#7f1d1d">• AI 서버가 금융 DB 접속 정보를 갖게 된다</text>
+<text x="40" y="260" text-anchor="start" font-size="12" fill="#7f1d1d">• 계좌 규칙(한도 · 권한 · 휴면)을 두 곳에 구현</text>
+<text x="40" y="284" text-anchor="start" font-size="12" fill="#7f1d1d">• 한쪽 규칙이 틀리면 정합성이 깨진다</text>
+<text x="40" y="308" text-anchor="start" font-size="12" fill="#7f1d1d">• 침해되면 피해가 DB 전체로 번진다</text>
+<rect x="570" y="92" width="530" height="260" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="570" y="92" width="530" height="36" rx="10" fill="#16a34a"/><rect x="570" y="116" width="530" height="12" fill="#16a34a"/><text x="835.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">✔ Spring 내부 API 를 통해서만 접근</text>
+<rect x="590" y="150" width="120" height="44" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="650.0" y="176.0" text-anchor="middle" font-size="12" fill="#7c3aed" font-weight="bold">FastAPI</text>
+<line x1="710" y1="172" x2="750" y2="172" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="750" y="142" width="170" height="60" rx="8" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="835" y="162" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">Spring (경비)</text>
+<text x="835" y="180" text-anchor="middle" font-size="10" fill="#475569">JWT 검증 · 토큰 사용자</text>
+<text x="835" y="194" text-anchor="middle" font-size="10" fill="#475569">== userId 확인</text>
+<line x1="920" y1="172" x2="950" y2="172" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<ellipse cx="1000.0" cy="154" rx="45.0" ry="8" fill="#fff" stroke="#16a34a" stroke-width="1.8"/><rect x="955" y="154" width="90" height="36" fill="#fff" stroke="#16a34a" stroke-width="1.8"/><ellipse cx="1000.0" cy="190" rx="45.0" ry="8" fill="#fff" stroke="#16a34a" stroke-width="1.8"/><text x="1000.0" y="176.0" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="bold">금융 DB</text>
+<text x="590" y="236" text-anchor="start" font-size="12" fill="#14532d">• 계좌 규칙은 Spring 한 곳에만 존재</text>
+<text x="590" y="260" text-anchor="start" font-size="12" fill="#14532d">• 남의 계좌 조회는 Spring 이 403 으로 차단</text>
+<text x="590" y="284" text-anchor="start" font-size="12" fill="#14532d">• FastAPI 는 "조회 요청"만 한다</text>
+<text x="590" y="308" text-anchor="start" font-size="12" fill="#14532d" font-weight="bold">• "데이터를 가진 시스템만 그 데이터에 접근한다"</text>
+<rect x="20" y="372" width="1080" height="300" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="20" y="372" width="1080" height="36" rx="10" fill="#0284c7"/><rect x="20" y="396" width="1080" height="12" fill="#0284c7"/><text x="560.0" y="397" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">왜 Spring → FastAPI → Spring 으로 왕복하나 : 필요한지는 LLM 이 질문을 읽어야 안다</text>
+<rect x="40" y="426" width="500" height="100" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="56" y="448" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">질문 A : "예금과 적금의 차이는?"</text>
+<text x="56" y="472" text-anchor="start" font-size="12" fill="#0f172a">LLM : 계좌 정보 불필요 → 도구 호출 없음 → 바로 답변</text>
+<text x="56" y="496" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">✔ Spring 내부 API 호출 없음 (왕복 없음)</text>
+<rect x="560" y="426" width="520" height="100" rx="8" fill="#fff" stroke="#0284c7" stroke-width="1.5"/>
+<text x="576" y="448" text-anchor="start" font-size="12" fill="#075985" font-weight="bold">질문 B : "내 잔액 알려줘"</text>
+<text x="576" y="472" text-anchor="start" font-size="12" fill="#0f172a">LLM : get_account_balance 선택 → FastAPI 가 Spring 내부 API 호출</text>
+<text x="576" y="496" text-anchor="start" font-size="12" fill="#075985" font-weight="bold">✔ 필요할 때만 조회 (소유자인 Spring 이 검증 후 응답)</text>
+<rect x="40" y="540" width="1040" height="116" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="56" y="562" text-anchor="start" font-size="12" fill="#991b1b" font-weight="bold">✗ 대안 : Spring 이 미리 조회해서 FastAPI 에 항상 같이 보내기</text>
+<text x="56" y="586" text-anchor="start" font-size="12" fill="#7f1d1d">• 대부분의 질문은 계좌와 무관한데 매번 조회한다 (낭비)</text>
+<text x="56" y="608" text-anchor="start" font-size="12" fill="#7f1d1d">• 개인정보가 필요 없는 질문에서도 LLM 쪽으로 흘러간다 → 개인정보 최소 수집 원칙에 어긋남</text>
+<text x="56" y="630" text-anchor="start" font-size="12" fill="#0f172a" font-weight="bold">→ 그래서 "LLM 이 필요를 판단하고, 데이터는 소유자가 내준다" (Function Calling 의 도구 호출)</text>
+<rect x="20" y="692" width="540" height="190" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<rect x="20" y="692" width="540" height="34" rx="10" fill="#ca8a04"/><rect x="20" y="714" width="540" height="12" fill="#ca8a04"/><text x="290.0" y="715" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">역할 분담 : 두뇌 vs 금고와 경비</text>
+<rect x="40" y="742" width="240" height="120" rx="8" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="160" y="764" text-anchor="middle" font-size="13" fill="#6d28d9" font-weight="bold">FastAPI = 두뇌</text>
+<text x="160" y="788" text-anchor="middle" font-size="12" fill="#0f172a">무엇을 할지 판단</text>
+<text x="160" y="808" text-anchor="middle" font-size="11" fill="#475569">LLM · 프롬프트 · Tool · RAG</text>
+<text x="160" y="828" text-anchor="middle" font-size="11" fill="#475569">빠르게 실험하고 자주 변경</text>
+<rect x="300" y="742" width="240" height="120" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="420" y="764" text-anchor="middle" font-size="13" fill="#166534" font-weight="bold">Spring = 금고와 경비</text>
+<text x="420" y="788" text-anchor="middle" font-size="12" fill="#0f172a">누가 무엇을 가져갈지 통제</text>
+<text x="420" y="808" text-anchor="middle" font-size="11" fill="#475569">인증 · 인가 · 계좌 · 감사</text>
+<text x="420" y="828" text-anchor="middle" font-size="11" fill="#475569">느리고 신중하게 변경</text>
+<rect x="580" y="692" width="520" height="190" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="580" y="692" width="520" height="34" rx="10" fill="#dc2626"/><rect x="580" y="714" width="520" height="12" fill="#dc2626"/><text x="840.0" y="715" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">인정해야 할 비용</text>
+<text x="600" y="746" text-anchor="start" font-size="12" fill="#7f1d1d">• 홉이 늘어 계좌 질문은 응답이 조금 느려진다</text>
+<text x="600" y="772" text-anchor="start" font-size="12" fill="#7f1d1d">• 서버 2개, 토큰(Bearer) 전달, 타임아웃 관리가 필요</text>
+<text x="600" y="798" text-anchor="start" font-size="12" fill="#7f1d1d">• 한 계층이 느리면 전체가 영향 → fallback · 타임아웃(5초 < 10초)</text>
+<text x="600" y="824" text-anchor="start" font-size="12" fill="#7f1d1d">• 모두 Python 인 작은 프로젝트라면 FastAPI 하나가 더 단순할 수 있다</text>
+<text x="600" y="850" text-anchor="start" font-size="12" fill="#7f1d1d">  (이 구조는 금융 업무 시스템이 이미 있을 때의 선택)</text>
+</svg>

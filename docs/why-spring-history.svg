@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="900" viewBox="0 0 1120 900" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="900" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">대화 기록은 왜 Spring 에 저장하나</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">후보 3가지를 비교하면, 사용자를 확실히 아는 곳이 답이다</text>
+<rect x="20" y="92" width="340" height="300" rx="12" fill="#f1f5f9" stroke="#6b7280" stroke-width="2"/>
+<rect x="20" y="92" width="340" height="36" rx="10" fill="#6b7280"/><rect x="20" y="116" width="340" height="12" fill="#6b7280"/><text x="190.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">A. React 가 history 를 매번 보낸다</text>
+<rect x="40" y="138" width="300" height="28" rx="14" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+<text x="190" y="157" text-anchor="middle" font-size="12" fill="#6b7280" font-weight="bold">채택하지 않음</text>
+<text x="40" y="196" text-anchor="start" font-size="12" fill="#166534">+ 구현이 가장 쉽다</text>
+<text x="40" y="250" text-anchor="start" font-size="12" fill="#991b1b">− 위조 가능 (가짜 assistant 발언</text>
+<text x="52" y="268" text-anchor="start" font-size="12" fill="#991b1b">· 프롬프트 주입)</text>
+<text x="40" y="304" text-anchor="start" font-size="12" fill="#991b1b">− 대화가 길수록 요청이 커진다</text>
+<text x="40" y="358" text-anchor="start" font-size="12" fill="#991b1b">− 새로고침 · 다른 기기에서는 사라진다</text>
+<rect x="390" y="92" width="340" height="300" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="390" y="92" width="340" height="36" rx="10" fill="#7c3aed"/><rect x="390" y="116" width="340" height="12" fill="#7c3aed"/><text x="560.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">B. FastAPI 에 저장한다</text>
+<rect x="410" y="138" width="300" height="28" rx="14" fill="#fff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="560" y="157" text-anchor="middle" font-size="12" fill="#7c3aed" font-weight="bold">가능하지만 차선</text>
+<text x="410" y="196" text-anchor="start" font-size="12" fill="#166534">+ 구조가 단순하다 (Redis 등으로 가능)</text>
+<text x="410" y="250" text-anchor="start" font-size="12" fill="#991b1b">− 누구의 대화인지 알려면 요청 본문의</text>
+<text x="422" y="268" text-anchor="start" font-size="12" fill="#991b1b">user_id 를 믿어야 함</text>
+<text x="410" y="304" text-anchor="start" font-size="12" fill="#991b1b">− 무상태가 깨져 서버를 늘리면 공유 저장소</text>
+<text x="422" y="322" text-anchor="start" font-size="12" fill="#991b1b">필요</text>
+<text x="410" y="358" text-anchor="start" font-size="12" fill="#991b1b">− 보관 · 삭제 · 감사 정책이 AI 서버에</text>
+<text x="422" y="376" text-anchor="start" font-size="12" fill="#991b1b">생긴다</text>
+<rect x="760" y="92" width="340" height="300" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="760" y="92" width="340" height="36" rx="10" fill="#16a34a"/><rect x="760" y="116" width="340" height="12" fill="#16a34a"/><text x="930.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">C. Spring 에 저장한다</text>
+<rect x="780" y="138" width="300" height="28" rx="14" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="930" y="157" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="bold">채택 ✔</text>
+<text x="780" y="196" text-anchor="start" font-size="12" fill="#166534">+ key = (JWT 의 userId,</text>
+<text x="792" y="214" text-anchor="start" font-size="12" fill="#166534">conversationId) 검증된 값</text>
+<text x="780" y="250" text-anchor="start" font-size="12" fill="#166534">+ FastAPI 는 무상태로 유지</text>
+<text x="780" y="304" text-anchor="start" font-size="12" fill="#166534">+ 보관 · 삭제 · 감사 정책이 업무 시스템에</text>
+<text x="780" y="358" text-anchor="start" font-size="12" fill="#166534">+ DB · Redis 로 교체할 때 한 곳만</text>
+<text x="792" y="376" text-anchor="start" font-size="12" fill="#166534">바꾼다</text>
+<rect x="20" y="412" width="1080" height="200" rx="12" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<rect x="20" y="412" width="1080" height="36" rx="10" fill="#16a34a"/><rect x="20" y="436" width="1080" height="12" fill="#16a34a"/><text x="560.0" y="437" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">채택한 흐름 (C) : 기억은 Spring 이, 계산은 FastAPI 가</text>
+<rect x="40" y="470" width="170" height="48" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+<text x="125.0" y="498.0" text-anchor="middle" font-size="12" fill="#0284c7" font-weight="bold">React</text>
+<text x="125" y="538" text-anchor="middle" font-size="11" fill="#075985">{ question,</text>
+<text x="125" y="553" text-anchor="middle" font-size="11" fill="#075985">conversationId }</text>
+<line x1="210" y1="494" x2="270" y2="494" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="270" y="462" width="300" height="100" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="420" y="484" text-anchor="middle" font-size="13" fill="#166534" font-weight="bold">Spring</text>
+<text x="420" y="506" text-anchor="middle" font-size="11" fill="#0f172a">① 저장소에서 history 조회</text>
+<text x="420" y="524" text-anchor="middle" font-size="11" fill="#0f172a">② FastAPI 호출 { question, user_id, history }</text>
+<text x="420" y="544" text-anchor="middle" font-size="11" fill="#0f172a">⑤ 질문 + 최종 답변 저장 (성공한 턴만)</text>
+<line x1="570" y1="486" x2="640" y2="486" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="640" y="462" width="200" height="60" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="740" y="484" text-anchor="middle" font-size="13" fill="#6d28d9" font-weight="bold">FastAPI (무상태)</text>
+<text x="740" y="504" text-anchor="middle" font-size="11" fill="#0f172a">③ system + history + 질문</text>
+<line x1="840" y1="486" x2="900" y2="486" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="900" y="462" width="180" height="60" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.8"/>
+<text x="990.0" y="496.0" text-anchor="middle" font-size="12" fill="#ca8a04" font-weight="bold">LLM</text>
+<text x="990" y="544" text-anchor="middle" font-size="11" fill="#854d0e">④ 답변</text>
+<line x1="900" y1="532" x2="840" y2="532" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+<line x1="640" y1="540" x2="570" y2="540" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+<text x="40" y="596" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">사용자 식별(JWT)은 Spring 에서 이미 끝났으므로, 기록의 주인을 확실히 정할 수 있다</text>
+<rect x="20" y="632" width="540" height="250" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<rect x="20" y="632" width="540" height="34" rx="10" fill="#ca8a04"/><rect x="20" y="654" width="540" height="12" fill="#ca8a04"/><text x="290.0" y="655" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">솔직한 메모 : 정답이 하나는 아니다</text>
+<text x="40" y="686" text-anchor="start" font-size="12" fill="#422006">• FastAPI(+Redis) 저장도 실제로 많이 쓰는 설계다</text>
+<text x="40" y="716" text-anchor="start" font-size="12" fill="#422006" font-weight="bold">• 선택 기준 : 사용자 · 데이터 책임이 있는 쪽에 둔다</text>
+<text x="40" y="746" text-anchor="start" font-size="12" fill="#422006">• 이 수업에서는 "user_id 를 검증하는 곳 = Spring" 이므로</text>
+<text x="40" y="776" text-anchor="start" font-size="12" fill="#422006">   기록도 거기에 묶어 위조 · 접근 통제를 단순하게 만들었다</text>
+<text x="40" y="806" text-anchor="start" font-size="12" fill="#422006">• AI 서버가 사용자 데이터를 쌓지 않아 교체 · 확장이 쉽다</text>
+<rect x="40" y="846" width="0" height="0" rx="10" fill="none" stroke="none" stroke-width="0"/>
+<rect x="580" y="632" width="520" height="250" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="580" y="632" width="520" height="34" rx="10" fill="#dc2626"/><rect x="580" y="654" width="520" height="12" fill="#dc2626"/><text x="840.0" y="655" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">한계와 다음 단계</text>
+<text x="600" y="686" text-anchor="start" font-size="12" fill="#7f1d1d">• 지금은 Spring 메모리에 저장 → 재시작하면 사라진다</text>
+<text x="600" y="714" text-anchor="start" font-size="12" fill="#7f1d1d">• 서버를 여러 대로 늘리면 서로 기록을 공유하지 못한다</text>
+<text x="600" y="742" text-anchor="start" font-size="12" fill="#7f1d1d">• 개선 : Redis (빠른 공유, 만료 설정) 또는 DB (영구 보관)</text>
+<text x="600" y="770" text-anchor="start" font-size="12" fill="#7f1d1d">• 저장소 인터페이스(ConversationStore)만 교체하면 되도록</text>
+<text x="600" y="798" text-anchor="start" font-size="12" fill="#7f1d1d">   처음부터 한 곳에 모아 둔다</text>
+<text x="600" y="826" text-anchor="start" font-size="12" fill="#7f1d1d">• 개인정보 : 보관 기간 · 삭제 요청 · 감사 로그 정책 필요</text>
+</svg>
