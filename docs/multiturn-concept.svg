@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="760" viewBox="0 0 1120 760" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="760" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">멀티턴 대화 : LLM은 기억하지 못한다</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">"기억"은 LLM의 능력이 아니라, 앱이 이전 대화를 매번 다시 보내주는 것이다</text>
+<rect x="20" y="92" width="520" height="470" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="20" y="92" width="520" height="36" rx="10" fill="#dc2626"/><rect x="20" y="116" width="520" height="12" fill="#dc2626"/><text x="280.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">✗ 기억 없음 (지금까지의 챗봇)</text>
+<text x="40" y="150" text-anchor="start" font-size="12" fill="#991b1b" font-weight="bold">1번째 질문</text>
+<rect x="40" y="158" width="200" height="32" rx="10" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
+<text x="140.0" y="178.0" text-anchor="middle" font-size="12" fill="#0f172a">삼성전자 주가 알려줘</text>
+<rect x="260" y="158" width="260" height="44" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="272" y="176" text-anchor="start" font-size="10" fill="#991b1b" font-weight="bold">LLM 에 보내는 messages</text>
+<text x="272" y="194" text-anchor="start" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">[ user: 삼성전자 주가 알려줘 ]</text>
+<rect x="40" y="214" width="250" height="32" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="165.0" y="234.0" text-anchor="middle" font-size="12" fill="#0f172a">삼성전자 현재가 71,000원입니다</text>
+<text x="40" y="286" text-anchor="start" font-size="12" fill="#991b1b" font-weight="bold">2번째 질문</text>
+<rect x="40" y="294" width="130" height="32" rx="10" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
+<text x="105.0" y="314.0" text-anchor="middle" font-size="12" fill="#0f172a">그럼 PER은?</text>
+<rect x="260" y="294" width="260" height="60" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="272" y="312" text-anchor="start" font-size="10" fill="#991b1b" font-weight="bold">LLM 에 보내는 messages</text>
+<text x="272" y="330" text-anchor="start" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">[ user: 그럼 PER은? ]</text>
+<text x="272" y="346" text-anchor="start" font-size="11" fill="#dc2626" font-weight="bold">← 이전 대화가 없다</text>
+<rect x="40" y="366" width="300" height="32" rx="10" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+<text x="190.0" y="386.0" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">어떤 종목의 PER인지 알려주세요</text>
+<text x="40" y="432" text-anchor="start" font-size="12" fill="#7f1d1d">• LLM 은 요청마다 처음부터 시작한다 (stateless)</text>
+<text x="40" y="454" text-anchor="start" font-size="12" fill="#7f1d1d">• "그럼", "아까 그 종목" 같은 말은 이해할 수 없다</text>
+<text x="40" y="476" text-anchor="start" font-size="12" fill="#7f1d1d">• 앞 질문과 답은 LLM 쪽에 저장되지 않는다</text>
+<rect x="580" y="92" width="520" height="470" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="580" y="92" width="520" height="36" rx="10" fill="#16a34a"/><rect x="580" y="116" width="520" height="12" fill="#16a34a"/><text x="840.0" y="117" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">✔ 기억 있음 (멀티턴)</text>
+<text x="600" y="150" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">2번째 질문을 보낼 때</text>
+<rect x="600" y="158" width="130" height="32" rx="10" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
+<text x="665.0" y="178.0" text-anchor="middle" font-size="12" fill="#0f172a">그럼 PER은?</text>
+<rect x="600" y="202" width="480" height="150" rx="8" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="614" y="222" text-anchor="start" font-size="11" fill="#166534" font-weight="bold">LLM 에 보내는 messages  (앱이 이전 대화를 함께 보낸다)</text>
+<rect x="614" y="234" width="84" height="22" rx="5" fill="#e5e7eb" stroke="#94a3b8" stroke-width="1"/>
+<text x="656" y="249" text-anchor="middle" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">system</text>
+<text x="708" y="249" text-anchor="start" font-size="12" fill="#0f172a">금융 도우미 규칙</text>
+<rect x="614" y="262" width="84" height="22" rx="5" fill="#bae6fd" stroke="#94a3b8" stroke-width="1"/>
+<text x="656" y="277" text-anchor="middle" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">user</text>
+<text x="708" y="277" text-anchor="start" font-size="12" fill="#0f172a">삼성전자 주가 알려줘</text>
+<rect x="614" y="290" width="84" height="22" rx="5" fill="#fde68a" stroke="#94a3b8" stroke-width="1"/>
+<text x="656" y="305" text-anchor="middle" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">assistant</text>
+<text x="708" y="305" text-anchor="start" font-size="12" fill="#0f172a">삼성전자 현재가 71,000원입니다</text>
+<rect x="614" y="318" width="84" height="22" rx="5" fill="#bbf7d0" stroke="#94a3b8" stroke-width="1"/>
+<text x="656" y="333" text-anchor="middle" font-size="11" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">user</text>
+<text x="708" y="333" text-anchor="start" font-size="12" fill="#0f172a">그럼 PER은?  ← 현재 질문</text>
+<line x1="840" y1="352" x2="840" y2="372" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="600" y="374" width="480" height="46" rx="8" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="614" y="394" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">LLM : "그럼" = 앞에서 말한 삼성전자 → get_per("삼성전자") 호출</text>
+<text x="614" y="412" text-anchor="start" font-size="11" fill="#475569">(Day4 Function Calling 과 함께 동작)</text>
+<rect x="600" y="432" width="330" height="32" rx="10" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.5"/>
+<text x="765.0" y="452.0" text-anchor="middle" font-size="12" fill="#14532d" font-weight="bold">삼성전자의 PER은 12.3배입니다</text>
+<text x="600" y="490" text-anchor="start" font-size="12" fill="#14532d">• 앞 대화를 messages 에 담아 보내면 문맥을 이해한다</text>
+<text x="600" y="512" text-anchor="start" font-size="12" fill="#14532d">• 대명사(그, 아까, 그럼)와 생략된 말을 풀어서 해석한다</text>
+<text x="600" y="534" text-anchor="start" font-size="12" fill="#14532d" font-weight="bold">• 기억하는 주체는 LLM 이 아니라 "우리 앱"이다</text>
+<rect x="20" y="582" width="1080" height="160" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+<rect x="20" y="582" width="1080" height="34" rx="10" fill="#ca8a04"/><rect x="20" y="604" width="1080" height="12" fill="#ca8a04"/><text x="560.0" y="605" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">멀티턴을 만들 때 꼭 생각할 3가지</text>
+<rect x="40" y="632" width="330" height="96" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+<text x="54" y="654" text-anchor="start" font-size="13" fill="#854d0e" font-weight="bold">① 어디에 저장하나?</text>
+<text x="54" y="678" text-anchor="start" font-size="12" fill="#0f172a">서버가 대화 기록을 보관 (사용자별 · 대화별)</text>
+<text x="54" y="700" text-anchor="start" font-size="12" fill="#475569">클라이언트가 보낸 기록은 믿지 않는다</text>
+<rect x="390" y="632" width="330" height="96" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+<text x="404" y="654" text-anchor="start" font-size="13" fill="#854d0e" font-weight="bold">② 얼마나 보내나?</text>
+<text x="404" y="678" text-anchor="start" font-size="12" fill="#0f172a">기록이 길수록 비용·지연이 늘고 한도가 있다</text>
+<text x="404" y="700" text-anchor="start" font-size="12" fill="#475569">최근 N개만 유지, 오래된 것은 버림(또는 요약)</text>
+<rect x="740" y="632" width="330" height="96" rx="8" fill="#fff" stroke="#ca8a04" stroke-width="1.5"/>
+<text x="754" y="654" text-anchor="start" font-size="13" fill="#854d0e" font-weight="bold">③ 무엇을 저장하나?</text>
+<text x="754" y="678" text-anchor="start" font-size="12" fill="#0f172a">질문과 최종 답변만 (도구 호출 내부는 제외)</text>
+<text x="754" y="700" text-anchor="start" font-size="12" fill="#475569">시세는 변하므로 "다시 조회"하게 지시</text>
+</svg>
