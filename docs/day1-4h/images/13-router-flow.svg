@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="620" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">Router: 질문의 길을 정한다</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">질문 성격에 따라 처리 경로를 나눈다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="40" y="260" width="130" height="80" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="105.0" y="305.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">사용자 질문</text>
+<line x1="170" y1="300" x2="230" y2="300" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="230" y="250" width="170" height="100" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="315.0" y="298.075" text-anchor="middle" font-size="20" fill="#1F3864" font-weight="bold">Router</text>
+<text x="315.0" y="327.075" text-anchor="middle" font-size="13" fill="#111827">route_question()</text>
+<line x1="400" y1="300" x2="440" y2="300" stroke="#4B5563" stroke-width="2.2"/>
+<line x1="440" y1="152" x2="440" y2="482" stroke="#4B5563" stroke-width="2.2"/>
+<line x1="440" y1="152" x2="480" y2="152" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="480" y="110" width="260" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="610.0" y="148.2" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">STOCK</text>
+<text x="610.0" y="169.95" text-anchor="middle" font-size="13" fill="#4B5563">삼성전자 가격 알려줘</text>
+<line x1="740" y1="152" x2="790" y2="152" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="790" y="110" width="260" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="920.0" y="157.625" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">주가 Tool</text>
+<line x1="440" y1="262" x2="480" y2="262" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="480" y="220" width="260" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="610.0" y="258.2" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">EXCHANGE</text>
+<text x="610.0" y="279.95" text-anchor="middle" font-size="13" fill="#4B5563">100달러는 원화로 얼마야?</text>
+<line x1="740" y1="262" x2="790" y2="262" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="790" y="220" width="260" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="920.0" y="267.625" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">환율 Tool</text>
+<line x1="440" y1="372" x2="480" y2="372" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="480" y="330" width="260" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="610.0" y="368.2" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">FINANCE_KNOWLEDGE</text>
+<text x="610.0" y="389.95" text-anchor="middle" font-size="13" fill="#4B5563">PER이 뭐야?</text>
+<line x1="740" y1="372" x2="790" y2="372" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="790" y="330" width="260" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="920.0" y="377.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">LLM이 개념 설명</text>
+<line x1="440" y1="482" x2="480" y2="482" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="480" y="440" width="260" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="610.0" y="478.2" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">GENERAL</text>
+<text x="610.0" y="499.95" text-anchor="middle" font-size="13" fill="#4B5563">안녕하세요</text>
+<line x1="740" y1="482" x2="790" y2="482" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="790" y="440" width="260" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="920.0" y="487.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">일반 LLM 응답</text>
+<rect x="40" y="562" width="1020" height="46" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="590.0" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">모든 질문을 LLM에 보내지 않는 이유:  정확도(환각)  ·  비용  ·  속도</text>
+</svg>

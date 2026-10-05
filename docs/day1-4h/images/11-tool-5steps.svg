@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="520" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">Tool 호출 5단계</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">&#x27;삼성전자 현재 주가 알려줘&#x27;가 답변이 되기까지</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="40" y="104" width="184" height="214" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<circle cx="132" cy="138" r="16" fill="#1F3864"/><text x="132" y="143" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">1</text>
+<text x="132" y="184" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">사용자 질문</text>
+<text x="132" y="222" text-anchor="middle" font-size="14" fill="#111827">삼성전자 현재</text>
+<text x="132" y="248" text-anchor="middle" font-size="14" fill="#111827">주가 알려줘.</text>
+<line x1="224" y1="211" x2="248" y2="211" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="248" y="104" width="184" height="214" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<circle cx="340" cy="138" r="16" fill="#1F3864"/><text x="340" y="143" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">2</text>
+<text x="340" y="184" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">Agent 판단</text>
+<text x="340" y="222" text-anchor="middle" font-size="14" fill="#111827">&#x27;현재&#x27; 데이터가</text>
+<text x="340" y="248" text-anchor="middle" font-size="14" fill="#111827">필요하다고</text>
+<text x="340" y="274" text-anchor="middle" font-size="14" fill="#111827">판단한다.</text>
+<line x1="432" y1="211" x2="456" y2="211" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="456" y="104" width="184" height="214" rx="12" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.2"/>
+<circle cx="548" cy="138" r="16" fill="#1F3864"/><text x="548" y="143" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">3</text>
+<text x="548" y="184" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">Tool 호출</text>
+<text x="548" y="222" text-anchor="middle" font-size="14" fill="#111827">외부 금융 데이터</text>
+<text x="548" y="248" text-anchor="middle" font-size="14" fill="#111827">API에 조회를</text>
+<text x="548" y="274" text-anchor="middle" font-size="14" fill="#111827">요청한다.</text>
+<line x1="640" y1="211" x2="664" y2="211" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="664" y="104" width="184" height="214" rx="12" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.2"/>
+<circle cx="756" cy="138" r="16" fill="#1F3864"/><text x="756" y="143" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">4</text>
+<text x="756" y="184" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">API 응답</text>
+<text x="756" y="222" text-anchor="middle" font-size="14" fill="#111827">현재가 XX,XXX원</text>
+<text x="756" y="248" text-anchor="middle" font-size="14" fill="#111827">(기준 시각 포함)</text>
+<text x="756" y="274" text-anchor="middle" font-size="14" fill="#111827">을 돌려준다.</text>
+<line x1="848" y1="211" x2="872" y2="211" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="872" y="104" width="184" height="214" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<circle cx="964" cy="138" r="16" fill="#1F3864"/><text x="964" y="143" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">5</text>
+<text x="964" y="184" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">답변 생성</text>
+<text x="964" y="222" text-anchor="middle" font-size="14" fill="#111827">값을 읽기 좋은</text>
+<text x="964" y="248" text-anchor="middle" font-size="14" fill="#111827">문장으로 정리해</text>
+<text x="964" y="274" text-anchor="middle" font-size="14" fill="#111827">사용자에게 답한다.</text>
+<rect x="250" y="346" width="620" height="70" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="560.0" y="376.475" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">오늘 수업에서는 ③ ④ 단계가 정해둔 더미 값입니다</text>
+<text x="560.0" y="398.225" text-anchor="middle" font-size="14" fill="#111827">Day 2에서 실제 외부 API로 교체합니다</text>
+<rect x="40" y="440" width="1020" height="54" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="472.0" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">Tool 덕분에 AI는 &#x27;기억&#x27;이 아니라 &#x27;조회한 값&#x27;으로 답한다</text>
+</svg>

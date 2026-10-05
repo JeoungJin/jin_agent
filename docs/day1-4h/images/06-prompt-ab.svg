@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="580" viewBox="0 0 1100 580" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="580" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">같은 질문, 다른 Prompt</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">두 결과가 다른 이유를 5가지 기준으로 비교한다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="330" y="100" width="310" height="36" rx="8" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<text x="485" y="124" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">Prompt A</text>
+<rect x="660" y="100" width="380" height="36" rx="8" fill="#1F3864" stroke="#1F3864" stroke-width="0"/>
+<text x="850" y="124" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">Prompt B</text>
+<rect x="330" y="146" width="310" height="128" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="485.0" y="215.625" text-anchor="middle" font-size="15" fill="#111827">삼성전자를 설명해줘.</text>
+<rect x="660" y="146" width="380" height="128" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="850.0" y="177.175" text-anchor="middle" font-size="13" fill="#111827">너는 금융교육 전문가다.</text>
+<text x="850.0" y="196.025" text-anchor="middle" font-size="13" fill="#111827">20대 초보 투자자가 이해할 수 있도록</text>
+<text x="850.0" y="214.875" text-anchor="middle" font-size="13" fill="#111827">삼성전자의 PER, PBR, ROE를 쉽게 설명해라.</text>
+<text x="850.0" y="233.725" text-anchor="middle" font-size="13" fill="#111827">투자 추천은 하지 마라.</text>
+<text x="850.0" y="252.575" text-anchor="middle" font-size="13" fill="#111827">각 용어마다 간단한 예시를 포함해라.</text>
+<rect x="60" y="290" width="250" height="40" rx="6" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="185" y="316" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">역할 지정</text>
+<rect x="330" y="290" width="310" height="40" rx="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="485" y="316" text-anchor="middle" font-size="14" fill="#4B5563">✕  없음</text>
+<rect x="660" y="290" width="380" height="40" rx="6" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.6"/>
+<text x="850" y="316" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">✓  너는 금융교육 전문가</text>
+<rect x="60" y="336" width="250" height="40" rx="6" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="185" y="362" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">대상 사용자</text>
+<rect x="330" y="336" width="310" height="40" rx="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="485" y="362" text-anchor="middle" font-size="14" fill="#4B5563">✕  없음</text>
+<rect x="660" y="336" width="380" height="40" rx="6" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.6"/>
+<text x="850" y="362" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">✓  20대 초보 투자자</text>
+<rect x="60" y="382" width="250" height="40" rx="6" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="185" y="408" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">답변 범위</text>
+<rect x="330" y="382" width="310" height="40" rx="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="485" y="408" text-anchor="middle" font-size="14" fill="#4B5563">✕  없음</text>
+<rect x="660" y="382" width="380" height="40" rx="6" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.6"/>
+<text x="850" y="408" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">✓  PER · PBR · ROE</text>
+<rect x="60" y="428" width="250" height="40" rx="6" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="185" y="454" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">금지 사항</text>
+<rect x="330" y="428" width="310" height="40" rx="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="485" y="454" text-anchor="middle" font-size="14" fill="#4B5563">✕  없음</text>
+<rect x="660" y="428" width="380" height="40" rx="6" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.6"/>
+<text x="850" y="454" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">✓  투자 추천 금지</text>
+<rect x="60" y="474" width="250" height="40" rx="6" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="185" y="500" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">형식 · 예시</text>
+<rect x="330" y="474" width="310" height="40" rx="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="485" y="500" text-anchor="middle" font-size="14" fill="#4B5563">✕  없음</text>
+<rect x="660" y="474" width="380" height="40" rx="6" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.6"/>
+<text x="850" y="500" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">✓  용어마다 간단한 예시</text>
+<rect x="40" y="524" width="1020" height="44" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="551.0" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">결과가 다른 이유: 조건을 많이 줄수록 AI가 추측할 여지가 줄어든다</text>
+</svg>

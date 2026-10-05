@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="550" viewBox="0 0 1100 550" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="550" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">Router의 우선순위</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">한 문장에 키워드가 여러 개일 때 어느 쪽을 따를지 정해 둔 규칙</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="40" y="110" width="470" height="66" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.2"/>
+<rect x="40" y="110" width="90" height="66" rx="10" fill="#1F3864" stroke="#1F3864" stroke-width="0"/>
+<rect x="110" y="110" width="20" height="66" rx="0" fill="#1F3864" stroke="#1F3864" stroke-width="0"/>
+<text x="85" y="150" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">1순위</text>
+<text x="145" y="138" text-anchor="start" font-size="16" fill="#1F3864" font-weight="bold">FINANCE_KNOWLEDGE</text>
+<text x="145" y="162" text-anchor="start" font-size="13" fill="#4B5563">PER · PBR · ROE · DSR · EPS · BPS</text>
+<rect x="40" y="190" width="470" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<rect x="40" y="190" width="90" height="66" rx="10" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<rect x="110" y="190" width="20" height="66" rx="0" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<text x="85" y="230" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">2순위</text>
+<text x="145" y="218" text-anchor="start" font-size="16" fill="#111827" font-weight="bold">EXCHANGE</text>
+<text x="145" y="242" text-anchor="start" font-size="13" fill="#4B5563">환율 · 원화 · 달러 · 엔화</text>
+<rect x="40" y="270" width="470" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<rect x="40" y="270" width="90" height="66" rx="10" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<rect x="110" y="270" width="20" height="66" rx="0" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<text x="85" y="310" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">3순위</text>
+<text x="145" y="298" text-anchor="start" font-size="16" fill="#111827" font-weight="bold">STOCK</text>
+<text x="145" y="322" text-anchor="start" font-size="13" fill="#4B5563">주가 · 종목 · 가격</text>
+<rect x="40" y="350" width="470" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<rect x="40" y="350" width="90" height="66" rx="10" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<rect x="110" y="350" width="20" height="66" rx="0" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<text x="85" y="390" text-anchor="middle" font-size="16" fill="#FFFFFF" font-weight="bold">4순위</text>
+<text x="145" y="378" text-anchor="start" font-size="16" fill="#111827" font-weight="bold">GENERAL</text>
+<text x="145" y="402" text-anchor="start" font-size="13" fill="#4B5563">나머지</text>
+<text x="275" y="452" text-anchor="middle" font-size="13" fill="#4B5563">위에서부터 먼저 걸리는 쪽으로 분류한다</text>
+<rect x="560" y="108" width="500" height="52" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="810.0" y="140.0" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">&quot;삼성전자 주가와 PER을 함께 알려줘&quot;</text>
+<line x1="680" y1="160" x2="680" y2="194" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="940" y1="160" x2="940" y2="194" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="560" y="196" width="240" height="56" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="680.0" y="219.82500000000002" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">주가</text>
+<text x="680.0" y="240.12500000000003" text-anchor="middle" font-size="13" fill="#111827">→ STOCK</text>
+<rect x="820" y="196" width="240" height="56" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="940.0" y="220.55" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">PER</text>
+<text x="940.0" y="240.85000000000002" text-anchor="middle" font-size="12" fill="#111827">→ FINANCE_KNOWLEDGE</text>
+<polyline points="680,252 680,282 810,282" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="940,252 940,282 810,282" fill="none" stroke="#1F3864" stroke-width="2.2" marker-end="url(#b)"/>
+<rect x="560" y="288" width="500" height="58" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="810.0" y="323.0" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">결과: FINANCE_KNOWLEDGE</text>
+<line x1="810" y1="346" x2="810" y2="376" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="560" y="378" width="500" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="810.0" y="407.2" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">주가 요청은 처리되지 않는다</text>
+<text x="810.0" y="428.95" text-anchor="middle" font-size="13" fill="#111827">복합 질문을 하나로만 분류하면 정보가 사라진다</text>
+<rect x="40" y="474" width="1020" height="50" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="504.0" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">이 한계는 이후 Function Calling(LLM이 필요한 Tool을 직접 고르는 방식)으로 해결한다</text>
+</svg>

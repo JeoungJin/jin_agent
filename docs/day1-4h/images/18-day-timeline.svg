@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="440" viewBox="0 0 1100 440" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="440" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">오늘의 4시간</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">시간 배분 (분)</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="40" y="170" width="63.75" height="64" rx="4" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.4"/>
+<text x="71.875" y="210" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">3</text>
+<text x="71.875" y="262" text-anchor="middle" font-size="12" fill="#111827" font-weight="bold">역할 토론</text>
+<text x="71.875" y="282" text-anchor="middle" font-size="12" fill="#4B5563">15분</text>
+<rect x="103.75" y="170" width="85.0" height="64" rx="4" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.4"/>
+<text x="146.25" y="210" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">4</text>
+<text x="146.25" y="262" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">요구사항</text>
+<text x="146.25" y="282" text-anchor="middle" font-size="12" fill="#4B5563">20분</text>
+<rect x="188.75" y="170" width="127.5" height="64" rx="4" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.4"/>
+<text x="252.5" y="210" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">5</text>
+<text x="252.5" y="262" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">Prompt·Context</text>
+<text x="252.5" y="282" text-anchor="middle" font-size="12" fill="#4B5563">30분</text>
+<rect x="316.25" y="170" width="42.5" height="64" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.4"/>
+<text x="337.5" y="262" text-anchor="middle" font-size="12" fill="#4B5563">휴식</text>
+<text x="337.5" y="282" text-anchor="middle" font-size="12" fill="#4B5563">10분</text>
+<rect x="358.75" y="170" width="191.25" height="64" rx="4" fill="#1F3864" stroke="#1F3864" stroke-width="1.4"/>
+<text x="454.375" y="210" text-anchor="middle" font-size="18" fill="#FFFFFF" font-weight="bold">6</text>
+<text x="454.375" y="262" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">Vibe Coding</text>
+<text x="454.375" y="282" text-anchor="middle" font-size="12" fill="#4B5563">45분</text>
+<rect x="550.0" y="170" width="85.0" height="64" rx="4" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.4"/>
+<text x="592.5" y="210" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">7</text>
+<text x="592.5" y="262" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">Tool</text>
+<text x="592.5" y="282" text-anchor="middle" font-size="12" fill="#4B5563">20분</text>
+<rect x="635.0" y="170" width="42.5" height="64" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.4"/>
+<text x="656.25" y="262" text-anchor="middle" font-size="12" fill="#4B5563">휴식</text>
+<text x="656.25" y="282" text-anchor="middle" font-size="12" fill="#4B5563">10분</text>
+<rect x="677.5" y="170" width="127.5" height="64" rx="4" fill="#1F3864" stroke="#1F3864" stroke-width="1.4"/>
+<text x="741.25" y="210" text-anchor="middle" font-size="18" fill="#FFFFFF" font-weight="bold">8</text>
+<text x="741.25" y="262" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">Router</text>
+<text x="741.25" y="282" text-anchor="middle" font-size="12" fill="#4B5563">30분</text>
+<rect x="805.0" y="170" width="191.25" height="64" rx="4" fill="#1F3864" stroke="#1F3864" stroke-width="1.4"/>
+<text x="900.625" y="210" text-anchor="middle" font-size="18" fill="#FFFFFF" font-weight="bold">9</text>
+<text x="900.625" y="262" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">Mini Agent</text>
+<text x="900.625" y="282" text-anchor="middle" font-size="12" fill="#4B5563">45분</text>
+<rect x="996.25" y="170" width="42.5" height="64" rx="4" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.4"/>
+<text x="1017.5" y="210" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">10</text>
+<text x="1017.5" y="262" text-anchor="middle" font-size="12" fill="#111827" font-weight="bold">회고</text>
+<text x="1017.5" y="282" text-anchor="middle" font-size="12" fill="#4B5563">10분</text>
+<rect x="1038.75" y="170" width="21.25" height="64" rx="4" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.4" stroke-dasharray="6 4"/>
+<line x1="40.0" y1="146" x2="40.0" y2="170" stroke="#4B5563" stroke-width="1.5"/><text x="40.0" y="138" text-anchor="middle" font-size="13" fill="#4B5563">0:00</text>
+<line x1="295.0" y1="146" x2="295.0" y2="170" stroke="#4B5563" stroke-width="1.5"/><text x="295.0" y="138" text-anchor="middle" font-size="13" fill="#4B5563">1:00</text>
+<line x1="550.0" y1="146" x2="550.0" y2="170" stroke="#4B5563" stroke-width="1.5"/><text x="550.0" y="138" text-anchor="middle" font-size="13" fill="#4B5563">2:00</text>
+<line x1="805.0" y1="146" x2="805.0" y2="170" stroke="#4B5563" stroke-width="1.5"/><text x="805.0" y="138" text-anchor="middle" font-size="13" fill="#4B5563">3:00</text>
+<line x1="1060.0" y1="146" x2="1060.0" y2="170" stroke="#4B5563" stroke-width="1.5"/><text x="1060.0" y="138" text-anchor="middle" font-size="13" fill="#4B5563">4:00</text>
+<rect x="300" y="322" width="22" height="22" rx="4" fill="#1F3864" stroke="#1F3864" stroke-width="0"/>
+<text x="332" y="339" text-anchor="start" font-size="14" fill="#111827">실습 중심</text>
+<rect x="470" y="322" width="22" height="22" rx="4" fill="#E6ECF5" stroke="#1F3864" stroke-width="1.4"/>
+<text x="502" y="339" text-anchor="start" font-size="14" fill="#111827">설명 · 토론 · 실험</text>
+<rect x="690" y="322" width="22" height="22" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.4"/>
+<text x="722" y="339" text-anchor="start" font-size="14" fill="#111827">휴식</text>
+<rect x="40" y="364" width="1020" height="50" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="394.0" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">마지막 5분은 여유 시간 — 밀리는 구간이 생기면 여기서 흡수한다</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="500" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">&#x27;가격&#x27;이라는 말의 기준 시점</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">같은 &#x27;가격&#x27;이어도 언제 값인지가 다르다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<line x1="60" y1="250" x2="1040" y2="250" stroke="#4B5563" stroke-width="2.4" marker-end="url(#a)"/>
+<rect x="330" y="234" width="470" height="32" rx="6" fill="#E6ECF5" stroke="#1F3864" stroke-width="2"/>
+<text x="565" y="255" text-anchor="middle" font-size="13" fill="#1F3864" font-weight="bold">장이 열려 있는 시간</text>
+<line x1="140" y1="226" x2="140" y2="274" stroke="#4B5563" stroke-width="2"/>
+<text x="140" y="296" text-anchor="middle" font-size="12" fill="#4B5563">어제 장 마감</text>
+<line x1="330" y1="226" x2="330" y2="274" stroke="#4B5563" stroke-width="2"/>
+<text x="330" y="296" text-anchor="middle" font-size="12" fill="#4B5563">오늘 장 시작</text>
+<line x1="800" y1="226" x2="800" y2="274" stroke="#4B5563" stroke-width="2"/>
+<text x="800" y="296" text-anchor="middle" font-size="12" fill="#4B5563">오늘 장 마감</text>
+<rect x="35" y="118" width="210" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="140.0" y="147.15" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">전일 종가</text>
+<text x="140.0" y="170.35" text-anchor="middle" font-size="13" fill="#111827">어제 장 마감 때의</text>
+<text x="140.0" y="189.2" text-anchor="middle" font-size="13" fill="#111827">마지막 가격</text>
+<line x1="140" y1="202" x2="140" y2="250" stroke="#4B5563" stroke-width="2.2"/>
+<rect x="435" y="118" width="250" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="560.0" y="147.15" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">장중 가격</text>
+<text x="560.0" y="170.35" text-anchor="middle" font-size="13" fill="#111827">장이 열려 있는 동안</text>
+<text x="560.0" y="189.2" text-anchor="middle" font-size="13" fill="#111827">계속 변하는 가격</text>
+<line x1="560" y1="202" x2="560" y2="234" stroke="#1F3864" stroke-width="2.2"/>
+<rect x="695" y="118" width="210" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="800.0" y="147.15" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">종가</text>
+<text x="800.0" y="170.35" text-anchor="middle" font-size="13" fill="#111827">오늘 장 마감 때의</text>
+<text x="800.0" y="189.2" text-anchor="middle" font-size="13" fill="#111827">마지막 가격</text>
+<line x1="800" y1="202" x2="800" y2="250" stroke="#4B5563" stroke-width="2.2"/>
+<rect x="330" y="330" width="230" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="445.0" y="359.15000000000003" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">최근 거래가</text>
+<text x="445.0" y="382.35" text-anchor="middle" font-size="13" fill="#111827">가장 마지막으로</text>
+<text x="445.0" y="401.20000000000005" text-anchor="middle" font-size="13" fill="#111827">체결된 가격</text>
+<line x1="445" y1="266" x2="445" y2="330" stroke="#4B5563" stroke-width="2.2"/>
+<rect x="610" y="330" width="260" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="740.0" y="359.15000000000003" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">현재가 · 실시간가</text>
+<text x="740.0" y="382.35" text-anchor="middle" font-size="13" fill="#111827">지금 이 순간의 가격</text>
+<text x="740.0" y="401.20000000000005" text-anchor="middle" font-size="13" fill="#111827">(계속 갱신된다)</text>
+<line x1="740" y1="266" x2="740" y2="330" stroke="#1F3864" stroke-width="2.2"/>
+<rect x="40" y="436" width="1020" height="50" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="466.0" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">가격을 보여줄 때는  값 + 출처 + 기준 시각  을 함께 표시한다</text>
+</svg>

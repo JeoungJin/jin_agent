@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="690" viewBox="0 0 1100 690" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="690" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">오늘의 AI 용어 지도</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">용어 7개가 하나의 흐름 안에서 어디에 놓이는지 본다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="40" y="100" width="1020" height="70" rx="12" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<circle cx="70" cy="135" r="15" fill="#1F3864"/><text x="70" y="140" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">7</text>
+<text x="100" y="128" text-anchor="start" font-size="16" fill="#1F3864" font-weight="bold">AI Coding (Vibe Coding)</text>
+<text x="100" y="153" text-anchor="start" font-size="13" fill="#111827">AI에게 요구사항을 전달해 코드를 만들고, 실행·검증하는 개발 방식 — 이 모든 것을 만드는 방법</text>
+<rect x="40" y="300" width="130" height="70" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="105.0" y="341.0" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">사용자</text>
+<line x1="170" y1="335" x2="220" y2="335" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="220" y="290" width="170" height="90" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="305.0" y="332.325" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">Router</text>
+<text x="305.0" y="358.425" text-anchor="middle" font-size="13" fill="#111827">처리 경로를 정한다</text>
+<circle cx="220" cy="290" r="15" fill="#1F3864"/><text x="220" y="295" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">5</text>
+<polyline points="390,320 430,320 430,250 470,250" fill="none" stroke="#1F3864" stroke-width="2.2" marker-end="url(#b)"/>
+<polyline points="390,350 430,350 430,445 470,445" fill="none" stroke="#1F3864" stroke-width="2.2" marker-end="url(#b)"/>
+<rect x="470" y="205" width="230" height="90" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="585.0" y="247.32500000000002" text-anchor="middle" font-size="18" fill="#111827" font-weight="bold">Tool</text>
+<text x="585.0" y="273.425" text-anchor="middle" font-size="13" fill="#111827">외부 데이터 조회·기능 실행</text>
+<circle cx="470" cy="205" r="15" fill="#1F3864"/><text x="470" y="210" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">4</text>
+<rect x="470" y="395" width="230" height="100" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="585.0" y="442.325" text-anchor="middle" font-size="18" fill="#1F3864" font-weight="bold">LLM</text>
+<text x="585.0" y="468.425" text-anchor="middle" font-size="13" fill="#111827">자연어를 이해하고 생성</text>
+<circle cx="470" cy="395" r="15" fill="#1F3864"/><text x="470" y="400" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">1</text>
+<rect x="470" y="540" width="230" height="90" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="585.0" y="581.575" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">Prompt + Context</text>
+<text x="585.0" y="604.7750000000001" text-anchor="middle" font-size="13" fill="#111827">지시 + 배경</text>
+<circle cx="470" cy="540" r="15" fill="#1F3864"/><text x="470" y="545" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">2</text>
+<circle cx="700" cy="540" r="15" fill="#1F3864"/><text x="700" y="545" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">3</text>
+<line x1="585" y1="540" x2="585" y2="497" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="790" y="300" width="250" height="80" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="915.0" y="337.325" text-anchor="middle" font-size="18" fill="#111827" font-weight="bold">답변</text>
+<text x="915.0" y="363.425" text-anchor="middle" font-size="13" fill="#111827">사용자에게 전달</text>
+<polyline points="700,250 745,250 745,330 790,330" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="700,430 745,430 745,355 790,355" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="790" y="420" width="250" height="110" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="915.0" y="462.15000000000003" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">Hallucination</text>
+<text x="915.0" y="485.35" text-anchor="middle" font-size="13" fill="#111827">LLM이 사실과 다른 내용을</text>
+<text x="915.0" y="504.20000000000005" text-anchor="middle" font-size="13" fill="#111827">그럴듯하게 만드는 현상</text>
+<circle cx="790" cy="420" r="15" fill="#1F3864"/><text x="790" y="425" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">6</text>
+<line x1="700" y1="470" x2="790" y2="470" stroke="#1F3864" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#b)"/>
+<text x="40" y="665" text-anchor="start" font-size="13" fill="#4B5563">① LLM   ② Prompt   ③ Context   ④ Tool   ⑤ Router   ⑥ Hallucination   ⑦ AI Coding (Vibe Coding)</text>
+</svg>

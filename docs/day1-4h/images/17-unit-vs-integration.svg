@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="520" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">단위 테스트와 통합 확인</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">Router가 맞아도, 연결이 끊어지면 답은 틀린다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="40" y="100" width="400" height="290" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<rect x="40" y="100" width="400" height="36" rx="12" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<rect x="40" y="120" width="400" height="16" rx="0" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<text x="240" y="125" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">단위 테스트 — 함수 하나만</text>
+<rect x="64" y="160" width="352" height="76" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="240" y="192" text-anchor="middle" font-size="13" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">route_question(&quot;삼성전자 가격&quot;)</text>
+<text x="240" y="216" text-anchor="middle" font-size="13" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">== &quot;STOCK&quot;</text>
+<text x="240" y="282" text-anchor="middle" font-size="26" fill="#1F3864" font-weight="bold">✓  통과</text>
+<text x="240" y="326" text-anchor="middle" font-size="14" fill="#111827">Router가 맞게 분류했다는 것만</text>
+<text x="240" y="350" text-anchor="middle" font-size="14" fill="#111827">확인한 것이다</text>
+<rect x="480" y="100" width="580" height="290" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.2"/>
+<rect x="480" y="100" width="580" height="36" rx="12" fill="#1F3864" stroke="#1F3864" stroke-width="0"/>
+<rect x="480" y="120" width="580" height="16" rx="0" fill="#1F3864" stroke="#1F3864" stroke-width="0"/>
+<text x="770" y="125" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">통합 확인 — 채팅으로 직접</text>
+<rect x="500" y="154" width="230" height="34" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="615.0" y="176.25" text-anchor="middle" font-size="14" fill="#111827">사용자 입력</text>
+<line x1="615" y1="188" x2="615" y2="212" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="500" y="212" width="230" height="34" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="615.0" y="234.25" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">route_question() 분류</text>
+<line x1="615" y1="246" x2="615" y2="270" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="500" y="270" width="230" height="34" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="615.0" y="292.25" text-anchor="middle" font-size="14" fill="#111827">Tool 호출</text>
+<line x1="615" y1="304" x2="615" y2="328" stroke="#4B5563" stroke-width="1.8" marker-end="url(#a)"/>
+<rect x="500" y="328" width="230" height="34" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="615.0" y="350.25" text-anchor="middle" font-size="14" fill="#111827">답변 출력</text>
+<line x1="730" y1="200" x2="770" y2="200" stroke="#4B5563" stroke-width="1.4"/>
+<rect x="770" y="182" width="270" height="36" rx="8" fill="#FFFFFF" stroke="#1F3864" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="905" y="205" text-anchor="middle" font-size="13" fill="#1F3864" font-weight="bold">import 경로 · 함수명 오타</text>
+<line x1="730" y1="258" x2="770" y2="258" stroke="#4B5563" stroke-width="1.4"/>
+<rect x="770" y="240" width="270" height="36" rx="8" fill="#FFFFFF" stroke="#1F3864" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="905" y="263" text-anchor="middle" font-size="13" fill="#1F3864" font-weight="bold">분류 문자열이 다르다 (대소문자 · 공백)</text>
+<line x1="730" y1="316" x2="770" y2="316" stroke="#4B5563" stroke-width="1.4"/>
+<rect x="770" y="298" width="270" height="36" rx="8" fill="#FFFFFF" stroke="#1F3864" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="905" y="321" text-anchor="middle" font-size="13" fill="#1F3864" font-weight="bold">Tool 결과를 답변에 붙이지 않았다</text>
+<rect x="40" y="420" width="1020" height="54" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="452.0" text-anchor="middle" font-size="16" fill="#111827" font-weight="bold">그래서 오늘은 단위 테스트가 통과해도, 채팅으로 직접 입력해 끝까지 확인한다</text>
+</svg>

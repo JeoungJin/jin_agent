@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="460" viewBox="0 0 1100 460" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="460" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">Day 1 → Day 2</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">오늘의 더미 Tool 자리를 내일은 실제 서버와 실제 데이터로 바꾼다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<text x="50" y="114" text-anchor="start" font-size="15" fill="#4B5563" font-weight="bold">Day 1 (오늘)</text>
+<rect x="50" y="126" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="150.0" y="160.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">LLM</text>
+<line x1="250" y1="155" x2="320" y2="155" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="320" y="126" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="420.0" y="160.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">Prompt · Context</text>
+<line x1="520" y1="155" x2="590" y2="155" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="590" y="126" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="690.0" y="160.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">Router</text>
+<line x1="790" y1="155" x2="860" y2="155" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="860" y="126" width="200" height="58" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="960.0" y="160.625" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">Tool (더미 값)</text>
+<text x="50" y="250" text-anchor="start" font-size="15" fill="#1F3864" font-weight="bold">Day 2 (내일)</text>
+<rect x="40" y="264" width="170" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="125.0" y="302.25" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">Python + FastAPI</text>
+<line x1="210" y1="297" x2="252" y2="297" stroke="#1F3864" stroke-width="1.8" marker-end="url(#b)"/>
+<rect x="252" y="264" width="170" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="337.0" y="292.825" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">Stock/Exchange</text>
+<text x="337.0" y="313.125" text-anchor="middle" font-size="13" fill="#111827">Tool 서버</text>
+<line x1="422" y1="297" x2="464" y2="297" stroke="#1F3864" stroke-width="1.8" marker-end="url(#b)"/>
+<rect x="464" y="264" width="170" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="549.0" y="302.25" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">JSON API</text>
+<line x1="634" y1="297" x2="676" y2="297" stroke="#1F3864" stroke-width="1.8" marker-end="url(#b)"/>
+<rect x="676" y="264" width="170" height="66" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="761.0" y="302.25" text-anchor="middle" font-size="14" fill="#111827" font-weight="bold">Swagger로 확인</text>
+<line x1="846" y1="297" x2="888" y2="297" stroke="#1F3864" stroke-width="1.8" marker-end="url(#b)"/>
+<rect x="888" y="264" width="170" height="66" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="973.0" y="292.825" text-anchor="middle" font-size="14" fill="#1F3864" font-weight="bold">외부 금융 데이터</text>
+<text x="973.0" y="313.125" text-anchor="middle" font-size="13" fill="#111827">(실제 값)</text>
+<polyline points="960,184 960,262" fill="none" stroke="#1F3864" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#b)"/>
+<text x="972" y="230" text-anchor="start" font-size="13" fill="#1F3864" font-weight="bold">실제 데이터로 교체</text>
+<rect x="40" y="364" width="1020" height="54" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="396.0" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">오늘 가장 중요한 것은 Python 문법이 아니라, AI에게 일을 시키고 결과를 검증하는 방법이다</text>
+</svg>

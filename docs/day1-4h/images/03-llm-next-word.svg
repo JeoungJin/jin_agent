@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="530" viewBox="0 0 1100 530" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="530" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">LLM은 &#x27;다음 단어&#x27;를 예측한다</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">사실을 검색하는 것이 아니라, 가장 그럴듯한 말을 이어 붙인다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="60" y="108" width="980" height="64" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.2"/>
+<text x="550" y="150" text-anchor="middle" font-size="25" fill="#1F3864" font-weight="bold">삼성전자의 PER은 보통  ______</text>
+<text x="60" y="210" text-anchor="start" font-size="15" fill="#4B5563" font-weight="bold">LLM이 고르는 다음 단어 후보 (예시)</text>
+<text x="60" y="254" text-anchor="start" font-size="15" fill="#111827">10 ~ 15배</text>
+<rect x="240" y="234" width="475.0" height="30" rx="4" fill="#1F3864" stroke="#1F3864" stroke-width="1.2"/>
+<text x="725.0" y="255" text-anchor="start" font-size="15" fill="#1F3864" font-weight="bold">38%</text>
+<text x="60" y="304" text-anchor="start" font-size="15" fill="#111827">낮은 편이다</text>
+<rect x="240" y="284" width="300.0" height="30" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550.0" y="305" text-anchor="start" font-size="15" fill="#4B5563">24%</text>
+<text x="60" y="354" text-anchor="start" font-size="15" fill="#111827">높은 편이다</text>
+<rect x="240" y="334" width="237.5" height="30" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="487.5" y="355" text-anchor="start" font-size="15" fill="#4B5563">19%</text>
+<text x="60" y="404" text-anchor="start" font-size="15" fill="#111827">업종마다 다르다</text>
+<rect x="240" y="384" width="150.0" height="30" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="400.0" y="405" text-anchor="start" font-size="15" fill="#4B5563">12%</text>
+<text x="60" y="454" text-anchor="start" font-size="15" fill="#111827">알 수 없다</text>
+<rect x="240" y="434" width="25.0" height="30" rx="4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="275.0" y="455" text-anchor="start" font-size="15" fill="#4B5563">2%</text>
+<rect x="790" y="216" width="250" height="246" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2.2"/>
+<text x="915" y="250" text-anchor="middle" font-size="16" fill="#1F3864" font-weight="bold">핵심</text>
+<text x="915" y="286" text-anchor="middle" font-size="14" fill="#111827">LLM은 사실을</text>
+<text x="915" y="322" text-anchor="middle" font-size="14" fill="#111827">검색하지 않는다</text>
+<text x="915" y="358" text-anchor="middle" font-size="14" fill="#111827">학습한 글의 패턴으로</text>
+<text x="915" y="394" text-anchor="middle" font-size="14" fill="#111827">가장 그럴듯한 다음 단어를</text>
+<text x="915" y="430" text-anchor="middle" font-size="14" fill="#111827">이어 붙일 뿐이다</text>
+<text x="550" y="500" text-anchor="middle" font-size="12" fill="#4B5563">※ 확률은 이해를 돕기 위한 예시 숫자입니다</text>
+</svg>

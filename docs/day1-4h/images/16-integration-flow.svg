@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="610" viewBox="0 0 1100 610" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4B5563"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F3864"/></marker></defs>
+<rect width="1100" height="610" fill="#FFFFFF"/>
+<text x="550" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#1F3864">Mini Agent 통합 흐름 (오늘 버전)</text>
+<text x="550" y="68" text-anchor="middle" font-size="14" fill="#4B5563">Router와 Tool을 app.py의 대화 루프에 연결한다</text>
+<line x1="40" y1="82" x2="1060" y2="82" stroke="#1F3864" stroke-width="1.5"/>
+<rect x="200" y="108" width="260" height="46" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="330.0" y="136.625" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">사용자 질문 입력</text>
+<line x1="330" y1="154" x2="330" y2="186" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="170" y="188" width="320" height="54" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="330.0" y="211.925" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">route_question(question)</text>
+<text x="330.0" y="233.675" text-anchor="middle" font-size="12" fill="#111827">app.py 대화 루프 안에서 호출</text>
+<rect x="40" y="310" width="170" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="125.0" y="338.75" text-anchor="middle" font-size="13" fill="#1F3864" font-weight="bold">STOCK</text>
+<text x="125.0" y="357.6" text-anchor="middle" font-size="13" fill="#111827">stock_tool.py</text>
+<text x="125.0" y="376.45000000000005" text-anchor="middle" font-size="12" fill="#4B5563">(더미 가격)</text>
+<polyline points="330,242 330,276 125,276 125,308" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="230" y="310" width="170" height="84" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="315.0" y="338.75" text-anchor="middle" font-size="13" fill="#1F3864" font-weight="bold">EXCHANGE</text>
+<text x="315.0" y="357.6" text-anchor="middle" font-size="13" fill="#111827">exchange_tool.py</text>
+<text x="315.0" y="376.45000000000005" text-anchor="middle" font-size="12" fill="#4B5563">(더미 환율)</text>
+<polyline points="330,242 330,276 315,276 315,308" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="420" y="310" width="170" height="84" rx="10" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<text x="505.0" y="338.75" text-anchor="middle" font-size="13" fill="#111827" font-weight="bold">KNOWLEDGE · GENERAL</text>
+<text x="505.0" y="357.6" text-anchor="middle" font-size="13" fill="#111827">LLM 호출</text>
+<text x="505.0" y="376.45000000000005" text-anchor="middle" font-size="12" fill="#4B5563">(OpenAI API)</text>
+<polyline points="330,242 330,276 505,276 505,308" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="110" y="440" width="440" height="56" rx="10" fill="#E6ECF5" stroke="#1F3864" stroke-width="2.4"/>
+<text x="330.0" y="473.625" text-anchor="middle" font-size="15" fill="#1F3864" font-weight="bold">답변 출력  +  [분류: STOCK] 표시</text>
+<polyline points="125,394 125,418 330,418 330,438" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="315,394 315,418 330,418 330,438" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="505,394 505,418 330,418 330,438" fill="none" stroke="#4B5563" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="620" y="108" width="440" height="388" rx="12" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.6"/>
+<rect x="620" y="108" width="440" height="36" rx="12" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<rect x="620" y="128" width="440" height="16" rx="0" fill="#4B5563" stroke="#4B5563" stroke-width="0"/>
+<text x="840" y="133" text-anchor="middle" font-size="15" fill="#FFFFFF" font-weight="bold">Day 1 최종 파일 구조</text>
+<text x="640" y="184" text-anchor="start" font-size="14" fill="#111827" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">financial-ai-agent/</text>
+<text x="640" y="224" text-anchor="start" font-size="14" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">├── app.py</text>
+<text x="900" y="224" text-anchor="start" font-size="13" fill="#4B5563">대화 루프 · 연결</text>
+<text x="640" y="264" text-anchor="start" font-size="14" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">├── router.py</text>
+<text x="900" y="264" text-anchor="start" font-size="13" fill="#4B5563">route_question()</text>
+<text x="640" y="304" text-anchor="start" font-size="14" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">├── tools/</text>
+<text x="640" y="344" text-anchor="start" font-size="14" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">│   ├── stock_tool.py</text>
+<text x="900" y="344" text-anchor="start" font-size="13" fill="#4B5563">더미 주가</text>
+<text x="640" y="384" text-anchor="start" font-size="14" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">│   └── exchange_tool.py</text>
+<text x="900" y="384" text-anchor="start" font-size="13" fill="#4B5563">더미 환율</text>
+<text x="640" y="424" text-anchor="start" font-size="14" fill="#111827" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">└── README.md</text>
+<text x="900" y="424" text-anchor="start" font-size="13" fill="#4B5563">설명 · 오류 사례 기록</text>
+<text x="840" y="474" text-anchor="middle" font-size="13" fill="#4B5563">전체 구조는 이 정도로 단순하다</text>
+<rect x="40" y="520" width="1020" height="50" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1.2"/>
+<text x="550" y="550.0" text-anchor="middle" font-size="15" fill="#111827" font-weight="bold">분류 결과를 화면에 함께 출력해서, 어떤 경로로 처리됐는지 직접 확인한다</text>
+</svg>
