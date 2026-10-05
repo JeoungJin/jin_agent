@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="650" viewBox="0 0 1000 650" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="650" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">SSE 한 건의 모양</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">event 줄 + data 줄 + 빈 줄, 그리고 응답 헤더</text>
+<rect x="30" y="92" width="400" height="128" rx="10" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="48" y="126" text-anchor="start" font-size="14" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">event: token</text>
+<text x="48" y="158" text-anchor="start" font-size="14" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">data: {&quot;text&quot;: &quot;안&quot;}</text>
+<text x="48" y="190" text-anchor="start" font-size="14" fill="#94a3b8" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">(빈 줄)</text>
+<line x1="430" y1="121" x2="470" y2="121" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="474" y="102" width="100" height="28" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.4"/>
+<text x="524" y="121" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">event:</text>
+<text x="584" y="121" text-anchor="start" font-size="12.5" fill="#0f172a">이벤트 이름 (category · token · done · error)</text>
+<line x1="430" y1="153" x2="470" y2="153" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="474" y="134" width="100" height="28" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.4"/>
+<text x="524" y="153" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">data:</text>
+<text x="584" y="153" text-anchor="start" font-size="12.5" fill="#0f172a">JSON 문자열 한 줄</text>
+<line x1="430" y1="185" x2="470" y2="185" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="474" y="166" width="100" height="28" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.4"/>
+<text x="524" y="185" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold">빈 줄</text>
+<text x="584" y="185" text-anchor="start" font-size="12.5" fill="#0f172a">이벤트 하나가 끝났다는 표시 (줄바꿈 두 번)</text>
+<rect x="30" y="238" width="940" height="78" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="48" y="262" text-anchor="start" font-size="13" fill="#5b21b6" font-weight="bold">FastAPI 에서 만드는 방법 (data 는 직접 이어 붙이지 않고 json.dumps 로 직렬화)</text>
+<text x="48" y="288" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">yield f&quot;event: token\ndata: {json.dumps({&#x27;text&#x27;: word}, ensure_ascii=False)}\n\n&quot;</text>
+<text x="48" y="308" text-anchor="start" font-size="11.5" fill="#64748b">ensure_ascii=False  →  한글이 유니코드 코드로 바뀌지 않고 그대로 나간다</text>
+<text x="30" y="346" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">응답 헤더와 도구</text>
+<rect x="30" y="356" width="940" height="32" rx="6" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="48" y="377" text-anchor="start" font-size="13" fill="#ffffff" font-weight="bold">헤더 / 옵션</text>
+<text x="400" y="377" text-anchor="start" font-size="13" fill="#ffffff" font-weight="bold">하는 일</text>
+<rect x="30" y="394" width="940" height="36" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="48" y="417" text-anchor="start" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">Content-Type: text/event-stream</text>
+<text x="400" y="417" text-anchor="start" font-size="12.5" fill="#0f172a">SSE 로 보낸다고 클라이언트에 알린다</text>
+<rect x="30" y="434" width="940" height="36" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="48" y="457" text-anchor="start" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">Cache-Control: no-cache</text>
+<text x="400" y="457" text-anchor="start" font-size="12.5" fill="#0f172a">중간 캐시가 응답을 모아 두지 않게 한다</text>
+<rect x="30" y="474" width="940" height="36" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="48" y="497" text-anchor="start" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">X-Accel-Buffering: no</text>
+<text x="400" y="497" text-anchor="start" font-size="12.5" fill="#0f172a">Nginx 같은 프록시가 버퍼링하지 않게 한다 (버퍼링되면 스트리밍 효과가 사라진다)</text>
+<rect x="30" y="514" width="940" height="36" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<text x="48" y="537" text-anchor="start" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">curl -N</text>
+<text x="400" y="537" text-anchor="start" font-size="12.5" fill="#0f172a">curl 의 출력 버퍼링을 꺼서 받는 즉시 화면에 표시한다</text>
+<rect x="30" y="566" width="940" height="66" rx="12" fill="#0f172a"/><text x="500.0" y="593" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">정상: category → token(여러 번) → done   ｜   오류: error 1개 후 종료 (done 없음)</text>
+<text x="500.0" y="616" text-anchor="middle" font-size="12" fill="#fbbf24">이벤트 이름은 FastAPI · Spring · React 가 똑같이 쓰는 약속이므로 바꾸지 않는다</text>
+</svg>

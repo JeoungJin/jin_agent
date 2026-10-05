@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect width="1000" height="620" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">스트리밍 응답 전체 흐름</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">OpenAI → FastAPI → Spring Boot → React : 조각이 만들어지는 즉시 끝까지 흘러간다</text>
+<rect x="20" y="96" width="200" height="352" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<rect x="20" y="96" width="200" height="40" rx="12" fill="#7c3aed"/><rect x="20" y="120" width="200" height="16" fill="#7c3aed"/>
+<text x="120" y="123" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">OpenAI API</text>
+<rect x="270" y="96" width="200" height="352" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<rect x="270" y="96" width="200" height="40" rx="12" fill="#16a34a"/><rect x="270" y="120" width="200" height="16" fill="#16a34a"/>
+<text x="370" y="123" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">FastAPI</text>
+<rect x="520" y="96" width="200" height="352" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<rect x="520" y="96" width="200" height="40" rx="12" fill="#0284c7"/><rect x="520" y="120" width="200" height="16" fill="#0284c7"/>
+<text x="620" y="123" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Spring Boot</text>
+<rect x="770" y="96" width="200" height="352" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<rect x="770" y="96" width="200" height="40" rx="12" fill="#d97706"/><rect x="770" y="120" width="200" height="16" fill="#d97706"/>
+<text x="870" y="123" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">React</text>
+<line x1="220" y1="272" x2="270" y2="272" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<text x="245.0" y="246" text-anchor="middle" font-size="11" fill="#475569">chunk</text>
+<line x1="470" y1="272" x2="520" y2="272" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<text x="495.0" y="246" text-anchor="middle" font-size="11" fill="#475569">SSE</text>
+<line x1="720" y1="272" x2="770" y2="272" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
+<text x="745.0" y="246" text-anchor="middle" font-size="11" fill="#475569">SSE</text>
+<text x="36" y="166" font-size="14" fill="#5b21b6" font-family="Consolas,monospace" font-weight="bold">stream=True</text>
+<text x="36" y="192" font-size="13" fill="#1e293b"  >답을 한 번에 주지 않고</text>
+<text x="36" y="211" font-size="13" fill="#1e293b"  >토큰 조각(chunk)을</text>
+<text x="36" y="230" font-size="13" fill="#1e293b"  >순서대로 전송</text>
+<rect x="36" y="256" width="34" height="28" rx="8" fill="#fff" stroke="#7c3aed"/><text x="53.0" y="275" text-anchor="middle" font-size="13" fill="#5b21b6">안</text>
+<rect x="76" y="256" width="34" height="28" rx="8" fill="#fff" stroke="#7c3aed"/><text x="93.0" y="275" text-anchor="middle" font-size="13" fill="#5b21b6">녕</text>
+<rect x="116" y="256" width="62" height="28" rx="8" fill="#fff" stroke="#7c3aed"/><text x="147.0" y="275" text-anchor="middle" font-size="13" fill="#5b21b6">하세요</text>
+<text x="36" y="316" font-size="12" fill="#b45309"  >delta.content가 None인</text>
+<text x="36" y="333" font-size="12" fill="#b45309"  >chunk도 있음 (첫·마지막)</text>
+<rect x="36" y="396" width="168" height="26" rx="13" fill="#7c3aed"/><text x="120.0" y="414" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">② OpenAI 스트리밍</text>
+<text x="286" y="166" font-size="14" fill="#166534" font-family="Consolas,monospace" font-weight="bold">yield</text>
+<text x="286" y="192" font-size="13" fill="#1e293b"  >chunk가 오는 즉시</text>
+<text x="286" y="211" font-size="13" fill="#1e293b"  >이벤트로 포장해 내보냄</text>
+<rect x="284" y="224" width="164" height="50" rx="8" fill="#fff" stroke="#16a34a"/>
+<text x="292" y="244" font-size="11.5" fill="#0f172a" font-family="Consolas,monospace" >for chunk in stream:</text>
+<text x="292" y="262" font-size="11.5" fill="#0f172a" font-family="Consolas,monospace" >    yield sse("token",…)</text>
+<text x="286" y="296" font-size="12" fill="#166534" font-family="Consolas,monospace" >StreamingResponse(gen)</text>
+<rect x="284" y="306" width="164" height="62" rx="8" fill="#fff" stroke="#16a34a"/>
+<text x="292" y="326" font-size="11.5" fill="#0f172a" font-family="Consolas,monospace" >event: token</text>
+<text x="292" y="344" font-size="11.5" fill="#0f172a" font-family="Consolas,monospace" >data: {"text":"안"}</text>
+<text x="292" y="360" font-size="11" fill="#b45309"  >(빈 줄 = 이벤트 끝)</text>
+<rect x="286" y="376" width="168" height="26" rx="13" fill="#16a34a"/><text x="370.0" y="394" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">① 제너레이터 (yield)</text>
+<rect x="286" y="410" width="168" height="26" rx="13" fill="#16a34a"/><text x="370.0" y="428" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">③ SSE 형식으로 포장</text>
+<text x="536" y="166" font-size="13" fill="#075985" font-family="Consolas,monospace" font-weight="bold">.bodyToFlux(</text>
+<text x="536" y="184" font-size="13" fill="#075985" font-family="Consolas,monospace" font-weight="bold">  ServerSentEvent)</text>
+<text x="536" y="212" font-size="13" fill="#1e293b"  >FastAPI의 SSE를</text>
+<text x="536" y="231" font-size="13" fill="#1e293b"  >Flux(이벤트 N개)로 수신</text>
+<text x="536" y="250" font-size="13" fill="#1e293b"  >block() 없이 그대로 중계</text>
+<rect x="534" y="280" width="164" height="46" rx="8" fill="#fff" stroke="#0284c7"/>
+<text x="542" y="300" font-size="11.5" fill="#0f172a" font-family="Consolas,monospace" >produces =</text>
+<text x="542" y="317" font-size="11.5" fill="#0f172a" font-family="Consolas,monospace" >text/event-stream</text>
+<text x="536" y="352" font-size="12" fill="#b45309"  >오류 시 error·done 이벤트로</text>
+<text x="536" y="369" font-size="12" fill="#b45309"  >스트림을 정상 종료</text>
+<rect x="536" y="396" width="168" height="26" rx="13" fill="#0284c7"/><text x="620.0" y="414" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">③ SSE 중계</text>
+<text x="786" y="166" font-size="12.5" fill="#92400e" font-family="Consolas,monospace" font-weight="bold">fetch + ReadableStream</text>
+<text x="786" y="192" font-size="12.5" fill="#1e293b"  >POST 본문이 필요해서</text>
+<text x="786" y="211" font-size="12.5" fill="#1e293b"  >EventSource(GET만) 대신 사용</text>
+<text x="786" y="230" font-size="12.5" fill="#1e293b"  >쿠키는 include로 자동 전송</text>
+<rect x="784" y="262" width="164" height="70" rx="8" fill="#fff" stroke="#d97706"/>
+<text x="794" y="284" font-size="11.5" fill="#92400e"  >token마다 이어 붙임:</text>
+<text x="794" y="312" font-size="20" fill="#0f172a"  font-weight="bold">안녕하세요|</text>
+<rect x="786" y="396" width="168" height="26" rx="13" fill="#d97706"/><text x="870.0" y="414" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">③ SSE 수신</text>
+<text x="30" y="482" font-size="15" font-weight="bold" fill="#0f172a">시간 순서대로 흐르는 이벤트</text>
+<rect x="30" y="494" width="86.24000000000001" height="28" rx="14" fill="#7c3aed"/><text x="73.12" y="513" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Consolas,monospace">category</text>
+<rect x="126.24000000000001" y="494" width="64.4" height="28" rx="14" fill="#16a34a"/><text x="158.44" y="513" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Consolas,monospace">token</text>
+<rect x="200.64000000000001" y="494" width="64.4" height="28" rx="14" fill="#16a34a"/><text x="232.84000000000003" y="513" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Consolas,monospace">token</text>
+<rect x="275.04" y="494" width="64.4" height="28" rx="14" fill="#16a34a"/><text x="307.24" y="513" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Consolas,monospace">token</text>
+<rect x="349.44000000000005" y="494" width="60" height="28" rx="14" fill="none"/><text x="379.44000000000005" y="513" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748b" font-family="Consolas,monospace">…</text>
+<rect x="419.44000000000005" y="494" width="60" height="28" rx="14" fill="#0f172a"/><text x="449.44000000000005" y="513" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Consolas,monospace">done</text>
+<text x="495.44000000000005" y="513" font-size="13" fill="#b91c1c">(도중 오류가 나면 error → 종료)</text>
+<rect x="30" y="544" width="940" height="56" rx="12" fill="#0f172a"/>
+<text x="500" y="568" text-anchor="middle" font-size="15" font-weight="bold" fill="#f8fafc">일반 방식: JSON 1개(Mono) 한 번에   →   스트리밍: 이벤트 N개(Flux, SSE)가 계속 흐름</text>
+<text x="500" y="589" text-anchor="middle" font-size="13" fill="#cbd5e1">① 제너레이터가 조각을 내보내고, ② LLM이 조각을 만들고, ③ SSE가 그 조각을 브라우저까지 실어 나른다</text>
+</svg>

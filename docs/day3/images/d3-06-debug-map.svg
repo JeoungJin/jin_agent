@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="690" viewBox="0 0 1000 690" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="690" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">E2E 디버깅: 어느 계층에서 끊겼나</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">증상으로 의심 계층을 좁히고, 계층마다 보는 곳이 다르다</text>
+<rect x="30" y="92" width="300" height="58" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="180" y="117" text-anchor="middle" font-size="14" fill="#075985" font-weight="bold">React</text>
+<text x="180" y="138" text-anchor="middle" font-size="12" fill="#0f172a">F12 → Network · Console</text>
+<line x1="330" y1="121" x2="350" y2="121" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="350" y="92" width="300" height="58" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="500" y="117" text-anchor="middle" font-size="14" fill="#166534" font-weight="bold">SpringBoot</text>
+<text x="500" y="138" text-anchor="middle" font-size="12" fill="#0f172a">IntelliJ 실행 콘솔 로그</text>
+<line x1="650" y1="121" x2="670" y2="121" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="670" y="92" width="300" height="58" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="820" y="117" text-anchor="middle" font-size="14" fill="#5b21b6" font-weight="bold">FastAPI</text>
+<text x="820" y="138" text-anchor="middle" font-size="12" fill="#0f172a">uvicorn 터미널 로그</text>
+<rect x="30" y="168" width="940" height="34" rx="6" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="48" y="190" text-anchor="start" font-size="13" fill="#ffffff" font-weight="bold">증상</text>
+<text x="380" y="190" text-anchor="start" font-size="13" fill="#ffffff" font-weight="bold">의심 계층</text>
+<text x="520" y="190" text-anchor="start" font-size="13" fill="#ffffff" font-weight="bold">확인 · 해결</text>
+<rect x="30" y="208" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="208" width="7" height="52" rx="3" fill="#16a34a" stroke="#16a34a" stroke-width="0"/>
+<text x="48" y="239" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">401 이 나온다</text>
+<rect x="380" y="222" width="126" height="24" rx="12.0" fill="#16a34a"/><text x="443.0" y="238.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">Spring · React</text>
+<text x="520" y="230" text-anchor="start" font-size="12" fill="#0f172a">로그인 여부 확인, fetch 는 credentials: &quot;include&quot; · axios 는</text>
+<text x="520" y="250" text-anchor="start" font-size="12" fill="#0f172a">withCredentials, 접속 주소를 localhost:5173 으로 통일</text>
+<rect x="30" y="266" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="266" width="7" height="52" rx="3" fill="#16a34a" stroke="#16a34a" stroke-width="0"/>
+<text x="48" y="297" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">콘솔에 CORS 오류</text>
+<rect x="380" y="280" width="126" height="24" rx="12.0" fill="#16a34a"/><text x="443.0" y="296.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">Spring</text>
+<text x="520" y="288" text-anchor="start" font-size="12" fill="#0f172a">Allow-Origin(http://localhost:5173) ·</text>
+<text x="520" y="308" text-anchor="start" font-size="12" fill="#0f172a">Allow-Credentials · 허용 메서드 설정 확인 후 수정</text>
+<rect x="30" y="324" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="324" width="7" height="52" rx="3" fill="#d97706" stroke="#d97706" stroke-width="0"/>
+<text x="48" y="355" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">200 인데 글자가 한꺼번에 나온다</text>
+<rect x="380" y="338" width="126" height="24" rx="12.0" fill="#d97706"/><text x="443.0" y="354.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">버퍼링</text>
+<text x="520" y="346" text-anchor="start" font-size="12" fill="#0f172a">collectList · block 사용 여부, Cache-Control:</text>
+<text x="520" y="366" text-anchor="start" font-size="12" fill="#0f172a">no-cache · X-Accel-Buffering: no 헤더 확인</text>
+<rect x="30" y="382" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="382" width="7" height="52" rx="3" fill="#d97706" stroke="#d97706" stroke-width="0"/>
+<text x="48" y="413" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">한글이 깨진다</text>
+<rect x="380" y="396" width="126" height="24" rx="12.0" fill="#d97706"/><text x="443.0" y="412.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">curl · 인코딩</text>
+<text x="520" y="404" text-anchor="start" font-size="12" fill="#0f172a">git bash 에서 --data-binary @body.json 과</text>
+<text x="520" y="424" text-anchor="start" font-size="12" fill="#0f172a">charset=utf-8 로 UTF-8 본문 전송</text>
+<rect x="30" y="440" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="440" width="7" height="52" rx="3" fill="#7c3aed" stroke="#7c3aed" stroke-width="0"/>
+<text x="48" y="471" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">스트림 중간에 event: error</text>
+<rect x="380" y="454" width="126" height="24" rx="12.0" fill="#7c3aed"/><text x="443.0" y="470.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">FastAPI</text>
+<text x="520" y="462" text-anchor="start" font-size="12" fill="#0f172a">uvicorn 로그에서 예외 확인 (OpenAI 키 · 장애 ·</text>
+<text x="520" y="482" text-anchor="start" font-size="12" fill="#0f172a">타임아웃). 응답에는 상세를 숨기고 로그에만 남긴다</text>
+<rect x="30" y="498" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="498" width="7" height="52" rx="3" fill="#16a34a" stroke="#16a34a" stroke-width="0"/>
+<text x="48" y="529" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">3초쯤 뒤 fallback 문구가 나온다</text>
+<rect x="380" y="512" width="126" height="24" rx="12.0" fill="#16a34a"/><text x="443.0" y="528.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">Spring 타임아웃</text>
+<text x="520" y="529" text-anchor="start" font-size="12" fill="#0f172a">이벤트 사이 대기시간으로 적용됨 → ai.fastapi.timeout 을 10s 로</text>
+<rect x="30" y="556" width="940" height="52" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.3"/>
+<rect x="30" y="556" width="7" height="52" rx="3" fill="#0284c7" stroke="#0284c7" stroke-width="0"/>
+<text x="48" y="587" text-anchor="start" font-size="12.5" fill="#0f172a" font-weight="bold">차트가 빈 화면이다</text>
+<rect x="380" y="570" width="126" height="24" rx="12.0" fill="#0284c7"/><text x="443.0" y="586.5" text-anchor="middle" font-size="11.5" fill="#ffffff" font-weight="bold">React</text>
+<text x="520" y="578" text-anchor="start" font-size="12" fill="#0f172a">부모 높이 0 (ResponsiveContainer) ·</text>
+<text x="520" y="598" text-anchor="start" font-size="12" fill="#0f172a">/api/ai/portfolio 응답과 503 여부 확인</text>
+<rect x="30" y="622" width="940" height="50" rx="12" fill="#0f172a"/><text x="500.0" y="652.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">에러가 나면 먼저 F12 → Network 에서 상태코드와 이벤트를 보고, 어느 계층에서 끊겼는지 찾는다</text>
+</svg>

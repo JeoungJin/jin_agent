@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="700" viewBox="0 0 1120 700" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+<marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker></defs>
+<rect width="1120" height="700" fill="#f8fafc"/>
+<text x="560" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">React 쪽 핵심 동작 2가지</text>
+<text x="560" y="68" text-anchor="middle" font-size="14" fill="#64748b">① SSE 파서가 잘린 청크를 이어 붙이는 법  ·  ② 직접 호출 시 CORS preflight</text>
+<rect x="20" y="92" width="540" height="580" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+<rect x="20" y="92" width="540" height="38" rx="10" fill="#16a34a"/><rect x="20" y="118" width="540" height="12" fill="#16a34a"/><text x="290.0" y="119" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">① parseSse : 청크 경계에서 이벤트가 잘려도 안전</text>
+<text x="40" y="156" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">서버가 보낸 스트림 (이벤트는 빈 줄로 구분)</text>
+<rect x="40" y="166" width="500" height="76" rx="8" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="54" y="186" text-anchor="start" font-size="12" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">event: category</text>
+<text x="54" y="202" text-anchor="start" font-size="12" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">data: {"question":"…","category":"STOCK"}</text>
+<text x="54" y="218" text-anchor="start" font-size="12" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace"></text>
+<text x="54" y="234" text-anchor="start" font-size="12" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono',monospace">event: token   data: {"text":"삼"}</text>
+<text x="40" y="270" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">네트워크는 이 스트림을 임의의 크기로 잘라 보낸다</text>
+<rect x="40" y="282" width="150" height="52" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="115" y="302" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">청크 1</text>
+<text x="115" y="320" text-anchor="middle" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">…"category":"S</text>
+<rect x="205" y="282" width="150" height="52" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="280" y="302" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">청크 2</text>
+<text x="280" y="320" text-anchor="middle" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">TOCK"}\n\nevent: tok</text>
+<rect x="370" y="282" width="170" height="52" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="455" y="302" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold">청크 3</text>
+<text x="455" y="320" text-anchor="middle" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">en\ndata: {"text":"삼"}</text>
+<line x1="115" y1="334" x2="115" y2="362" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="280" y1="334" x2="280" y2="362" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="455" y1="334" x2="455" y2="362" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="40" y="364" width="500" height="128" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="56" y="386" text-anchor="start" font-size="12" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">buffer += decoder.decode(value, {stream:true})</text>
+<text x="56" y="408" text-anchor="start" font-size="12" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">parseSse(buffer)  →  { events, rest }</text>
+<text x="56" y="430" text-anchor="start" font-size="12" fill="#475569">· \r\n 을 \n 으로 정규화 → 빈 줄(\n\n)로 이벤트 분리</text>
+<text x="56" y="450" text-anchor="start" font-size="12" fill="#475569">· 완성된 이벤트만 { event, data(JSON.parse) } 로 반환</text>
+<text x="56" y="470" text-anchor="start" font-size="12" fill="#475569">· 마지막 미완성 조각은 rest → 다음 청크 앞에 이어 붙임</text>
+<line x1="290" y1="492" x2="290" y2="516" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="40" y="518" width="500" height="138" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+<text x="56" y="540" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">이벤트 → 화면 상태</text>
+<text x="56" y="562" text-anchor="start" font-size="12" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">category</text>
+<text x="130" y="562" text-anchor="start" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">{ question, category }</text>
+<text x="300" y="562" text-anchor="start" font-size="12" fill="#0f172a">분류 배지 표시</text>
+<text x="56" y="584" text-anchor="start" font-size="12" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">token</text>
+<text x="130" y="584" text-anchor="start" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">{ text }</text>
+<text x="300" y="584" text-anchor="start" font-size="12" fill="#0f172a">assistant 메시지 뒤에 즉시 이어 붙임</text>
+<text x="56" y="606" text-anchor="start" font-size="12" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">done</text>
+<text x="130" y="606" text-anchor="start" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">{}</text>
+<text x="300" y="606" text-anchor="start" font-size="12" fill="#0f172a">로딩 종료 · 입력창 활성화</text>
+<text x="56" y="628" text-anchor="start" font-size="12" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono',monospace">error</text>
+<text x="130" y="628" text-anchor="start" font-size="11" fill="#475569" font-family="Consolas,'DejaVu Sans Mono',monospace">{ message }</text>
+<text x="300" y="628" text-anchor="start" font-size="12" fill="#0f172a">오류 표시 · 로딩 종료 (done 없음)</text>
+<text x="56" y="648" text-anchor="start" font-size="11" fill="#475569">알 수 없는 이벤트는 무시 · done/error 없이 끝나도 finally 에서 로딩 해제</text>
+<rect x="580" y="92" width="520" height="580" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<rect x="580" y="92" width="520" height="38" rx="10" fill="#dc2626"/><rect x="580" y="118" width="520" height="12" fill="#dc2626"/><text x="840.0" y="119" text-anchor="middle" font-size="16" fill="#fff" font-weight="bold">② 직접 호출 : CORS preflight (첫 실행 시 오류 확인 → 수정)</text>
+<rect x="610" y="150" width="150" height="36" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+<text x="685" y="173" text-anchor="middle" font-size="13" fill="#075985" font-weight="bold">브라우저 (5173)</text>
+<rect x="920" y="150" width="150" height="36" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+<text x="995" y="173" text-anchor="middle" font-size="13" fill="#166534" font-weight="bold">Spring (8000)</text>
+<line x1="685" y1="186" x2="685" y2="650" stroke="#94a3b8" stroke-dasharray="4 4"/><line x1="995" y1="186" x2="995" y2="650" stroke="#94a3b8" stroke-dasharray="4 4"/>
+<text x="840" y="214" text-anchor="middle" font-size="13" fill="#991b1b" font-weight="bold">처음 실행 (Spring CORS 미설정)</text>
+<line x1="685" y1="236" x2="995" y2="236" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="840" y="228" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'DejaVu Sans Mono',monospace">OPTIONS /api/auth/login (preflight)</text>
+<line x1="995" y1="276" x2="685" y2="276" stroke="#dc2626" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#r)"/>
+<text x="840" y="268" text-anchor="middle" font-size="12" fill="#991b1b">401 · CORS 헤더 없음</text>
+<rect x="615" y="292" width="450" height="50" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5"/>
+<text x="840" y="312" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">✗ Console : blocked by CORS policy</text>
+<text x="840" y="330" text-anchor="middle" font-size="11" fill="#7f1d1d">본 요청(POST)은 아예 전송되지 않는다</text>
+<text x="840" y="376" text-anchor="middle" font-size="13" fill="#166534" font-weight="bold">수정 후 (Spring Security 에 CORS 연결)</text>
+<line x1="685" y1="398" x2="995" y2="398" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="840" y="390" text-anchor="middle" font-size="11" fill="#334155" font-family="Consolas,'DejaVu Sans Mono',monospace">OPTIONS /api/auth/login</text>
+<line x1="995" y1="438" x2="685" y2="438" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+<text x="840" y="430" text-anchor="middle" font-size="12" fill="#166534">204 + 허용 헤더</text>
+<line x1="685" y1="478" x2="995" y2="478" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="840" y="470" text-anchor="middle" font-size="11" fill="#334155">POST (쿠키 포함, credentials)</text>
+<line x1="995" y1="518" x2="685" y2="518" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+<text x="840" y="510" text-anchor="middle" font-size="12" fill="#166534">200 + Set-Cookie (HttpOnly)</text>
+<rect x="610" y="540" width="460" height="114" rx="10" fill="#fff" stroke="#16a34a" stroke-width="1.5"/>
+<text x="626" y="562" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">Spring 응답에 있어야 하는 헤더</text>
+<text x="626" y="584" text-anchor="start" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">Access-Control-Allow-Origin: http://localhost:5173</text>
+<text x="626" y="602" text-anchor="start" font-size="11" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono',monospace">Access-Control-Allow-Credentials: true</text>
+<text x="626" y="624" text-anchor="start" font-size="11" fill="#475569">* 와 credentials 는 함께 쓸 수 없다 → origin 을 명시</text>
+<text x="626" y="642" text-anchor="start" font-size="11" fill="#475569">JSON 요청(Content-Type: application/json)이라 preflight 가 먼저 간다</text>
+</svg>

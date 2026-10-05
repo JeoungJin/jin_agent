@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="560" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">오늘 완성하는 3-tier 구조</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">React(화면) → SpringBoot(인증 · 중계) → FastAPI(AI · 데이터)</text>
+<rect x="15" y="92" width="190" height="312" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.4"/>
+<text x="110" y="118" text-anchor="middle" font-size="15" fill="#075985" font-weight="bold">React :5173</text>
+<rect x="245" y="92" width="265" height="312" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2.4"/>
+<text x="377" y="118" text-anchor="middle" font-size="15" fill="#166534" font-weight="bold">SpringBoot :8000</text>
+<rect x="560" y="92" width="245" height="312" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="682" y="118" text-anchor="middle" font-size="15" fill="#5b21b6" font-weight="bold">FastAPI :9000</text>
+<rect x="850" y="150" width="135" height="110" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="917" y="184" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">OpenAI</text>
+<text x="917" y="206" text-anchor="middle" font-size="12" fill="#0f172a">LLM 답변</text>
+<text x="917" y="236" text-anchor="middle" font-size="11.5" fill="#64748b">(stream=True)</text>
+<rect x="850" y="282" width="135" height="110" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="917" y="316" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">yfinance</text>
+<text x="917" y="338" text-anchor="middle" font-size="11.5" fill="#0f172a">한국 종목 시세</text>
+<text x="917" y="362" text-anchor="middle" font-size="11.5" fill="#64748b">(지연 시세)</text>
+<rect x="28" y="140" width="164" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="110" y="170" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">LoginForm · App</text>
+<rect x="258" y="140" width="238" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="377" y="170" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">JWT 필터 · 로그인 · /me</text>
+<line x1="192" y1="165" x2="258" y2="165" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="28" y="206" width="164" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="110" y="236" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">AiChatPanel  (스트리밍 OFF)</text>
+<rect x="258" y="206" width="238" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="377" y="236" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">/api/ai/route  (Mono · JSON)</text>
+<line x1="192" y1="231" x2="258" y2="231" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="572" y="206" width="221" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="682" y="236" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">/api/v1/route  (JSON)</text>
+<line x1="496" y1="231" x2="572" y2="231" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="28" y="272" width="164" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="110" y="302" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">AiChatPanel  (스트리밍 ON)</text>
+<rect x="258" y="272" width="238" height="50" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<text x="377" y="302" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">/api/ai/route-stream  (Flux · SSE)</text>
+<line x1="192" y1="297" x2="258" y2="297" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="572" y="272" width="221" height="50" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+<text x="682" y="302" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">/api/v1/route-stream  (SSE)</text>
+<line x1="496" y1="297" x2="572" y2="297" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="28" y="338" width="164" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="110" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">PortfolioDashboard</text>
+<rect x="258" y="338" width="238" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="377" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">/api/ai/portfolio  (Mono)</text>
+<line x1="192" y1="363" x2="258" y2="363" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="572" y="338" width="221" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="682" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">/api/v1/portfolio</text>
+<line x1="496" y1="363" x2="572" y2="363" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="793,205 825,205 825,185 850,185" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="793,271 830,271 830,225 850,225" fill="none" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<polyline points="793,337 821,337 821,337 850,337" fill="none" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="30" y="420" width="300" height="56" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="180" y="444" text-anchor="middle" font-size="14" fill="#0f172a" font-weight="bold">4절 스트리밍 채팅</text>
+<text x="180" y="464" text-anchor="middle" font-size="11.5" fill="#475569">FastAPI → Spring → React 순서로 구현</text>
+<rect x="350" y="420" width="300" height="56" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="500" y="444" text-anchor="middle" font-size="14" fill="#0f172a" font-weight="bold">5절 yfinance 포트폴리오</text>
+<text x="500" y="464" text-anchor="middle" font-size="11.5" fill="#475569">FastAPI의 시세 조회 · 캐시</text>
+<rect x="670" y="420" width="300" height="56" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="820" y="444" text-anchor="middle" font-size="14" fill="#0f172a" font-weight="bold">6~7절 대시보드 · Spring 경유</text>
+<text x="820" y="464" text-anchor="middle" font-size="11.5" fill="#475569">Recharts + 프록시 API로 3-tier 완성</text>
+<rect x="30" y="490" width="940" height="50" rx="12" fill="#0f172a"/><text x="500.0" y="520.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">굵은 노란 칸 = 스트리밍 경로 — 이벤트가 끝까지 흘러가고, 나머지는 한 번에 응답한다</text>
+</svg>

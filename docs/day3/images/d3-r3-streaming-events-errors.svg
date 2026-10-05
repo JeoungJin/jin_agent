@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="960" viewBox="0 0 1000 960" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect width="1000" height="960" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">스트리밍 이벤트 약속과 에러 처리</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">④ 프론트엔드와의 약속  ·  ⑥ 스트리밍에서 까다로운 에러 처리</text>
+<text x="30" y="100" font-size="16" font-weight="bold" fill="#0f172a">④ 이벤트 종류 (프론트엔드와의 약속)</text>
+<rect x="30" y="112" width="940" height="36" rx="8" fill="#0f172a"/>
+<text x="46" y="136" font-size="14" font-weight="bold" fill="#f8fafc">이벤트</text>
+<text x="216" y="136" font-size="14" font-weight="bold" fill="#f8fafc">언제</text>
+<text x="546" y="136" font-size="14" font-weight="bold" fill="#f8fafc">프론트에서 할 일</text>
+<rect x="30" y="148" width="940" height="44" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="174.5" font-size="13" fill="#5b21b6" font-weight="bold" font-family="Consolas,monospace">category</text>
+<text x="216" y="174.5" font-size="13" fill="#1e293b"  >질문 분류가 끝났을 때 (맨 처음 1번)</text>
+<text x="546" y="174.5" font-size="13" fill="#1e293b"  >분류 배지 표시 (예: "계좌 조회 중…")</text>
+<rect x="30" y="192" width="940" height="44" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="218.5" font-size="13" fill="#5b21b6" font-weight="bold" font-family="Consolas,monospace">tool_call</text>
+<text x="216" y="218.5" font-size="13" fill="#1e293b"  >Tool 실행을 시작할 때 (선택)</text>
+<text x="546" y="218.5" font-size="13" fill="#1e293b"  >진행 상태 표시 (예: "조회 중…")</text>
+<rect x="30" y="236" width="940" height="44" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="262.5" font-size="13" fill="#5b21b6" font-weight="bold" font-family="Consolas,monospace">tool_result</text>
+<text x="216" y="262.5" font-size="13" fill="#1e293b"  >Tool 결과가 나왔을 때 (선택)</text>
+<text x="546" y="262.5" font-size="13" fill="#1e293b"  >진행 상태 해제. 결과 원본은 보통 화면에 표시하지 않음</text>
+<rect x="30" y="280" width="940" height="44" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="306.5" font-size="13" fill="#5b21b6" font-weight="bold" font-family="Consolas,monospace">token</text>
+<text x="216" y="306.5" font-size="13" fill="#1e293b"  >답변 조각이 만들어질 때마다 (여러 번)</text>
+<text x="546" y="306.5" font-size="13" fill="#1e293b"  >기존 텍스트 뒤에 이어 붙여 화면 갱신 (타이핑 효과)</text>
+<rect x="30" y="324" width="940" height="44" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="350.5" font-size="13" fill="#5b21b6" font-weight="bold" font-family="Consolas,monospace">error</text>
+<text x="216" y="350.5" font-size="13" fill="#1e293b"  >스트림 도중 오류가 났을 때</text>
+<text x="546" y="350.5" font-size="13" fill="#1e293b"  >오류 안내 표시, 로딩 해제. 이미 나온 텍스트는 유지 또는 정리</text>
+<rect x="30" y="368" width="940" height="44" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="394.5" font-size="13" fill="#5b21b6" font-weight="bold" font-family="Consolas,monospace">done</text>
+<text x="216" y="394.5" font-size="13" fill="#1e293b"  >정상 종료 (맨 마지막 1번)</text>
+<text x="546" y="394.5" font-size="13" fill="#1e293b"  >로딩 해제, 입력창 활성화, 연결 정리</text>
+<line x1="200" y1="148" x2="200" y2="412" stroke="#e2e8f0"/>
+<line x1="530" y1="148" x2="530" y2="412" stroke="#e2e8f0"/>
+<text x="30" y="456" font-size="16" font-weight="bold" fill="#0f172a">⑥ 에러 처리: 스트리밍의 까다로운 점</text>
+<rect x="30" y="468" width="940" height="36" rx="8" fill="#0f172a"/>
+<text x="46" y="492" font-size="14" font-weight="bold" fill="#f8fafc">상황</text>
+<text x="316" y="492" font-size="14" font-weight="bold" fill="#f8fafc">결과</text>
+<text x="656" y="492" font-size="14" font-weight="bold" fill="#f8fafc">비고 · 대응</text>
+<rect x="30" y="504" width="940" height="52" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="526.0" font-size="13" fill="#991b1b" font-weight="bold" >스트림 시작 전 오류 (검증·인증</text>
+<text x="46" y="543.0" font-size="13" fill="#991b1b" font-weight="bold" >실패)</text>
+<text x="316" y="534.5" font-size="13" fill="#1e293b"  >일반 에러 응답으로 끝남 (400 · 401 · 422)</text>
+<text x="656" y="534.5" font-size="13" fill="#1e293b"  >res.ok를 먼저 확인한 뒤에 스트림을 읽는다</text>
+<rect x="30" y="556" width="940" height="52" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="578.0" font-size="13" fill="#991b1b" font-weight="bold" >스트림 시작 후 오류 (LLM</text>
+<text x="46" y="595.0" font-size="13" fill="#991b1b" font-weight="bold" >장애·타임아웃)</text>
+<text x="316" y="578.0" font-size="13" fill="#1e293b"  >이미 200과 헤더를 보낸 뒤라 상태코드를 바꿀 수</text>
+<text x="316" y="595.0" font-size="13" fill="#1e293b"  >없음</text>
+<text x="656" y="578.0" font-size="13" fill="#1e293b"  >error 이벤트를 흘려보내고 스트림 종료.</text>
+<text x="656" y="595.0" font-size="13" fill="#1e293b"  >프론트는 이벤트로 판단</text>
+<rect x="30" y="608" width="940" height="52" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="630.0" font-size="13" fill="#991b1b" font-weight="bold" >사용자가 중간에 취소 (탭 닫기·중지</text>
+<text x="46" y="647.0" font-size="13" fill="#991b1b" font-weight="bold" >버튼)</text>
+<text x="316" y="638.5" font-size="13" fill="#1e293b"  >연결이 끊기고 서버 제너레이터가 중단됨</text>
+<text x="656" y="630.0" font-size="13" fill="#1e293b"  >프론트는 AbortController로 취소. 서버도 LLM</text>
+<text x="656" y="647.0" font-size="13" fill="#1e293b"  >호출을 멈춰 비용 낭비 방지</text>
+<rect x="30" y="660" width="940" height="52" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="690.5" font-size="13" fill="#991b1b" font-weight="bold" >프록시·게이트웨이 버퍼링 (nginx 등)</text>
+<text x="316" y="682.0" font-size="13" fill="#1e293b"  >조각이 모였다가 한꺼번에 도착 → 스트리밍 효과</text>
+<text x="316" y="699.0" font-size="13" fill="#1e293b"  >사라짐</text>
+<text x="656" y="682.0" font-size="13" fill="#1e293b"  >Cache-Control: no-cache,</text>
+<text x="656" y="699.0" font-size="13" fill="#1e293b"  >X-Accel-Buffering: no 헤더</text>
+<rect x="30" y="712" width="940" height="52" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="742.5" font-size="13" fill="#991b1b" font-weight="bold" >이벤트가 중간에 잘려서 도착</text>
+<text x="316" y="734.0" font-size="13" fill="#1e293b"  >한 이벤트가 두 번에 나뉘어 들어와 JSON 파싱</text>
+<text x="316" y="751.0" font-size="13" fill="#1e293b"  >실패</text>
+<text x="656" y="734.0" font-size="13" fill="#1e293b"  >버퍼에 모았다가 빈 줄(\n\n) 기준으로 완성된</text>
+<text x="656" y="751.0" font-size="13" fill="#1e293b"  >것만 파싱</text>
+<rect x="30" y="764" width="940" height="52" fill="#f1f5f9" stroke="#e2e8f0"/>
+<text x="46" y="786.0" font-size="13" fill="#991b1b" font-weight="bold" >오랫동안 데이터가 없음 (긴 Tool</text>
+<text x="46" y="803.0" font-size="13" fill="#991b1b" font-weight="bold" >실행)</text>
+<text x="316" y="794.5" font-size="13" fill="#1e293b"  >중간 장비가 유휴 연결을 끊을 수 있음</text>
+<text x="656" y="794.5" font-size="13" fill="#1e293b"  >주기적으로 heartbeat(': ping') 전송</text>
+<rect x="30" y="816" width="940" height="52" fill="#fff" stroke="#e2e8f0"/>
+<text x="46" y="838.0" font-size="13" fill="#991b1b" font-weight="bold" >Spring Security + 비동기(SSE)</text>
+<text x="46" y="855.0" font-size="13" fill="#991b1b" font-weight="bold" >응답</text>
+<text x="316" y="838.0" font-size="13" fill="#1e293b"  >비동기 재디스패치에서 인증이 다시 검사되어</text>
+<text x="316" y="855.0" font-size="13" fill="#1e293b"  >오류가 날 수 있음</text>
+<text x="656" y="838.0" font-size="13" fill="#1e293b"  >ASYNC · ERROR 디스패치 permitAll 설정</text>
+<text x="656" y="855.0" font-size="13" fill="#1e293b"  >(3일차에 추가)</text>
+<line x1="300" y1="504" x2="300" y2="868" stroke="#e2e8f0"/>
+<line x1="640" y1="504" x2="640" y2="868" stroke="#e2e8f0"/>
+<rect x="30" y="884" width="940" height="52" rx="12" fill="#0f172a"/>
+<text x="500" y="916" text-anchor="middle" font-size="15" font-weight="bold" fill="#f8fafc">핵심: 스트림이 시작되면 HTTP 상태코드는 이미 200 — 이후 오류는 "이벤트"로 알려야 한다</text>
+</svg>
