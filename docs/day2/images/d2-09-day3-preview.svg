@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="510" viewBox="0 0 1000 510" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="510" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">Day 2 → Day 3</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">한 번에 오는 답(Mono)에서, 글자가 흘러오는 답(Flux · SSE)으로</text>
+<text x="30" y="106" text-anchor="start" font-size="15" fill="#075985" font-weight="bold">Day 2 (오늘)</text>
+<rect x="30" y="120" width="270" height="76" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="165" y="150" text-anchor="middle" font-size="15" fill="#5b21b6" font-weight="bold">FastAPI</text>
+<text x="165" y="174" text-anchor="middle" font-size="12.5" fill="#0f172a">JSON 응답 1개</text>
+<rect x="365" y="120" width="270" height="76" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="500" y="150" text-anchor="middle" font-size="15" fill="#166534" font-weight="bold">Spring  Mono&lt;T&gt;</text>
+<text x="500" y="174" text-anchor="middle" font-size="12.5" fill="#0f172a">완성된 답 1개를 그대로 반환</text>
+<rect x="700" y="120" width="270" height="76" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="835" y="150" text-anchor="middle" font-size="15" fill="#075985" font-weight="bold">curl · Swagger</text>
+<text x="835" y="174" text-anchor="middle" font-size="12.5" fill="#0f172a">한 번에 표시</text>
+<line x1="300" y1="158" x2="365" y2="158" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="635" y1="158" x2="700" y2="158" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="30" y="256" text-anchor="start" font-size="15" fill="#92400e" font-weight="bold">Day 3 (내일)</text>
+<rect x="30" y="270" width="270" height="76" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="165" y="300" text-anchor="middle" font-size="15" fill="#5b21b6" font-weight="bold">FastAPI  SSE</text>
+<text x="165" y="324" text-anchor="middle" font-size="12" fill="#0f172a">이벤트를 yield 로 하나씩 전송</text>
+<rect x="365" y="270" width="270" height="76" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="500" y="300" text-anchor="middle" font-size="15" fill="#166534" font-weight="bold">Spring  Flux&lt;T&gt;</text>
+<text x="500" y="324" text-anchor="middle" font-size="12" fill="#0f172a">block 없이 그대로 중계</text>
+<rect x="700" y="270" width="270" height="76" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="835" y="300" text-anchor="middle" font-size="15" fill="#92400e" font-weight="bold">React</text>
+<text x="835" y="324" text-anchor="middle" font-size="12" fill="#0f172a">fetch + ReadableStream · 글자 단위 표시</text>
+<line x1="300" y1="308" x2="365" y2="308" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#p)"/>
+<line x1="635" y1="308" x2="700" y2="308" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#p)"/>
+<text x="30" y="386" text-anchor="start" font-size="13" fill="#64748b">흘러오는 이벤트</text>
+<rect x="160" y="370" width="100" height="22" rx="11.0" fill="#7c3aed"/><text x="210.0" y="385.5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">category</text>
+<rect x="270" y="370" width="70" height="22" rx="11.0" fill="#7c3aed"/><text x="305.0" y="385.5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">token</text>
+<rect x="350" y="370" width="70" height="22" rx="11.0" fill="#7c3aed"/><text x="385.0" y="385.5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">token</text>
+<text x="450" y="386" text-anchor="middle" font-size="14" fill="#64748b">…</text>
+<rect x="480" y="370" width="70" height="22" rx="11.0" fill="#7c3aed"/><text x="515.0" y="385.5" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="bold">done</text>
+<rect x="30" y="420" width="940" height="66" rx="12" fill="#0f172a"/><text x="500.0" y="447" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">오늘 만든 Gateway · JWT · Fallback 위에 Flux + SSE 를 얹는다</text>
+<text x="500.0" y="470" text-anchor="middle" font-size="12" fill="#fbbf24">내일은 React 채팅 화면과 Recharts 대시보드도 연결한다</text>
+</svg>

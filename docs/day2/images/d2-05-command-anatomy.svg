@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="700" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">명령어 읽는 법: uvicorn · curl</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">옵션 하나하나가 무슨 뜻인지 분해해서 본다</text>
+<rect x="30" y="90" width="940" height="150" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="50" y="118" text-anchor="start" font-size="15" fill="#5b21b6" font-weight="bold">서버 실행 (FastAPI)</text>
+<rect x="50" y="130" width="900" height="38" rx="8" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="70" y="155" text-anchor="start" font-size="15" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">uvicorn app.main:app --reload --port 9000</text>
+<rect x="50" y="180" width="162" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="131.0" y="201" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">uvicorn</text>
+<text x="131.0" y="220" text-anchor="middle" font-size="11" fill="#0f172a">서버 실행기</text>
+<rect x="226.66666666666666" y="180" width="292" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="372.66666666666663" y="201" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">app.main:app</text>
+<text x="372.66666666666663" y="220" text-anchor="middle" font-size="11" fill="#0f172a">app/main.py 안의 FastAPI 객체 app</text>
+<rect x="533.3333333333334" y="180" width="252" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="659.3333333333334" y="201" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">--reload</text>
+<text x="659.3333333333334" y="220" text-anchor="middle" font-size="11" fill="#0f172a">코드를 저장하면 자동 재시작 (개발용)</text>
+<rect x="800.0" y="180" width="142" height="50" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="871.0" y="201" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">--port 9000</text>
+<text x="871.0" y="220" text-anchor="middle" font-size="11" fill="#0f172a">접속 포트 번호</text>
+<rect x="30" y="256" width="940" height="350" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.2"/>
+<text x="50" y="284" text-anchor="start" font-size="15" fill="#075985" font-weight="bold">요청 보내기 (curl) — 로그인한 뒤 /api/ai/route 호출 예</text>
+<rect x="50" y="298" width="470" height="296" rx="8" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="62" y="326" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">curl -i</text>
+<line x1="520" y1="321" x2="545" y2="321" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="303" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="322" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">-i</text>
+<text x="608" y="322" text-anchor="start" font-size="12.5" fill="#0f172a">응답 헤더까지 함께 출력한다</text>
+<text x="62" y="364" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">  -X POST</text>
+<line x1="520" y1="359" x2="545" y2="359" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="341" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="360" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">-X</text>
+<text x="608" y="360" text-anchor="start" font-size="12.5" fill="#0f172a">HTTP 메서드를 지정한다</text>
+<text x="62" y="402" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">  http://localhost:8000/api/ai/route</text>
+<line x1="520" y1="397" x2="545" y2="397" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="379" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="398" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">URL</text>
+<text x="608" y="398" text-anchor="start" font-size="12.5" fill="#0f172a">요청할 주소</text>
+<text x="62" y="440" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">  -H &quot;Content-Type: application/json&quot;</text>
+<line x1="520" y1="435" x2="545" y2="435" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="417" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="436" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">-H</text>
+<text x="608" y="436" text-anchor="start" font-size="12.5" fill="#0f172a">요청 헤더 (본문이 JSON임을 알린다)</text>
+<text x="62" y="478" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">  -d &quot;{\&quot;question\&quot;:\&quot;삼성전자 주가 알려줘\&quot;}&quot;</text>
+<line x1="520" y1="473" x2="545" y2="473" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="455" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="474" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">-d</text>
+<text x="608" y="474" text-anchor="start" font-size="12.5" fill="#0f172a">요청 본문 (JSON)</text>
+<text x="62" y="516" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">  -c cookies.txt</text>
+<line x1="520" y1="511" x2="545" y2="511" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="493" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="512" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">-c</text>
+<text x="608" y="512" text-anchor="start" font-size="12.5" fill="#0f172a">응답의 쿠키를 파일에 저장 (로그인 때)</text>
+<text x="62" y="554" text-anchor="start" font-size="12.5" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">  -b cookies.txt</text>
+<line x1="520" y1="549" x2="545" y2="549" stroke="#0284c7" stroke-width="1.4" stroke-dasharray="5 4"/>
+<rect x="548" y="531" width="50" height="28" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="573" y="550" text-anchor="middle" font-size="12.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">-b</text>
+<text x="608" y="550" text-anchor="start" font-size="12.5" fill="#0f172a">저장한 쿠키를 요청에 첨부 (브라우저가 자동으로 하는 일)</text>
+<rect x="30" y="622" width="940" height="66" rx="12" fill="#0f172a"/><text x="500.0" y="649" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">Windows cmd: JSON 안의 큰따옴표는 이스케이프(역슬래시 + 큰따옴표)하고, 작은따옴표로 감쌀 수 없다</text>
+<text x="500.0" y="672" text-anchor="middle" font-size="12" fill="#fbbf24">PowerShell 에서는 curl 이 다른 명령의 별칭이라 curl.exe 로 실행한다</text>
+</svg>

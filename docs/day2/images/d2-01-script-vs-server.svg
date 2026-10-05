@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="545" viewBox="0 0 1000 545" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="545" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">서버가 필요한 이유</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">어제의 스크립트는 나만 쓰고, 서버는 누구나 주소로 호출한다</text>
+<rect x="30" y="92" width="440" height="356" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+<text x="250" y="124" text-anchor="middle" font-size="16" fill="#334155" font-weight="bold">Day 1 · 내 컴퓨터의 스크립트</text>
+<rect x="55" y="142" width="390" height="120" rx="8" fill="#0f172a" stroke="#0f172a" stroke-width="1"/>
+<text x="72" y="174" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">$ python main.py</text>
+<text x="72" y="202" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">질문&gt; 삼성전자 주가 알려줘</text>
+<text x="72" y="230" text-anchor="start" font-size="13" fill="#e2e8f0" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">답변&gt; 삼성전자 현재가(더미) ...</text>
+<text x="70" y="305" text-anchor="start" font-size="14" fill="#0f172a">•  내 컴퓨터에서만 실행된다</text>
+<text x="70" y="339" text-anchor="start" font-size="14" fill="#0f172a">•  터미널 창을 닫으면 끝난다</text>
+<text x="70" y="373" text-anchor="start" font-size="14" fill="#0f172a">•  다른 프로그램이 호출할 수 없다</text>
+<rect x="530" y="92" width="440" height="356" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="750" y="124" text-anchor="middle" font-size="16" fill="#166534" font-weight="bold">Day 2 · 서버 (항상 켜져 있음)</text>
+<rect x="552" y="150" width="120" height="40" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="612" y="175" text-anchor="middle" font-size="13" fill="#0f172a">React 화면</text>
+<rect x="552" y="204" width="120" height="40" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="612" y="229" text-anchor="middle" font-size="13" fill="#0f172a">SpringBoot</text>
+<rect x="552" y="258" width="120" height="40" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="612" y="283" text-anchor="middle" font-size="13" fill="#0f172a">curl · Swagger</text>
+<rect x="745" y="150" width="205" height="148" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.4"/>
+<text x="847" y="180" text-anchor="middle" font-size="15" fill="#075985" font-weight="bold">FastAPI 서버 :9000</text>
+<text x="847" y="208" text-anchor="middle" font-size="12" fill="#075985" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">POST /api/v1/route</text>
+<text x="847" y="236" text-anchor="middle" font-size="12" fill="#0f172a">router · service</text>
+<text x="847" y="258" text-anchor="middle" font-size="12" fill="#64748b">항상 대기 중</text>
+<line x1="672" y1="170" x2="745" y2="195" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<line x1="672" y1="224" x2="745" y2="215" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<line x1="672" y1="278" x2="745" y2="235" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<line x1="745" y1="285" x2="672" y2="285" stroke="#0284c7" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#b)"/>
+<text x="708" y="276" text-anchor="middle" font-size="11" fill="#075985">JSON</text>
+<text x="570" y="340" text-anchor="start" font-size="14" fill="#0f172a">•  주소(URL)로 요청을 받는다</text>
+<text x="570" y="374" text-anchor="start" font-size="14" fill="#0f172a">•  여러 프로그램이 같은 기능을 사용한다</text>
+<text x="570" y="408" text-anchor="start" font-size="14" fill="#0f172a">•  요청마다 JSON으로 응답한다</text>
+<rect x="30" y="468" width="940" height="50" rx="12" fill="#0f172a"/><text x="500.0" y="498.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">로직(router · tool)은 그대로 — HTTP로 주고받는 &#x27;겉모습&#x27;만 새로 씌운다</text>
+</svg>

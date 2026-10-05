@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="630" viewBox="0 0 1000 630" font-family="'Malgun Gothic','Noto Sans KR','WenQuanYi Zen Hei',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="630" fill="#f8fafc"/>
+  <text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">WebClient · Mono/Flux · SSE 한 장 정리</text>
+  <text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">세 개념은 같은 층의 선택지가 아니라, 서로 다른 층의 개념이다</text>
+
+  <!-- three layer cards -->
+  <rect x="30" y="92" width="290" height="126" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <rect x="46" y="104" width="64" height="22" rx="11" fill="#0284c7"/>
+  <text x="78" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">도구</text>
+  <text x="46" y="154" font-size="21" font-weight="bold" fill="#075985" font-family="Consolas,monospace">WebClient</text>
+  <text x="46" y="176" font-size="13" fill="#1e293b">다른 서버(FastAPI)를</text>
+  <text x="46" y="194" font-size="13" fill="#1e293b">호출하는 HTTP 클라이언트</text>
+  <text x="46" y="210" font-size="12" fill="#0369a1">누구에게 요청하는가?</text>
+
+  <rect x="355" y="92" width="290" height="126" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="371" y="104" width="86" height="22" rx="11" fill="#7c3aed"/>
+  <text x="414" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">자바 타입</text>
+  <text x="371" y="154" font-size="21" font-weight="bold" fill="#5b21b6" font-family="Consolas,monospace">Mono / Flux</text>
+  <text x="371" y="176" font-size="13" fill="#1e293b">결과를 감싸는 Reactor 상자</text>
+  <text x="371" y="194" font-size="13" fill="#1e293b">Mono 0~1개 · Flux 0~N개</text>
+  <text x="371" y="210" font-size="12" fill="#6d28d9">몇 개가 오는가?</text>
+
+  <rect x="680" y="92" width="290" height="126" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <rect x="696" y="104" width="100" height="22" rx="11" fill="#d97706"/>
+  <text x="746" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">네트워크 규약</text>
+  <text x="696" y="154" font-size="21" font-weight="bold" fill="#92400e" font-family="Consolas,monospace">SSE</text>
+  <text x="696" y="176" font-size="13" fill="#1e293b">연결을 유지한 채</text>
+  <text x="696" y="194" font-size="13" fill="#1e293b">서버가 여러 번 보내는 HTTP 방식</text>
+  <text x="696" y="210" font-size="12" fill="#b45309">어떻게 오는가?</text>
+
+  <line x1="320" y1="155" x2="355" y2="155" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="645" y1="155" x2="680" y2="155" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <text x="500" y="256" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f172a">우리 프로젝트에 대입하면</text>
+
+  <!-- column headers -->
+  <g font-size="13" font-weight="bold" fill="#64748b" text-anchor="middle">
+    <text x="315" y="282">FastAPI</text>
+    <text x="565" y="282">Spring Boot (WebClient)</text>
+    <text x="850" y="282">React</text>
+  </g>
+
+  <!-- Lane A : Mono -->
+  <rect x="30" y="292" width="170" height="82" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="115" y="322" text-anchor="middle" font-size="17" font-weight="bold" fill="#5b21b6" font-family="Consolas,monospace">Mono&lt;T&gt;</text>
+  <text x="115" y="345" text-anchor="middle" font-size="13" fill="#1e293b">택배 1박스</text>
+  <text x="115" y="362" text-anchor="middle" font-size="12" fill="#6d28d9">완성된 JSON 1개</text>
+
+  <rect x="230" y="292" width="170" height="82" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="315" y="320" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">POST /api/v1/route</text>
+  <text x="315" y="344" text-anchor="middle" font-size="13" fill="#166534">JSON 1개 반환</text>
+
+  <rect x="450" y="292" width="230" height="82" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="565" y="320" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">.bodyToMono(AiRouteResponse)</text>
+  <text x="565" y="344" text-anchor="middle" font-size="13" fill="#166534">Mono 그대로 반환 (block 없음)</text>
+
+  <rect x="730" y="292" width="240" height="82" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="850" y="320" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">fetch → res.json()</text>
+  <text x="850" y="344" text-anchor="middle" font-size="13" fill="#166534">한 번에 렌더링</text>
+
+  <line x1="400" y1="333" x2="450" y2="333" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+  <line x1="680" y1="333" x2="730" y2="333" stroke="#475569" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Lane B : Flux + SSE -->
+  <rect x="30" y="396" width="170" height="82" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="115" y="426" text-anchor="middle" font-size="17" font-weight="bold" fill="#92400e" font-family="Consolas,monospace">Flux&lt;T&gt; + SSE</text>
+  <text x="115" y="449" text-anchor="middle" font-size="13" fill="#1e293b">컨베이어 벨트</text>
+  <text x="115" y="466" text-anchor="middle" font-size="12" fill="#b45309">이벤트 N개 스트림</text>
+
+  <rect x="230" y="396" width="170" height="82" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="315" y="424" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">/api/v1/route-stream</text>
+  <text x="315" y="448" text-anchor="middle" font-size="13" fill="#166534">SSE 이벤트를 yield</text>
+
+  <rect x="450" y="396" width="230" height="82" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="565" y="424" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">.bodyToFlux(ServerSentEvent)</text>
+  <text x="565" y="448" text-anchor="middle" font-size="13" fill="#166534">block 없이 그대로 중계</text>
+
+  <rect x="730" y="396" width="240" height="82" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="850" y="424" text-anchor="middle" font-size="12.5" font-family="Consolas,monospace" fill="#0f172a">fetch + ReadableStream</text>
+  <text x="850" y="448" text-anchor="middle" font-size="13" fill="#166534">이벤트마다 화면 갱신</text>
+
+  <g stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="7 4" fill="none" marker-end="url(#arrB)">
+    <line x1="400" y1="429" x2="450" y2="429"/>
+    <line x1="680" y1="429" x2="730" y2="429"/>
+  </g>
+
+  <!-- event chips -->
+  <text x="230" y="508" font-size="12" fill="#64748b">흘러가는 이벤트:</text>
+  <g font-size="12" font-family="Consolas,monospace" text-anchor="middle">
+    <rect x="340" y="494" width="92" height="22" rx="11" fill="#fff" stroke="#7c3aed"/><text x="386" y="509" fill="#5b21b6">tool_call</text>
+    <rect x="442" y="494" width="104" height="22" rx="11" fill="#fff" stroke="#7c3aed"/><text x="494" y="509" fill="#5b21b6">tool_result</text>
+    <rect x="556" y="494" width="64" height="22" rx="11" fill="#fff" stroke="#7c3aed"/><text x="588" y="509" fill="#5b21b6">token</text>
+    <rect x="630" y="494" width="64" height="22" rx="11" fill="#fff" stroke="#7c3aed"/><text x="662" y="509" fill="#5b21b6">token</text>
+    <text x="716" y="509" fill="#7c3aed" font-size="14">…</text>
+    <rect x="738" y="494" width="56" height="22" rx="11" fill="#fff" stroke="#7c3aed"/><text x="766" y="509" fill="#5b21b6">done</text>
+  </g>
+
+  <!-- banner -->
+  <rect x="30" y="546" width="940" height="62" rx="12" fill="#0f172a"/>
+  <text x="500" y="573" text-anchor="middle" font-size="16" font-weight="bold" fill="#f8fafc">Mono·Flux = 자바 쪽 타입  /  SSE = 네트워크 쪽 규약</text>
+  <text x="500" y="595" text-anchor="middle" font-size="14" fill="#cbd5e1">Flux + SSE = 실시간 스트리밍 (ChatGPT처럼 글자가 하나씩 나오는 방식)</text>
+</svg>

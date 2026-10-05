@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="735" viewBox="0 0 1000 735" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="735" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">요청이 Spring Security를 지나가는 길</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">JwtAuthenticationFilter → 인가 규칙 → Controller</text>
+<rect x="40" y="92" width="520" height="62" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="300" y="118" text-anchor="middle" font-size="15" fill="#075985" font-weight="bold">요청 도착</text>
+<text x="300" y="140" text-anchor="middle" font-size="12.5" fill="#0f172a">쿠키 access_token   또는   Authorization: Bearer 헤더</text>
+<line x1="300" y1="154" x2="300" y2="184" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="40" y="186" width="520" height="128" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2.4"/>
+<text x="300" y="212" text-anchor="middle" font-size="15" fill="#166534" font-weight="bold">① JwtAuthenticationFilter</text>
+<text x="60" y="240" text-anchor="start" font-size="12.5" fill="#0f172a">•  resolveToken(): ① 쿠키 → ② 없으면 Authorization: Bearer</text>
+<text x="60" y="264" text-anchor="start" font-size="12.5" fill="#0f172a">•  validateToken(): 서명 · 만료 확인</text>
+<text x="60" y="288" text-anchor="start" font-size="12.5" fill="#0f172a">•  성공 → SecurityContext 에 AuthUser 저장</text>
+<line x1="300" y1="314" x2="300" y2="344" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="40" y="346" width="520" height="206" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.4"/>
+<text x="300" y="372" text-anchor="middle" font-size="14" fill="#5b21b6" font-weight="bold">② SecurityConfig 인가 규칙  (위에서부터 먼저 일치하는 규칙 적용)</text>
+<rect x="55" y="388" width="490" height="34" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="68" y="410" text-anchor="start" font-size="12" fill="#5b21b6" font-weight="bold">PUBLIC_URLS</text>
+<text x="235" y="410" text-anchor="start" font-size="11.5" fill="#0f172a">permitAll  (로그인 · 로그아웃 · 회원가입 · Swagger · /error)</text>
+<rect x="55" y="428" width="490" height="34" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
+<text x="68" y="450" text-anchor="start" font-size="12" fill="#92400e" font-weight="bold">ASYNC · ERROR 디스패치</text>
+<text x="235" y="450" text-anchor="start" font-size="11.5" fill="#0f172a">permitAll   ← /api/ai/** 보다 앞에 둔다</text>
+<rect x="55" y="468" width="490" height="34" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="68" y="490" text-anchor="start" font-size="12" fill="#5b21b6" font-weight="bold">/api/ai/**</text>
+<text x="235" y="490" text-anchor="start" font-size="11.5" fill="#0f172a">authenticated  (로그인 필요)</text>
+<rect x="55" y="508" width="490" height="34" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="68" y="530" text-anchor="start" font-size="12" fill="#5b21b6" font-weight="bold">그 외 요청</text>
+<text x="235" y="530" text-anchor="start" font-size="11.5" fill="#0f172a">프로젝트 정책에 따라 인가</text>
+<line x1="300" y1="552" x2="300" y2="582" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="40" y="584" width="520" height="56" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="300" y="609" text-anchor="middle" font-size="15" fill="#166534" font-weight="bold">③ Controller</text>
+<text x="300" y="629" text-anchor="middle" font-size="12" fill="#0f172a">@AuthenticationPrincipal 로 로그인 사용자를 꺼내 쓴다</text>
+<rect x="600" y="186" width="370" height="100" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2.4"/>
+<text x="785" y="214" text-anchor="middle" font-size="14" fill="#991b1b" font-weight="bold">인증 실패 → 401 Unauthorized</text>
+<text x="785" y="242" text-anchor="middle" font-size="12.5" fill="#0f172a">토큰 없음 · 만료 · 위조</text>
+<text x="785" y="264" text-anchor="middle" font-size="12.5" fill="#0f172a">Controller 까지 가지 않는다</text>
+<line x1="560" y1="236" x2="600" y2="236" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="600" y="346" width="370" height="206" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2.4" stroke-dasharray="6 4"/>
+<text x="785" y="374" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">함정: 유효한 쿠키인데 401?</text>
+<text x="620" y="404" text-anchor="start" font-size="12.5" fill="#0f172a">컨트롤러가 Mono 를 반환하면</text>
+<text x="620" y="430" text-anchor="start" font-size="12.5" fill="#0f172a">응답이 비동기로 완료되면서</text>
+<text x="620" y="456" text-anchor="start" font-size="12.5" fill="#0f172a">서블릿이 요청을 한 번 더(ASYNC) 디스패치</text>
+<text x="620" y="482" text-anchor="start" font-size="12.5" fill="#0f172a">→ 이때 인증 정보가 없어 401 발생</text>
+<text x="620" y="508" text-anchor="start" font-size="12.5" fill="#92400e" font-weight="bold">해결: ASYNC · ERROR permitAll 규칙 추가</text>
+<line x1="560" y1="450" x2="600" y2="450" stroke="#d97706" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#o)"/>
+<rect x="30" y="660" width="940" height="66" rx="12" fill="#0f172a"/><text x="500.0" y="687" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">인증은 최초 REQUEST 디스패치에서 이미 끝났으므로 ASYNC 에서는 다시 검사하지 않는다</text>
+<text x="500.0" y="710" text-anchor="middle" font-size="12" fill="#fbbf24">로그인 쿠키로 POST /api/ai/route 가 401 이면 이 규칙의 누락을 먼저 의심한다</text>
+</svg>
