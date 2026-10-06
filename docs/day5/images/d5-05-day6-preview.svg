@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="720" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">Day 5 → Day 6</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">흩어진 기능을 하나의 그래프(StateGraph)로 다시 짠다</text>
+<rect x="30" y="98" width="300" height="224" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="180" y="126" text-anchor="middle" font-size="15" fill="#075985" font-weight="bold">Day 5 까지 만든 것</text>
+<text x="52" y="160" text-anchor="start" font-size="13" fill="#0f172a">•  Function Calling · 멀티턴</text>
+<text x="52" y="190" text-anchor="start" font-size="13" fill="#0f172a">•  RAG (search_documents)</text>
+<text x="52" y="220" text-anchor="start" font-size="13" fill="#0f172a">•  Kill Switch (3가지 상한)</text>
+<text x="52" y="250" text-anchor="start" font-size="13" fill="#0f172a">•  PII 마스킹 (4지점)</text>
+<text x="52" y="288" text-anchor="start" font-size="12" fill="#991b1b" font-weight="bold">흐름이 코드 속 if · while 에 숨어 있다</text>
+<line x1="330" y1="210" x2="380" y2="210" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<rect x="380" y="98" width="590" height="224" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="675" y="126" text-anchor="middle" font-size="15" fill="#5b21b6" font-weight="bold">Day 6 — StateGraph</text>
+<rect x="400" y="190" width="88" height="40" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="444" y="215" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">mask</text>
+<rect x="520" y="190" width="100" height="40" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="570" y="215" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">classify</text>
+<line x1="488" y1="210" x2="520" y2="210" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<rect x="670" y="134" width="150" height="30" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="745" y="154" text-anchor="middle" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">stock</text>
+<line x1="620" y1="210" x2="670" y2="149" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<line x1="820" y1="149" x2="848" y2="210" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<rect x="670" y="174" width="150" height="30" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="745" y="194" text-anchor="middle" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">exchange</text>
+<line x1="620" y1="210" x2="670" y2="189" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<line x1="820" y1="189" x2="848" y2="210" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<rect x="670" y="214" width="150" height="30" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="745" y="234" text-anchor="middle" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">knowledge (RAG)</text>
+<line x1="620" y1="210" x2="670" y2="229" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<line x1="820" y1="229" x2="848" y2="210" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<rect x="670" y="254" width="150" height="30" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="745" y="274" text-anchor="middle" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">general</text>
+<line x1="620" y1="210" x2="670" y2="269" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<line x1="820" y1="269" x2="848" y2="210" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#p)"/>
+<rect x="848" y="190" width="110" height="40" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+<text x="903" y="215" text-anchor="middle" font-size="12.5" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer</text>
+<text x="675" y="308" text-anchor="middle" font-size="11.5" fill="#475569">분류 결과에 따라 갈라지는 조건부 엣지</text>
+<text x="30" y="364" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">미션 4 (실습) — 계획하고 점검하는 순환</text>
+<rect x="30" y="378" width="940" height="196" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2.2"/>
+<rect x="60" y="414" width="170" height="62" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="145.0" y="441" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">plan_node</text>
+<text x="145.0" y="463" text-anchor="middle" font-size="11.5" fill="#475569">목표를 단계로 나눈다</text>
+<rect x="310" y="414" width="170" height="62" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="395.0" y="441" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">execute_node</text>
+<text x="395.0" y="463" text-anchor="middle" font-size="11.5" fill="#475569">단계를 Tool 로 실행</text>
+<rect x="560" y="414" width="170" height="62" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="645.0" y="441" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">reflect_node</text>
+<text x="645.0" y="463" text-anchor="middle" font-size="11.5" fill="#475569">목표를 채웠나 점검</text>
+<rect x="800" y="414" width="150" height="62" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="875.0" y="441" text-anchor="middle" font-size="13.5" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer_node</text>
+<text x="875.0" y="463" text-anchor="middle" font-size="11.5" fill="#475569">최종 답변</text>
+<line x1="230" y1="445" x2="310" y2="445" stroke="#d97706" stroke-width="2.2" marker-end="url(#o)"/>
+<line x1="480" y1="445" x2="560" y2="445" stroke="#d97706" stroke-width="2.2" marker-end="url(#o)"/>
+<line x1="730" y1="445" x2="800" y2="445" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<text x="765" y="436" text-anchor="middle" font-size="11.5" fill="#166534" font-weight="bold">충분</text>
+<polyline points="645,476 645,520 145,520 145,478" fill="none" stroke="#d97706" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#o)"/>
+<text x="395" y="514" text-anchor="middle" font-size="12.5" fill="#92400e" font-weight="bold">부족하면 다시 계획 (재시도 1~2회 상한)</text>
+<text x="500" y="552" text-anchor="middle" font-size="12" fill="#0f172a">예) &quot;내 포트폴리오 점검해줘&quot; → 보유 종목 조회 → 시세 확인 → 비중 계산 → 점검 → 답변</text>
+<rect x="30" y="606" width="940" height="66" rx="12" fill="#0f172a"/><text x="500.0" y="633" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">자율형 Agent = 계획 + 실행 + 점검 + 상한</text>
+<text x="500.0" y="656" text-anchor="middle" font-size="12" fill="#fbbf24">오늘 만든 Kill Switch · PII 마스킹이 그래프의 노드와 조건으로 들어간다</text>
+</svg>

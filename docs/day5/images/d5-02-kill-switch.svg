@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="720" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">루프 폭주와 Kill Switch</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">Agent 는 Tool 을 반복해서 부른다 — 반복에 상한이 없으면 멈추지 않는다</text>
+<rect x="30" y="98" width="150" height="72" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="105" y="132" text-anchor="middle" font-size="16" fill="#075985" font-weight="bold">질문</text>
+<text x="105" y="154" text-anchor="middle" font-size="11.5" fill="#475569">사용자</text>
+<line x1="180" y1="134" x2="250" y2="134" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="250" y="98" width="190" height="72" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="345" y="132" text-anchor="middle" font-size="16" fill="#5b21b6" font-weight="bold">LLM 판단</text>
+<text x="345" y="154" text-anchor="middle" font-size="11.5" fill="#475569">어떤 Tool 을 쓸까</text>
+<rect x="560" y="98" width="190" height="72" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="655" y="132" text-anchor="middle" font-size="16" fill="#92400e" font-weight="bold">Tool 실행</text>
+<text x="655" y="154" text-anchor="middle" font-size="11.5" fill="#475569">우리 서버가 실행</text>
+<line x1="440" y1="122" x2="560" y2="122" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="500" y="113" text-anchor="middle" font-size="11" fill="#475569">tool_calls 요청</text>
+<line x1="560" y1="150" x2="440" y2="150" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="500" y="168" text-anchor="middle" font-size="11" fill="#475569">결과를 다시 전달</text>
+<rect x="790" y="98" width="180" height="72" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="880" y="126" text-anchor="middle" font-size="12" fill="#334155" font-weight="bold">tool_calls 가 없으면</text>
+<text x="880" y="148" text-anchor="middle" font-size="12" fill="#334155">루프 종료 → 최종 답변</text>
+<rect x="30" y="196" width="940" height="112" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="500" y="222" text-anchor="middle" font-size="14.5" fill="#991b1b" font-weight="bold">Kill Switch 가 없으면</text>
+<rect x="48" y="238" width="205" height="52" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="150" y="269" text-anchor="middle" font-size="12.5" fill="#0f172a">같은 Tool 을 계속 요청</text>
+<line x1="253" y1="264" x2="277" y2="264" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="277" y="238" width="205" height="52" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="379" y="269" text-anchor="middle" font-size="12.5" fill="#0f172a">messages 가 계속 커짐</text>
+<line x1="482" y1="264" x2="506" y2="264" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="506" y="238" width="205" height="52" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="608" y="269" text-anchor="middle" font-size="12.5" fill="#0f172a">토큰 · 비용이 계속 증가</text>
+<line x1="711" y1="264" x2="735" y2="264" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="735" y="238" width="205" height="52" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="837" y="269" text-anchor="middle" font-size="12.5" fill="#0f172a">502 오류 또는 강제 종료</text>
+<text x="30" y="346" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">Kill Switch — 라운드마다 Tool 을 실행하기 전에 검사한다</text>
+<rect x="30" y="360" width="620" height="214" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2.2"/>
+<rect x="46" y="378" width="188" height="132" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="140" y="404" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">① 라운드 상한</text>
+<text x="140" y="428" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">MAX_TOOL_ROUNDS</text>
+<text x="140" y="454" text-anchor="middle" font-size="12" fill="#475569">반복 횟수를 센다</text>
+<text x="140" y="476" text-anchor="middle" font-size="12" fill="#475569">예) 5회를 넘으면 중단</text>
+<rect x="246" y="378" width="188" height="132" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="340" y="404" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">② 시간 상한</text>
+<text x="340" y="428" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">AGENT_MAX_SECONDS</text>
+<text x="340" y="454" text-anchor="middle" font-size="12" fill="#475569">전체 실행 시간을 잰다</text>
+<text x="340" y="476" text-anchor="middle" font-size="12" fill="#475569">예) 30초를 넘으면 중단</text>
+<rect x="446" y="378" width="188" height="132" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="540" y="404" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">③ 반복 감지</text>
+<text x="540" y="428" text-anchor="middle" font-size="11.5" fill="#0f172a" font-weight="bold">같은 Tool + 같은 인자</text>
+<text x="540" y="454" text-anchor="middle" font-size="12" fill="#475569">연속 2회 이상이면</text>
+<text x="540" y="476" text-anchor="middle" font-size="12" fill="#475569">같은 일을 반복 중</text>
+<text x="340" y="546" text-anchor="middle" font-size="13" fill="#92400e" font-weight="bold">셋 중 하나라도 걸리면 Tool 을 실행하지 않고 멈춘다</text>
+<line x1="650" y1="414" x2="700" y2="414" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<line x1="650" y1="520" x2="700" y2="520" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<rect x="700" y="372" width="270" height="92" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="835" y="400" text-anchor="middle" font-size="14" fill="#166534" font-weight="bold">모두 통과</text>
+<text x="835" y="424" text-anchor="middle" font-size="12.5" fill="#0f172a">Tool 실행 → 다음 라운드</text>
+<text x="835" y="446" text-anchor="middle" font-size="11.5" fill="#475569">(LLM 이 다시 판단)</text>
+<rect x="700" y="474" width="270" height="100" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="835" y="500" text-anchor="middle" font-size="14" fill="#991b1b" font-weight="bold">하나라도 걸림</text>
+<text x="835" y="523" text-anchor="middle" font-size="12.5" fill="#0f172a">안내 문구를 답변으로 반환</text>
+<text x="835" y="545" text-anchor="middle" font-size="11.5" fill="#991b1b" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">로그  KILL_SWITCH reason=…</text>
+<rect x="30" y="612" width="940" height="66" rx="12" fill="#0f172a"/><text x="500.0" y="639" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">상한은 LLM 이 아니라 코드가 쥔다 — Tool 을 쓰는 Agent 의 필수 안전장치</text>
+<text x="500.0" y="662" text-anchor="middle" font-size="12" fill="#fbbf24">Day 6 의 그래프에서도 &#x27;그래프 전체 실행 횟수&#x27;로 같은 원리를 쓴다</text>
+</svg>

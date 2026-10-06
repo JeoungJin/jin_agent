@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="700" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">PII 검사 순서가 중요한 이유</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">구체적인 패턴부터, 느슨한 패턴은 마지막에</text>
+<rect x="30" y="96" width="940" height="52" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="60" y="128" text-anchor="start" font-size="13" fill="#475569" font-weight="bold">입력</text>
+<text x="500" y="128" text-anchor="middle" font-size="16" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">내 번호는 010-1234-5678 입니다</text>
+<rect x="30" y="172" width="450" height="214" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="255" y="200" text-anchor="middle" font-size="15" fill="#991b1b" font-weight="bold">계좌번호를 먼저 검사하면</text>
+<text x="48" y="236" text-anchor="start" font-size="13" fill="#0f172a">계좌 패턴: 하이픈 3~4마디 · 합계 10~16자리</text>
+<text x="48" y="270" text-anchor="start" font-size="13" fill="#0f172a">010-1234-5678 은 3마디 · 11자리 → 계좌로 잡힘</text>
+<text x="48" y="304" text-anchor="start" font-size="13" fill="#991b1b" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">결과   ***-****-5678</text>
+<text x="48" y="338" text-anchor="start" font-size="13" fill="#991b1b" font-weight="bold">집계   ACCOUNT=1, PHONE=0   ✗ 오분류</text>
+<rect x="520" y="172" width="450" height="214" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="745" y="200" text-anchor="middle" font-size="15" fill="#166534" font-weight="bold">전화번호를 먼저 검사하면 (올바른 순서)</text>
+<text x="538" y="236" text-anchor="start" font-size="13" fill="#0f172a">전화 패턴: 휴대폰 01x · 유선 02 · 03x~06x</text>
+<text x="538" y="270" text-anchor="start" font-size="13" fill="#0f172a">010-1234-5678 → 전화번호로 먼저 확정</text>
+<text x="538" y="304" text-anchor="start" font-size="13" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">결과   010-****-5678</text>
+<text x="538" y="338" text-anchor="start" font-size="13" fill="#166534" font-weight="bold">집계   PHONE=1, ACCOUNT=0   ✓</text>
+<text x="30" y="424" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">검사 순서 (구체적 → 느슨)</text>
+<rect x="30" y="440" width="280" height="102" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="170" y="466" text-anchor="middle" font-size="14.5" fill="#5b21b6" font-weight="bold">① 주민번호</text>
+<text x="170" y="492" text-anchor="middle" font-size="12" fill="#0f172a">앞 6자리가 올바른 월 · 일일 때만</text>
+<text x="170" y="516" text-anchor="middle" font-size="11.5" fill="#5b21b6" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">900101-1234567 → 900101-1******</text>
+<line x1="310" y1="491" x2="360" y2="491" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="360" y="440" width="280" height="102" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="500" y="466" text-anchor="middle" font-size="14.5" fill="#075985" font-weight="bold">② 전화번호</text>
+<text x="500" y="492" text-anchor="middle" font-size="12" fill="#0f172a">휴대폰 01x · 유선 02 · 03x~06x</text>
+<text x="500" y="516" text-anchor="middle" font-size="11.5" fill="#075985" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">010-1234-5678 → 010-****-5678</text>
+<line x1="640" y1="491" x2="690" y2="491" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="690" y="440" width="280" height="102" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="830" y="466" text-anchor="middle" font-size="14.5" fill="#92400e" font-weight="bold">③ 계좌번호</text>
+<text x="830" y="492" text-anchor="middle" font-size="12" fill="#0f172a">하이픈 3~4마디 · 숫자 10~16자리</text>
+<text x="830" y="516" text-anchor="middle" font-size="11.5" fill="#92400e" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">110-123-456789 → ***-***-**6789</text>
+<rect x="30" y="562" width="940" height="52" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.6"/>
+<text x="50" y="583" text-anchor="start" font-size="13" fill="#334155" font-weight="bold">숫자 경계 규칙</text>
+<text x="190" y="583" text-anchor="start" font-size="13" fill="#334155" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">(?&lt;!\d) (?!\d)</text>
+<text x="50" y="604" text-anchor="start" font-size="12" fill="#475569">앞뒤가 숫자이면 매치하지 않는다 → 12345678901234567890 같은 긴 숫자열의 일부만 잘려 마스킹되는 일을 막는다</text>
+<rect x="30" y="634" width="940" height="44" rx="12" fill="#0f172a"/><text x="500.0" y="661.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">순서가 바뀌면 마스킹 형식과 탐지 기록이 틀어진다 — 테스트로 순서를 고정한다</text>
+</svg>
