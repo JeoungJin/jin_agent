@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="800" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">미션 4 — 계획하고 점검하는 순환</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">자율형 Agent = 계획 + 실행 + 점검 + 상한</text>
+<text x="500" y="104" text-anchor="middle" font-size="15" fill="#0f172a" font-weight="bold">목표:  &quot;내 포트폴리오 점검해줘&quot;</text>
+<rect x="30" y="138" width="110" height="44" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8"/>
+<text x="85.0" y="165.0" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">mask_node</text>
+<rect x="170" y="138" width="120" height="44" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="230.0" y="165.0" text-anchor="middle" font-size="12" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">plan_node</text>
+<rect x="335" y="138" width="140" height="44" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="405.0" y="165.0" text-anchor="middle" font-size="12" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">execute_node</text>
+<rect x="510" y="138" width="140" height="44" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="580.0" y="165.0" text-anchor="middle" font-size="12" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">reflect_node</text>
+<rect x="700" y="138" width="140" height="44" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+<text x="770.0" y="165.0" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer_node</text>
+<line x1="140" y1="160" x2="170" y2="160" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="290" y1="160" x2="335" y2="160" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="475" y1="160" x2="510" y2="160" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="650" y1="160" x2="700" y2="160" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<text x="675" y="150" text-anchor="middle" font-size="11.5" fill="#166534" font-weight="bold">충분</text>
+<rect x="860" y="138" width="80" height="44" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="900.0" y="165.0" text-anchor="middle" font-size="12" fill="#334155" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">END</text>
+<line x1="840" y1="160" x2="860" y2="160" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<polyline points="580,182 580,230 230,230 230,182" fill="none" stroke="#d97706" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#o)"/>
+<text x="405" y="222" text-anchor="middle" font-size="12" fill="#92400e" font-weight="bold">부족하면 다시 계획 (AGENT_MAX_REPLANS)</text>
+<text x="30" y="276" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">각 노드가 하는 일</text>
+<rect x="30" y="292" width="300" height="150" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="180" y="318" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">plan_node</text>
+<text x="180" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">목표를 3~5단계 계획으로 나눈다</text>
+<text x="180" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">JSON 으로 받아 형식을 검사한다</text>
+<text x="180" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">예) ① 보유 종목 조회 ② 시세 확인</text>
+<text x="180" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">③ 비중 계산</text>
+<rect x="350" y="292" width="300" height="150" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="500" y="318" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">execute_node</text>
+<text x="500" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">계획의 한 단계를 Tool 로 실행</text>
+<text x="500" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">읽기 전용 Tool 만 허용</text>
+<text x="500" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">결과를 State.step_results 에 쌓는다</text>
+<text x="500" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">(Day 4 의 Function Calling 재사용)</text>
+<rect x="670" y="292" width="300" height="150" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="820" y="318" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">reflect_node</text>
+<text x="820" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">목표를 채웠는지 스스로 점검</text>
+<text x="820" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">빠진 종목 · 근거 없는 숫자는 없나</text>
+<text x="820" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">충분하면 answer, 부족하면 재계획</text>
+<text x="820" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">재계획 횟수에 상한이 있다</text>
+<rect x="30" y="462" width="456" height="150" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="258" y="488" text-anchor="middle" font-size="14" fill="#075985" font-weight="bold">State 에 추가되는 값</text>
+<text x="48" y="514" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">goal  사용자의 큰 목표</text>
+<text x="48" y="529" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">plan  단계 목록 (최대 5개)</text>
+<text x="48" y="544" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">step_index  지금 몇 번째 단계인지</text>
+<text x="48" y="559" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">step_results  단계별 결과</text>
+<text x="48" y="574" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">replans  다시 계획한 횟수</text>
+<text x="48" y="589" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">steps  전체 노드 실행 횟수</text>
+<rect x="514" y="462" width="456" height="150" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="742" y="488" text-anchor="middle" font-size="14" fill="#991b1b" font-weight="bold">자율성에 거는 안전장치</text>
+<text x="530" y="516" text-anchor="start" font-size="11.5" fill="#0f172a">•  읽기 전용 Tool 만 자동 실행 (쓰기는 사람 승인)</text>
+<text x="530" y="537" text-anchor="start" font-size="11.5" fill="#0f172a">•  계획은 최대 5단계, 재계획은 최대 2회</text>
+<text x="530" y="558" text-anchor="start" font-size="11.5" fill="#0f172a">•  전체 노드 실행 횟수 · 시간 상한 (Kill Switch)</text>
+<text x="530" y="579" text-anchor="start" font-size="11.5" fill="#0f172a">•  입력과 Tool 결과의 PII 마스킹 유지</text>
+<text x="530" y="600" text-anchor="start" font-size="11.5" fill="#0f172a">•  계획 · 점검 결과는 서버 로그에 기록</text>
+<rect x="30" y="632" width="940" height="60" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="500" y="656" text-anchor="middle" font-size="13" fill="#334155" font-weight="bold">모호한 목표(&quot;알아서 투자 관련해서 해 줘&quot;)를 일부러 줘 본다</text>
+<text x="500" y="678" text-anchor="middle" font-size="12" fill="#475569">상한이 없으면 계획을 계속 새로 세운다 → 상한이 걸려 정상 종료하는지 관찰</text>
+<rect x="30" y="714" width="940" height="50" rx="12" fill="#0f172a"/><text x="500.0" y="744.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">자율형은 &#x27;마음대로&#x27;가 아니라 &#x27;상한 안에서 스스로 계획하고 점검&#x27;하는 것</text>
+</svg>

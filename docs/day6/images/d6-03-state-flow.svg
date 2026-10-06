@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="660" viewBox="0 0 1000 660" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="660" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">State 가 노드를 지나며 채워진다</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">미션 1 — 더미 Tool 로 뼈대만 먼저 확인한다</text>
+<rect x="30" y="100" width="90" height="42" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="75.0" y="126.0" text-anchor="middle" font-size="12.5" fill="#334155" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">START</text>
+<rect x="170" y="100" width="160" height="42" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="250.0" y="126.0" text-anchor="middle" font-size="12.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">classify_node</text>
+<rect x="400" y="100" width="130" height="42" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="465.0" y="126.0" text-anchor="middle" font-size="12.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">tool_node</text>
+<rect x="600" y="100" width="150" height="42" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
+<text x="675.0" y="126.0" text-anchor="middle" font-size="12.5" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer_node</text>
+<rect x="820" y="100" width="90" height="42" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="865.0" y="126.0" text-anchor="middle" font-size="12.5" fill="#334155" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">END</text>
+<line x1="120" y1="121" x2="170" y2="121" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="330" y1="121" x2="400" y2="121" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="530" y1="121" x2="600" y2="121" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="750" y1="121" x2="820" y2="121" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="30" y="200" width="300" height="230" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<text x="180" y="228" text-anchor="middle" font-size="13.5" fill="#5b21b6" font-weight="bold">① classify_node 가 끝난 State</text>
+<text x="46" y="262" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">question  &#x27;삼성전자 주가 알려줘&#x27;</text>
+<text x="46" y="306" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">category  &#x27;STOCK&#x27;</text>
+<text x="46" y="324" text-anchor="start" font-size="11" fill="#7c3aed" font-weight="bold">← 새로 채워짐</text>
+<text x="46" y="350" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">tool_result  (비어 있음)</text>
+<text x="46" y="394" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer  (비어 있음)</text>
+<rect x="350" y="200" width="300" height="230" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="500" y="228" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold">② tool_node 가 끝난 State</text>
+<text x="366" y="262" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">question  &#x27;삼성전자 주가 알려줘&#x27;</text>
+<text x="366" y="306" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">category  &#x27;STOCK&#x27;</text>
+<text x="366" y="350" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">tool_result  &#x27;[더미] 71,000원&#x27;</text>
+<text x="366" y="368" text-anchor="start" font-size="11" fill="#d97706" font-weight="bold">← 새로 채워짐</text>
+<text x="366" y="394" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer  (비어 있음)</text>
+<rect x="670" y="200" width="300" height="230" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="820" y="228" text-anchor="middle" font-size="13.5" fill="#166534" font-weight="bold">③ answer_node 가 끝난 State</text>
+<text x="686" y="262" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">question  &#x27;삼성전자 주가 알려줘&#x27;</text>
+<text x="686" y="306" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">category  &#x27;STOCK&#x27;</text>
+<text x="686" y="350" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">tool_result  &#x27;[더미] 71,000원&#x27;</text>
+<text x="686" y="394" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">answer  &#x27;삼성전자 현재가는 …&#x27;</text>
+<text x="686" y="412" text-anchor="start" font-size="11" fill="#16a34a" font-weight="bold">← 새로 채워짐</text>
+<polyline points="250,142 250,172 180,172 180,200" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#p)"/>
+<polyline points="465,142 465,172 500,172 500,200" fill="none" stroke="#d97706" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#o)"/>
+<polyline points="675,142 675,172 820,172 820,200" fill="none" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#g)"/>
+<rect x="30" y="456" width="940" height="84" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+<text x="500" y="484" text-anchor="middle" font-size="14" fill="#0f172a" font-weight="bold">각 단계마다 print 로 State 를 찍어 본다</text>
+<text x="500" y="510" text-anchor="middle" font-size="12.5" fill="#475569" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">graph.stream(입력, stream_mode=&#x27;updates&#x27;)  →  노드가 돌려준 값만 한 줄씩 출력</text>
+<text x="500" y="530" text-anchor="middle" font-size="12" fill="#64748b">노드 이름 · 입력 State · 돌려준 값 순서로 읽는다</text>
+<rect x="30" y="566" width="940" height="44" rx="12" fill="#0f172a"/><text x="500.0" y="593.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">START → classify_node → tool_node → answer_node → END</text>
+</svg>
