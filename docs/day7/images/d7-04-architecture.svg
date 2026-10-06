@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="760" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">README 에 넣을 전체 아키텍처</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">그림 한 장으로 7일간 만든 것을 설명한다</text>
+<rect x="30" y="110" width="230" height="200" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.2"/>
+<text x="145" y="138" text-anchor="middle" font-size="14.5" fill="#075985" font-weight="bold">React (5173)</text>
+<text x="145" y="172" text-anchor="middle" font-size="11.5" fill="#0f172a">로그인 · 스트리밍 채팅</text>
+<text x="145" y="202" text-anchor="middle" font-size="11.5" fill="#0f172a">Tool 칩 · 출처 표시</text>
+<text x="145" y="232" text-anchor="middle" font-size="11.5" fill="#0f172a">포트폴리오 대시보드</text>
+<text x="145" y="262" text-anchor="middle" font-size="11.5" fill="#0f172a">대화 ID · 새 대화</text>
+<rect x="290" y="110" width="230" height="200" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2.2"/>
+<text x="405" y="138" text-anchor="middle" font-size="14.5" fill="#166534" font-weight="bold">SpringBoot (8000)</text>
+<text x="405" y="172" text-anchor="middle" font-size="11.5" fill="#0f172a">Gateway · JWT HttpOnly 쿠키</text>
+<text x="405" y="202" text-anchor="middle" font-size="11.5" fill="#0f172a">대화 기록 보관 · PII 마스킹</text>
+<text x="405" y="232" text-anchor="middle" font-size="11.5" fill="#0f172a">Fallback · 계좌 내부 API</text>
+<text x="405" y="262" text-anchor="middle" font-size="11.5" fill="#0f172a">SSE 중계 (Flux)</text>
+<rect x="550" y="110" width="230" height="200" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.2"/>
+<text x="665" y="138" text-anchor="middle" font-size="14.5" fill="#5b21b6" font-weight="bold">FastAPI (9000)</text>
+<text x="665" y="172" text-anchor="middle" font-size="11.5" fill="#0f172a">LangGraph 에이전트</text>
+<text x="665" y="202" text-anchor="middle" font-size="11.5" fill="#0f172a">Function Calling · RAG</text>
+<text x="665" y="232" text-anchor="middle" font-size="11.5" fill="#0f172a">Manager-Worker</text>
+<text x="665" y="262" text-anchor="middle" font-size="11.5" fill="#0f172a">Kill Switch · PII 마스킹</text>
+<line x1="260" y1="210" x2="290" y2="210" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="520" y1="210" x2="550" y2="210" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<line x1="550" y1="240" x2="520" y2="240" stroke="#475569" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+<line x1="290" y1="240" x2="260" y2="240" stroke="#475569" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#a)"/>
+<rect x="790" y="110" width="180" height="200" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2.2"/>
+<text x="880" y="138" text-anchor="middle" font-size="14.5" fill="#92400e" font-weight="bold">외부 · 데이터</text>
+<text x="880" y="172" text-anchor="middle" font-size="11.5" fill="#0f172a">OpenAI (LLM · 임베딩)</text>
+<text x="880" y="202" text-anchor="middle" font-size="11.5" fill="#0f172a">yfinance (시세)</text>
+<text x="880" y="232" text-anchor="middle" font-size="11.5" fill="#0f172a">FAISS (문서 인덱스)</text>
+<text x="880" y="262" text-anchor="middle" font-size="11.5" fill="#0f172a">계좌 내부 API</text>
+<line x1="780" y1="210" x2="790" y2="210" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="30" y="350" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">안전장치 — 나가는 곳마다 한 겹씩</text>
+<rect x="30" y="366" width="220" height="112" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+<text x="140" y="394" text-anchor="middle" font-size="14" fill="#075985" font-weight="bold">인증</text>
+<text x="140" y="424" text-anchor="middle" font-size="11.5" fill="#0f172a">JWT · 로그인 없는</text>
+<text x="140" y="444" text-anchor="middle" font-size="11.5" fill="#0f172a">계좌조회 거부</text>
+<rect x="270" y="366" width="220" height="112" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="380" y="394" text-anchor="middle" font-size="14" fill="#991b1b" font-weight="bold">PII 마스킹</text>
+<text x="380" y="424" text-anchor="middle" font-size="11.5" fill="#0f172a">입력 · 도구 결과 ·</text>
+<text x="380" y="444" text-anchor="middle" font-size="11.5" fill="#0f172a">출력 · 저장 · 로그</text>
+<rect x="510" y="366" width="220" height="112" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="620" y="394" text-anchor="middle" font-size="14" fill="#92400e" font-weight="bold">Kill Switch</text>
+<text x="620" y="424" text-anchor="middle" font-size="11.5" fill="#0f172a">라운드 · 시간 ·</text>
+<text x="620" y="444" text-anchor="middle" font-size="11.5" fill="#0f172a">반복 · 그래프 실행 횟수</text>
+<rect x="750" y="366" width="220" height="112" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="860" y="394" text-anchor="middle" font-size="14" fill="#166534" font-weight="bold">근거와 출처</text>
+<text x="860" y="424" text-anchor="middle" font-size="11.5" fill="#0f172a">RAG 출처 · 임계값 ·</text>
+<text x="860" y="444" text-anchor="middle" font-size="11.5" fill="#0f172a">&quot;확인할 수 없다&quot;</text>
+<text x="30" y="520" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">README 에 이 그림과 함께 쓸 것</text>
+<text x="46" y="552" text-anchor="start" font-size="13" fill="#0f172a">•  어떤 문제를 푸는 프로젝트인가 (한 문장)</text>
+<text x="46" y="580" text-anchor="start" font-size="13" fill="#0f172a">•  층마다 맡은 일과 약속(주소 · 형식 · 인증)</text>
+<text x="46" y="608" text-anchor="start" font-size="13" fill="#0f172a">•  AI 가 틀렸던 사례 3가지와 고친 과정</text>
+<text x="46" y="636" text-anchor="start" font-size="13" fill="#0f172a">•  안전장치를 왜 그렇게 설계했나</text>
+<text x="46" y="664" text-anchor="start" font-size="13" fill="#0f172a">•  아직 못 고친 한계와 다음 개선 방향</text>
+<rect x="30" y="704" width="940" height="40" rx="12" fill="#0f172a"/><text x="500.0" y="729.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">그림은 AI 가 그려 줘도, 왜 이렇게 나눴는지는 내 말로 설명할 수 있어야 한다</text>
+</svg>

@@ -44,7 +44,7 @@
 <rect x="540" y="492" width="430" height="44" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
 <text x="755" y="520" text-anchor="middle" font-size="13" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">steps 카운터 + 조건부 엣지</text>
 <rect x="30" y="548" width="400" height="44" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
-<text x="230" y="576" text-anchor="middle" font-size="13.5" fill="#0f172a" font-weight="bold">계획 · 점검  (미션 4, 신규)</text>
+<text x="230" y="576" text-anchor="middle" font-size="13.5" fill="#0f172a" font-weight="bold">계획 · 점검  (미션 4, 선택)</text>
 <line x1="430" y1="570" x2="540" y2="570" stroke="#475569" stroke-width="2.2" marker-end="url(#a)"/>
 <rect x="540" y="548" width="430" height="44" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
 <text x="755" y="576" text-anchor="middle" font-size="13" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">plan · execute · reflect_node</text>

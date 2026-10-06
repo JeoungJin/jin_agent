@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="780" viewBox="0 0 1000 780" font-family="'Malgun Gothic','NanumGothic','Nanum Gothic','Noto Sans KR',sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0284c7"/></marker></defs>
+<rect width="1000" height="780" fill="#f8fafc"/>
+<text x="500" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#0f172a">[선택 심화] 병렬 Worker 와 Reducer</text>
+<text x="500" y="68" text-anchor="middle" font-size="14" fill="#64748b">Send 로 같은 일을 동시에 여러 Worker 에게 — 결과 합치기가 새로운 문제다</text>
+<text x="30" y="100" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">순차 vs 병렬</text>
+<text x="30" y="134" text-anchor="start" font-size="13" fill="#475569" font-weight="bold">순차</text>
+<rect x="100" y="116" width="150" height="30" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+<text x="175.0" y="136" text-anchor="middle" font-size="11.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">stock</text>
+<rect x="250" y="116" width="230" height="30" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="365.0" y="136" text-anchor="middle" font-size="11.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">knowledge</text>
+<rect x="480" y="116" width="100" height="30" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="530.0" y="136" text-anchor="middle" font-size="11.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">account</text>
+<text x="600" y="136" text-anchor="start" font-size="12" fill="#475569">총 시간 = 세 Worker 의 합</text>
+<text x="30" y="184" text-anchor="start" font-size="13" fill="#475569" font-weight="bold">병렬</text>
+<rect x="100" y="160" width="150" height="24" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+<text x="175.0" y="177" text-anchor="middle" font-size="10.5" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">stock</text>
+<rect x="100" y="190" width="230" height="24" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="215.0" y="207" text-anchor="middle" font-size="10.5" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">knowledge</text>
+<rect x="100" y="220" width="100" height="24" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="150.0" y="237" text-anchor="middle" font-size="10.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">account</text>
+<text x="600" y="200" text-anchor="start" font-size="12" fill="#166534" font-weight="bold">총 시간 ≈ 가장 오래 걸리는 Worker</text>
+<text x="30" y="280" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">Send 로 나누기</text>
+<rect x="30" y="294" width="940" height="84" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="48" y="322" text-anchor="start" font-size="12.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">def manager_to_workers(state):</text>
+<text x="48" y="348" text-anchor="start" font-size="12.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">    return [Send(&#x27;worker&#x27;, {&#x27;name&#x27;: w}) for w in state[&#x27;workers&#x27;]]</text>
+<text x="48" y="368" text-anchor="start" font-size="11.5" fill="#475569">→ 같은 worker 노드가 입력만 바꿔 동시에 여러 번 실행된다</text>
+<text x="30" y="418" text-anchor="start" font-size="15" fill="#0f172a" font-weight="bold">Reducer 가 없으면</text>
+<rect x="30" y="432" width="456" height="250" rx="12" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+<text x="258" y="458" text-anchor="middle" font-size="13.5" fill="#991b1b" font-weight="bold">덮어쓰기 — 마지막 값만 남는다</text>
+<rect x="48" y="478" width="110" height="30" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+<text x="103.0" y="498.0" text-anchor="middle" font-size="11" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">stock</text>
+<line x1="158" y1="493" x2="200" y2="540" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<text x="165" y="498" text-anchor="middle" font-size="" fill="#0f172a"></text>
+<rect x="48" y="516" width="110" height="30" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="103.0" y="536.0" text-anchor="middle" font-size="11" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">knowledge</text>
+<line x1="158" y1="531" x2="200" y2="540" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<text x="165" y="536" text-anchor="middle" font-size="" fill="#0f172a"></text>
+<rect x="48" y="554" width="110" height="30" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="103.0" y="574.0" text-anchor="middle" font-size="11" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">account</text>
+<line x1="158" y1="569" x2="200" y2="540" stroke="#dc2626" stroke-width="2.2" marker-end="url(#r)"/>
+<text x="165" y="574" text-anchor="middle" font-size="" fill="#0f172a"></text>
+<rect x="200" y="500" width="266" height="80" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="333" y="526" text-anchor="middle" font-size="11.5" fill="#475569" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">worker_results</text>
+<text x="333" y="556" text-anchor="middle" font-size="13" fill="#991b1b" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">[&#x27;잔액&#x27;]  (3개 중 1개)</text>
+<text x="258" y="620" text-anchor="middle" font-size="12" fill="#991b1b" font-weight="bold">빠진 결과가 있어도 오류가 나지 않는다 — 조용히 틀린다</text>
+<text x="258" y="646" text-anchor="middle" font-size="11.5" fill="#475569">병렬 실행 순서도 매번 다를 수 있다</text>
+<rect x="514" y="432" width="456" height="250" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="742" y="458" text-anchor="middle" font-size="13.5" fill="#166534" font-weight="bold">operator.add — 누적된다</text>
+<rect x="532" y="478" width="110" height="30" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+<text x="587.0" y="498.0" text-anchor="middle" font-size="11" fill="#075985" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">stock</text>
+<line x1="642" y1="493" x2="684" y2="540" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="532" y="516" width="110" height="30" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/>
+<text x="587.0" y="536.0" text-anchor="middle" font-size="11" fill="#5b21b6" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">knowledge</text>
+<line x1="642" y1="531" x2="684" y2="540" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="532" y="554" width="110" height="30" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+<text x="587.0" y="574.0" text-anchor="middle" font-size="11" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">account</text>
+<line x1="642" y1="569" x2="684" y2="540" stroke="#16a34a" stroke-width="2.2" marker-end="url(#g)"/>
+<rect x="684" y="500" width="266" height="80" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8"/>
+<text x="817" y="526" text-anchor="middle" font-size="11.5" fill="#475569" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">worker_results</text>
+<text x="817" y="556" text-anchor="middle" font-size="13" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">[&#x27;시세&#x27;,&#x27;약관&#x27;,&#x27;잔액&#x27;]</text>
+<text x="742" y="620" text-anchor="middle" font-size="12" fill="#166534" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">Annotated[list, operator.add]</text>
+<text x="742" y="646" text-anchor="middle" font-size="11.5" fill="#475569">여러 Worker 의 결과를 안전하게 합친다</text>
+<rect x="30" y="704" width="940" height="44" rx="12" fill="#0f172a"/><text x="500.0" y="731.0" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="bold">병렬은 빠르지만 비용은 같거나 더 든다 — 효과가 있는 질문에만 쓴다</text>
+</svg>
