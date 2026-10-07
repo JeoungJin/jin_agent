@@ -7,3 +7,6 @@
 | `build/` | 문서·이미지 생성 스크립트 |
 
 기존 그림 `webclient-flow`는 `.block()` 표기가 4-1 프롬프트(Mono 그대로 반환)와 맞지 않아 `d2-r3-webclient-mono-flux`로 고쳐 다시 그렸다 (경로 `/api/v1/route`, DTO `AiRouteResponse`로도 통일).
+
+## 버전 중립 표기
+- Spring Boot 3.x(`starter-web` + `starter-webflux`)와 4.x(`starter-webmvc` + `starter-webclient`)의 스타터 이름이 달라, 프롬프트의 `[전제]`·의존성 문구를 버전 중립으로 고침. 9절에 "Agent의 Tool은 DB가 아니라 API 경계에 붙는다" 개념 박스 추가.

@@ -29,20 +29,20 @@
 <text x="180" y="318" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">plan_node</text>
 <text x="180" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">목표를 3~5단계 계획으로 나눈다</text>
 <text x="180" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">JSON 으로 받아 형식을 검사한다</text>
-<text x="180" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">예) ① 보유 종목 조회 ② 시세 확인</text>
-<text x="180" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">③ 비중 계산</text>
+<text x="180" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">예) ① 보유 종목 조회 (Spring API)</text>
+<text x="180" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">② 시세 확인 ③ 비중 계산 (코드)</text>
 <rect x="350" y="292" width="300" height="150" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
 <text x="500" y="318" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">execute_node</text>
-<text x="500" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">계획의 한 단계를 Tool 로 실행</text>
-<text x="500" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">읽기 전용 Tool 만 허용</text>
+<text x="500" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">Tool 단계: 읽기 전용 Tool 만 실행</text>
+<text x="500" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">compute 단계: LLM 없이 코드로 계산</text>
 <text x="500" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">결과를 State.step_results 에 쌓는다</text>
 <text x="500" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">(Day 4 의 Function Calling 재사용)</text>
 <rect x="670" y="292" width="300" height="150" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
 <text x="820" y="318" text-anchor="middle" font-size="13.5" fill="#92400e" font-weight="bold" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">reflect_node</text>
-<text x="820" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">목표를 채웠는지 스스로 점검</text>
-<text x="820" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">빠진 종목 · 근거 없는 숫자는 없나</text>
-<text x="820" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">충분하면 answer, 부족하면 재계획</text>
-<text x="820" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">재계획 횟수에 상한이 있다</text>
+<text x="820" y="344" text-anchor="middle" font-size="11.5" fill="#0f172a">빠진 종목은 코드로 먼저 비교한다</text>
+<text x="820" y="368" text-anchor="middle" font-size="11.5" fill="#0f172a">(보유 종목 vs 시세 결과)</text>
+<text x="820" y="392" text-anchor="middle" font-size="11.5" fill="#0f172a">나머지는 LLM 이 목표 달성을 점검</text>
+<text x="820" y="416" text-anchor="middle" font-size="11.5" fill="#0f172a">부족하면 재계획 (상한 있음)</text>
 <rect x="30" y="462" width="456" height="150" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
 <text x="258" y="488" text-anchor="middle" font-size="14" fill="#075985" font-weight="bold">State 에 추가되는 값</text>
 <text x="48" y="514" text-anchor="start" font-size="11.5" fill="#0f172a" font-family="Consolas,'DejaVu Sans Mono','NanumGothicCoding',monospace">goal  사용자의 큰 목표</text>
@@ -57,7 +57,7 @@
 <text x="530" y="537" text-anchor="start" font-size="11.5" fill="#0f172a">•  계획은 최대 5단계, 재계획은 최대 2회</text>
 <text x="530" y="558" text-anchor="start" font-size="11.5" fill="#0f172a">•  전체 노드 실행 횟수 · 시간 상한 (Kill Switch)</text>
 <text x="530" y="579" text-anchor="start" font-size="11.5" fill="#0f172a">•  입력과 Tool 결과의 PII 마스킹 유지</text>
-<text x="530" y="600" text-anchor="start" font-size="11.5" fill="#0f172a">•  계획 · 점검 결과는 서버 로그에 기록</text>
+<text x="530" y="600" text-anchor="start" font-size="11.5" fill="#0f172a">•  개인 데이터는 Spring 내부 API 로만 (DB 직접 접근 없음)</text>
 <rect x="30" y="632" width="940" height="60" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8"/>
 <text x="500" y="656" text-anchor="middle" font-size="13" fill="#334155" font-weight="bold">모호한 목표(&quot;알아서 투자 관련해서 해 줘&quot;)를 일부러 줘 본다</text>
 <text x="500" y="678" text-anchor="middle" font-size="12" fill="#475569">상한이 없으면 계획을 계속 새로 세운다 → 상한이 걸려 정상 종료하는지 관찰</text>

@@ -7,7 +7,7 @@
 토큰은 HttpOnly 쿠키로 주고받습니다. (응답 본문에는 토큰을 담지 않음)
 
 [전제]
-- Servlet 기반(spring-boot-starter-web) 유지. WebClient는 FastAPI 호출용으로만 사용하므로 별도 전환 없음
+- Servlet(Spring MVC) 기반 유지 (사용 중인 Boot 버전의 MVC 스타터: 3.x는 spring-boot-starter-web, 4.x는 spring-boot-starter-webmvc). WebClient는 FastAPI 호출용으로만 사용하므로 별도 전환 없음
 
 [1. 의존성]
 - spring-boot-starter-security
